@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>[실습] 설문조사 폼 만들기</title>
+</head>
+<body>
+    <h2>설문조사</h2>
+<form>
+    이름<input type="text" name="name"/>
+    <br />
+    이메일<input type="text" name="email" placeholder="이메일을 입력하세요."/>
+    <br />
+    <br />
+    <b>나이</b>
+    <br />
+    <br />
+
+<input type="radio" name="age" value="10대"/>10대
+<input type="radio" name="age" value="20대"/>20대
+<input type="radio" name="age" value="30대"/>30대
+<input type="radio" name="age" value="40대"/>40대
+<input type="radio" name="age" value="50대"/>50대
+<input type="radio" name="age" value="60대 이상"/>60대 이상
+<br />
+<br />
+    <b>원하는 강의(복수응답가능합니다.)</b>
+    <br />
+    <br />
+    <input type="checkbox" name="want" value="html"/>html
+    <input type="checkbox" name="want" value="javascript"/>javascript
+    <input type="checkbox" name="want" value="css"/>css
+    <br />
+    <br />
+    <textarea name="textarea" c rows="10" cols="100">하고 싶은 말을 써주세요:)</textarea>
+    <input type="button" value="제출"/>
+
+</form>
+</body>
+</html>

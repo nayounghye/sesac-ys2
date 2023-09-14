@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html 태그 수업2</title>
+</head>
+<body>
+<!-- 현재 위치:C:\Users\\Desktop\github\seSBA_USERsac-ys2\HtmlCssJs)
+    ./이미지이름.확장자 : 현재 위치에 있는 입력한 이미지 파일에 접근
+    ../ : 한 단계 앞 위치로 이동
+    ../HtmlCssJs
+ -->
+    <img src="./죠하.png" alt="죠르디입니다." width="100" heiht="100"/>
+
+<a href="./01_html.html" target="_self">html 호출</a>
+<a href="https://www.google.com" target="_blank">네이버</a>
+
+
+
+<hr />
+
+<h2>회원가입</h2>
+<form>
+    이름 : <input type="text" name="name"/>
+    <br />
+    이메일 : <input type="text" name="email"/>
+    <br />
+    비밀번호 : <input type="password" name="pw"/>
+    <br />
+    비밀번호 확인 : <input type="password" name="pw_check"/>
+
+    <input type="button" value="제출"/>
+
+<button>제출</button>
+<br />
+좋아하는 색을 선택하세요
+<input type="checkbox" name="color" value="빨강"/>빨강
+<input type="checkbox" name="color" value="노랑"/>노랑
+<input type="checkbox" name="color" value="초록"/>초록
+
+<br />
+    성별을 선택하세요.
+    <input type="radio" name="gender" value="남성"/> 남성
+    <input type="radio" name="gender" value="여성"/> 여성
+
+<br />
+    15세 이상인가요?
+     <input type="radio"name="is_order_15" value="예"/> 예
+    <input type="radio" name="is_order_15" value="아니오"/> 아니오
+
+    <br />
+    생년월일: <input type="date" name="birth" /> 
+    색: <input type="color" name="color" />
+
+    <br />
+    range : <input type="range" name="range" />
+    <br />
+    file : <input type="file" name="image" />
+
+    <br />
+    <select name="select_option">
+    <optgroup label="그룹1">
+        <option value="1">1</option>
+        <option value="2">2</option>
+    </optgroup>
+    <optgroup label="그룹2">
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </optgroup>
+    </select>
+    
+</forM>
+
+</body>
+</html>
