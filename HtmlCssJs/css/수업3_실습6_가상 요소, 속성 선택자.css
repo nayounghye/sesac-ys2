@@ -1,0 +1,35 @@
+/* 가상 요소 선택자 실습 */
+
+div.box::before {
+    content: "택시";
+}
+
+div.box::after {
+    content: "빨리";
+}
+
+/* 속성 선택자 실습 */
+
+input[name=name] {
+    background-color: red;
+}
+
+.fruits-3 > .wm-3 {
+    color: blue;
+}
+
+.wm-3 {
+    color: red;
+}
+
+[disabled] {
+    background-color: red;
+}
+
+[placeholder="이름"] {
+    background-color: orange;
+}
+
+input:not([placeholder]) {
+    background-color: blue;
+}

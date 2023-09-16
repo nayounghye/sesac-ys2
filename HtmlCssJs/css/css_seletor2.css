@@ -35,3 +35,30 @@ color: red;
 .fruits *:not(span){
     background-color: aqua;
 }
+
+/* ::before */
+div.before-el::before {
+    content: "앞!";
+}
+
+/* ::after */
+div.after-el::after {
+    content: "hot";
+    color: white;
+    background-color: red;
+    font-size: 12px;
+    border-radius: 5px;
+}
+
+
+input[name=name] {
+    background-color: red;
+}
+
+.fruits-3 > .wm-3 {
+    color: blue;
+}
+
+.wm-3 {
+    color: red;
+}
