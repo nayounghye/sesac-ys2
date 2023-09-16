@@ -1,0 +1,21 @@
+/* 하위 선택자 */
+/* div .apple {
+    color:rgb(152, 6, 6);
+} */
+
+/* 자식 선택자 */
+/* div > .apple {
+    color:rgb(152, 6, 6);
+} */
+
+/* 인접 형제 선택자 */
+h1 + ul {
+    font-size: 20px;
+    color:blue;
+}
+
+/* 일반 형제 선택자 */
+h1 ~ ul {
+    font-size: 20px;
+    color:blue;
+}
