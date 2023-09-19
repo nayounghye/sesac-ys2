@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+}
+.container {
+    position: absolute;
+    background-color: palegreen;
+    height: 500px;
+    width: 500px;
+}
+
+.item-1 {
+    background-color: red;
+    position: relative;
+    top: 30px;
+    left: 50px;
+    width: 100px;
+    height: 100px;
+}
+
+.item-2 {
+    background-color: orange;
+    position: absolute;
+    bottom: 100px;
+    right: 30px;
+    width: 100px;
+    height: 100px;
+}
+
+.item-3 {
+    background-color: yellow;
+    position: fixed;
+    top: 100px;
+    right: 100px;
+    width: 100px;
+    height: 100px;
+}
+
+
