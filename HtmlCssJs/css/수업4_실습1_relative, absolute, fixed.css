@@ -2,6 +2,7 @@ body {
     margin: 0;
 }
 .container {
+    /* item-2가 컨테이너 기준으로 위치를 설정하려면, 컨테이너에도 position 값을 주어야한다. */
     position: absolute;
     background-color: palegreen;
     height: 500px;
