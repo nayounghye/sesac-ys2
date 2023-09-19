@@ -1,0 +1,46 @@
+.container-1 {
+    height: 500px;
+    width: 500px;
+    background-color: aquamarine;
+    display: flex;
+    margin: 20px;
+    
+}
+
+.container-2 {
+    height: 500px;
+    width: 500px;
+    background-color: aquamarine;
+    display: flex;
+    flex-direction: row-reverse;
+    margin: 20px;
+}
+
+.container-3 {
+    height: 500px;
+    width: 500px;
+    background-color: aquamarine;
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    
+}
+
+.item1 {
+    height: 100px;
+    width: 100px;
+    background-color: blue;
+}
+
+.item2 {
+    height: 100px;
+    width: 100px;
+    background-color: blueviolet;
+}
+
+.item3 {
+    height: 100px;
+    width: 100px;
+    background-color: cadetblue;
+}
+

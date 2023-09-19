@@ -1,0 +1,51 @@
+/* div {
+    display: block;
+} */
+
+.box {
+    background-color: black; 
+    width: 100px; 
+    height: 100px;
+    color: white;
+    margin: 5px;
+}
+
+.css-display {
+    height: 100px;
+}
+
+/* inline:  */
+.d-inline-block {
+    display: inline-block;
+    margin: 20px; 
+    padding: 20px ; 
+}
+
+.container {
+    height: 500px;
+    display: flex;
+    flex-direction: column-reverse
+}
+
+/* flex-wrap, justify-content★★ */
+.container2 {
+    display: flex;
+    width: 400px;
+    height: 400px;
+    background-color: blue;
+    flex-wrap: wrap;
+    justify-content: space-between
+}
+
+.container2 {
+    display: flex;
+    width: 400px;
+    height: 400px;
+    background-color: blue;
+    flex-wrap: wrap;
+    justify-content: space-between
+    margin-top: 20px
+    alig
+}
+
+

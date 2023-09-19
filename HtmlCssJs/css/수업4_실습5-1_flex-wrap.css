@@ -1,0 +1,25 @@
+.container-1 {
+    height: 500px;
+    width: 500px;
+    background-color: bisque;
+    display: flex;
+    flex-wrap:nowrap;
+    margin: 50px;
+}
+
+.container-2 {
+    height: 500px;
+    width: 500px;
+    background-color: bisque;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 50px;
+}
+
+
+.item {
+    height: 100px;
+    width: 100px;
+    background-color: rgb(177, 139, 213);
+    margin: 5px;
+}
