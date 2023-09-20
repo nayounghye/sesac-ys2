@@ -1,4 +1,13 @@
-.container-1 {
+.container {
+    height: 500px;
+    width: 500px;
+    background-color: aquamarine;
+    display: flex;
+    margin: 20px;
+    
+}
+
+.1 {
     height: 500px;
     width: 500px;
     background-color: aquamarine;
