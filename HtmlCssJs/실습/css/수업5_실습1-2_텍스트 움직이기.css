@@ -1,0 +1,20 @@
+.text {
+    position: relative;
+    animation: move 3s;
+    left: 1000px;
+        width: 300%;
+    }
+    
+
+@keyframes move {
+    from{
+        left: 1000px;
+        width: 300%;
+       
+        
+    }
+    to{            
+        left: 0px;
+        width: 100%    
+    }
+}
