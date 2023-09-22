@@ -1,0 +1,21 @@
+img {
+    position: relative;
+    transform: skew(0, 25deg);
+}
+
+.jordy1 {
+    position: relative;
+    z-index: 3;
+}
+
+.jordy2 {
+    position: relative;
+    z-index: 2;
+    left: -50px;
+}
+
+.jordy3 {
+    position: relative;
+    z-index: 1;
+    left: -100px;
+}
