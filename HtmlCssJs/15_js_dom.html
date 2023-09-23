@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom</title>
+</head>
+<body>
+    <div id="box" class="box item1">죠르디!</div>
+    <div id="container" class="box item2">죠하!</div>
+    <span>니니!</span>
+    <input type="text" name="email" />
+    <div id="box2"><b>니니니</b>
+        니니니!
+        <!-- 주석도 나오나? -->
+    </div>
+
+    <script>
+        let elById = document.getElementById("box");
+        console.log(elById)
+
+        let elByClass = document.getElementsByClassName("box")
+        console.log(elByClass)
+        console.log(elByClass[0])
+        console.log(elByClass[1])
+
+        let elByTag = document.getElementsByTagName("span")
+        console.log(elByTag)
+
+        let elByName = document.getElementsByName("email")
+        console.log(elByName)
+
+        let elBySelector = document.querySelector(".box")
+        let elBySelectorAll = document.querySelectorAll(".box")
+        console.log(elBySelector)
+        console.log(elBySelectorAll)
+
+        // let elBox2 = document.getElementById("box2")
+        let elBox2 = document.querySelector("#box2")
+        console.log(elBox2)
+        console.log(elBox2.innerText)
+        console.log(elBox2.innerHTML)
+
+        elBox2.innerText = "Hello Jordy"
+        elBox2.innerHTML = "Hello <i>Jordy</i>"
+
+    </script>
+</body>
+</html>

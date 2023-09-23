@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수업6_실습1-5_배열에서의 for문</title>
+</head>
+<body>
+    <script>
+        let numbers = []
+        let sum1 = 0;
+        let sum2 = 0;
+        let sum3 = 0;
+
+        for(let i = 1; i <=100; i++){
+            numbers.push(i)
+            sum1 = sum1 + i;
+        }
+
+        for(let num of numbers) {
+            sum2 = sum2 + num;
+        }
+
+        numbers.forEach((num) => {
+            sum3 = sum3 + num;
+        })
+
+    console.log(sum1, sum2, sum3);    
+        
+    </script>
+    
+</body>
+</html>
