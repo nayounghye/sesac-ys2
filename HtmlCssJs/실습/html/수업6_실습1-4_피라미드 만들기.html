@@ -6,26 +6,16 @@
     <title>수업5_실습6-4_피라미드 만들기</title>
 </head>
 <body>
-    
-    <script>
-        // 바로 콘솔로 찍으려고 하지말고 문자열로 만든 뒤 하면 피라미드 만들 수 있음!
-        // 문자열에 '엔터' 를 쓰고 싶으면 "₩
-        let pyramid = Number(prompt("5를 입력해서 피라미드를 만들자!"))
-        for(let i = 0; i <= pyramid ; i++) {
-            let star = '';
+   <script> 
+    let star = "";
+    let number = Number(prompt("숫자를 입력하세요"))
+    for(let i = 1; i <= number; i++){
+        for(let j=1; j<=i; j++){
+            star += "*";
         }
-
-
-  // while(true){
-        //     let number = Number(prompt("양수를 입력하세요"))
-        //     if(number > 0) break;
-        //     console.log("hello")
-        // }
-        //     console.log("끝")
-
-
-
-    </script>
-    
+        star += "\n";
+    }
+    console.log(star);
+</script>
 </body>
 </html>
