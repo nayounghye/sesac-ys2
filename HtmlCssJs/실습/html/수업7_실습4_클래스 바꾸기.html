@@ -1,11 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <title>수업7_실습5_클래스 바꾸기</title>
+    <style>
+        .red {
+            background-color: red;
+            
+        }
+
+        .orange {
+            background-color: orange;
+        }
+
+        .yellow {
+            background-color: yellow;
+        }
+
+        .green {
+            background-color: green;
+        }
+
+        .blue {
+            background-color: blue;
+        }
+
+        .purple {
+            background-color: purple;
+        }
+
+        .nemo {
+            width: 100px;
+            height: 100px;
+            transition-property: background-color;
+            transition-duration: 300ms;
+        }
+    </style>
 </head>
 <body>
-    
+    <div class="nemo red" id="box" onclick="color()"></div>
+
+
+    <script>
+        function color() {
+        const colorchange = $("#box") 
+
+            if(colorchange.hasClass("red")){
+                colorchange.removeClass("red")
+                colorchange.addClass("orange")
+            }else if(colorchange.hasClass("orange")){
+                colorchange.removeClass("orange")
+                colorchange.addClass("yellow")
+            }else if(colorchange.hasClass("yellow")){
+                colorchange.removeClass("yellow")
+                colorchange.addClass("green")
+            }else if(colorchange.hasClass("green")){
+                colorchange.removeClass("green")
+                colorchange.addClass("blue")
+            }else if(colorchange.hasClass("blue")){
+                colorchange.removeClass("blue")
+                colorchange.addClass("purple")
+            }else{
+                colorchange.removeClass("purple")
+                colorchange.addClass("red")
+
+            }
+            // $("#redbox").css("background-color", "orange");
+        } 
+
+   
+    </script>
+
 </body>
 </html>
