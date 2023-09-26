@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수업7_실습1_간단 계산기 만들기</title>
+</head>
+<body>
+    <form>
+        값1: <input type="number" id="num1" /><br />
+        값2: <input type="number" id="num2" /><br />
+        연산자: <input type="text" id="operator" /><br />
+        결과: <input type="text" id="result"  readonly /><br /> <!--readonly는 사용자가 입력 못하게 하는 명렁어--> 
+        <br />
+        <button type="button" value="계산하기" onclick="calCul()">계산하기</button>
+        <button type="button" value="초기화" onclick="reSet()">초기화</button>
+        <!-- 초기화 버튼 명령어(type="reset")으로 사용, 요건 <form> 내부에 있는 모든 <input>태그를 다 빈값으로 만듦! -->
+        <!-- <input type="reset" value="초기화" -->
+    </form>
+    <script>
+        function calCul() {                                      
+           let num1 = Number(document.getElementById("num1").value);
+           let num2 = Number(document.getElementById("num2").value);
+           let operator = document.getElementById("operator").value;
+           let result;
+           
+
+           if(operator == "+"){
+            result = num1 + num2;
+            }else if(operator == "-"){
+                result = num1 - num2;
+            }else if(operator == "*"){
+                result = num1 * num2;
+            }else if(operator == "/"){
+                result = num1 / num2;
+            } 
+            /* IF문 대신 switch문으로도 가능함 
+                switch(operator){
+                case "+";
+                    result = num1 + num2 ;
+                    break;
+                case "-";
+                    result = num1 - num2 ;
+                    break;
+                case "/";
+                    result = num1 / num2 ;
+                    break;
+                case "*";
+                    result = num1 * num2 ;
+                    break;
+            } */
+
+
+            document.getElementById("result").value = result;
+        }
+
+        function reSet() {
+            document.getElementById("num1").value = "";
+            document.getElementById("num2").value = "";
+            document.getElementById("operator").value = "";
+            document.getElementById("result").value = "";
+        }
+    </script>    
+</body>
+</html>

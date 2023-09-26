@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>document 객체</title>
+    <Style>
+        .container{
+            width: 600px;
+            height: 400px;
+            background-color: beige;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+        }
+        .red {
+            background-color: red;
+        }
+        .orange {
+            background-color: orange;
+        }
+        .yellow {
+            background-color: yellow;
+        }
+    </Style>
+</head>
+<body>
+    <div class="container">
+        <div class="box red"></div>
+        <div class="box orange"></div>
+        <div class="box yellow"></div>
+    </div>
+    <!-- input 태그를 선택해서 placeholder 사용 추가 -->
+    <input type="text" neme="name" />
+
+    <div>
+        <!-- 함수를 실행시킨다 = '함수명()' 으로 꼭 괄호를 같이 입력해야함! -->
+        <button type="button" onclick="twinckle()">반짝여라</button>
+        <button type="button" onclick="addPlaceholder()">placeholder 추가</button>
+        <button type="button" onclick="addBox()">box 추가</button>
+        <button type="button" onclick="removeBox()">box 삭제</button>
+
+    </div>
+
+    <script>
+        const boxes = document.querySelectorAll(".box");
+        const box1 = boxes[0];
+        box1.innerHTML = "hello";
+
+        console.log(box1.classList);
+        // box1.classList.add()
+        
+
+        function twinckle(){
+            // 토글 기능을 사용해서 하는 방법
+                box1.classList.toggle("red")
+            // if 사용해서 하는 방법
+            // if (box1.classList.contains("red")) box1.classList.remove("red")
+            // else box1.classList.add("red")
+        }
+            // input 태그를 선택해서 placeholder 속성 추가 
+            const input = document.querySelector("input");
+        function addPlaceholder() {
+            input.setAttribute("placeholder", "이름을 입력하세요");
+            input.setAttribute("id", "input_name");
+        }
+        // 특정 요소의 자식 요소들에 접근
+        const container = document.querySelector(".container");
+        console.log(container.children[1]) // children은 기본적으로 배열을 반환
+
+        // 특정 요소의 부모 요소에 접근
+        console.log(box1.parentNode) // parentNode 기본적으로 하나의 요소만 반환
+
+        // 특정 요소의 형제 요소에 접근
+        console.log(box1.nextElementSibling) // 다음 형제 요소 하나 (브라우저마다 달라질 수 있음!)
+        console.log(boxes[1].previousElementSibling) // 이전 형제 요소 하나
+
+
+        function addBox() {
+            /* container의 자식요소인 <div> 태그 중 마지막 자식요소로 <div>태그를 또 추가하려면??
+                1. container 를 선택    
+                2. 추가할 요소를 생성
+                3. container의 마지막 자식으로 추가한다. (append, appendChild)
+                (자식요소 or 형제요소로 추가하는 방법밖에 없음)*/
+                const container2  = document.querySelector(".container"); //1번
+                const newBox = document.createElement("div"); //2번
+                newBox.classList.add("box") //2번
+                newBox.classList.add("red") 
+                newBox.className = "box red";
+
+                // container2.appendChild(newBox); 3번 appendChild 쓴 경우
+                // container2.append(newBox); // append 쓴 경우
+
+
+               //container의 첫번째 자식으로 추가한다. (prepend)
+               // container2.prepend(newBox);
+
+               //container의 형제로 추가한다. (before, after)
+                 container2.after("newBox")
+                 //container2.before("newBox");
+            }
+
+        function removeBox () {
+                /* container의 자식요소인 orange box를 지우고 싶으면??
+                < 1번 방법 > : 해당 요소를 직접 선택하여 삭제
+                1. 삭제하고 싶은 요소를 선택   
+                2. 삭제한다 */
+
+                // const orangeBox = document.querySelector(".box.orange");
+                // orangeBox.remove()
+
+                /* < 2번 방법 > : 삭제하고 싶은 요소의 부모요소를 선택해서 자식으로 접근해서 삭제 
+                1.삭제하고 싶은 요소를 선택
+                2. 삭제한다.
+                */
+                const container2 = document.querySelector(".container")
+                container2.removeChild(container2.children[1]);
+
+
+               }  
+         
+    </script>
+    
+</body>
+</html>
