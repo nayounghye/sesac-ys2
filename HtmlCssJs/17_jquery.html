@@ -71,7 +71,7 @@
 
       function useCss() {
         // .css() : style 을 변경
-        const span = $('#span1');
+        const sapn = $('#span1');
         $('#span1').css('font-size', '30px');
         $('#span1').css('color', 'blue');
         /* 동시에 쓰려면?
@@ -146,6 +146,13 @@
         // 위와 같은 기능으로 toggle을 써도 됨!
         redBox.toggleClass('red');
       }
+
+      // 자주 헷갈리므로 잘 기억할 것!
+      document.getElementById('아이디'); // 하나만 선택
+      document.querySelector('선택자'); // 하나만 선택
+      // 이 외의 선택함수들은 하나만 선택하는게 아님! 전체 선택이다!
+
+      // 제쿼는 하나만 선택하는 것이 아닌 모든걸 다 선택함!
     </script>
   </body>
 </html>

@@ -1,15 +1,22 @@
-<!DOCTYPE html>
+f<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>수업7_실습3_이미지 바꾸기</title>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+  </head>
 
-</head>
-
-<body>
-    <img height="300px" id="imgbox" src="../이미지파일/수업7_실습3_니니즈.png" >
+  <body>
+    <img
+      height="300px"
+      id="imgbox"
+      src="../이미지파일/수업7_실습3_니니즈.png"
+    />
     <br />
     <button type="button" onclick="jordy()">죠르디</button>
     <button type="button" onclick="scappy()">스카피</button>
@@ -17,22 +24,26 @@
     <button type="button" onclick="keroberony()">케로베로니</button>
 
     <script>
-        function jordy(){
-            $("#imgbox").attr("src", `../이미지파일/수업7_실습3_죠르디.png`);
-        }
-        function scappy(){
-            $("#imgbox").attr("src", `../이미지파일/수업7_실습3_스카피.png`);
-        }
+      function jordy() {
+        $('#imgbox').attr(
+          'src',
+          `../이미지파일/수업7_실습3_죠르디.png`
+        );
+      }
+      function scappy() {
+        $('#imgbox').attr('src', `../이미지파일/수업7_실습3_스카피.png`);
+      }
 
-        function angmond(){
-            $("#imgbox").attr("src", `../이미지파일/수업7_실습3_앙몬드.png`);
-        }
+      function angmond() {
+        $('#imgbox').attr('src', `../이미지파일/수업7_실습3_앙몬드.png`);
+      }
 
-        function keroberony(){
-            $("#imgbox").attr("src", `../이미지파일/수업7_실습3_케로베로니.png`);
-        }
-
-
+      function keroberony() {
+        $('#imgbox').attr(
+          'src',
+          `../이미지파일/수업7_실습3_케로베로니.png`
+        );
+      }
     </script>
-</body>
+  </body>
 </html>

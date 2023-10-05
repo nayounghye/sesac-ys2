@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>수업8_실습1_스케줄러</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+
+    <style>
+      .sun {
+        color: red;
+      }
+      .sat {
+        color: blue;
+      }
+
+      .tablehead {
+        color: green;
+        text-align: center;
+        font-size: xx-large;
+      }
+    </style>
+  </head>
+  <body>
+    날짜:
+    <input type="datetime" name="date" />
+    <br />
+    내용:
+    <input type="text" name="content" />
+    <br />
+    <button>작성</button>
+    <table width="600" height="600" table-layout: fixed>
+      <thead>
+        <tr>
+          <td colspan="6" class="tablehead">2022년 7월</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="sat"></td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="sun">日</td>
+          <td>月</td>
+          <td>火</td>
+          <td>水</td>
+          <td>木</td>
+          <td>金</td>
+          <td class="sat">土</td>
+        </tr>
+        <tr class="tr1">
+          <td class="sun"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>1</td>
+          <td class="sat">2</td>
+        </tr>
+        <tr class="tr2">
+          <td class="sun">3</td>
+          <td>4</td>
+          <td>5</td>
+          <td>6</td>
+          <td>7</td>
+          <td>8</td>
+          <td class="sat">9</td>
+        </tr>
+        <tr class="tr3">
+          <td class="sun">10</td>
+          <td>11</td>
+          <td>12</td>
+          <td>13</td>
+          <td>14</td>
+          <td>15</td>
+          <td class="sat">16</td>
+        </tr>
+        <tr class="tr4">
+          <td class="sun">17</td>
+          <td>18</td>
+          <td>19</td>
+          <td>20</td>
+          <td>21</td>
+          <td>22</td>
+          <td class="sat">23</td>
+        </tr>
+        <tr class="tr5">
+          <td class="sun">24</td>
+          <td>25</td>
+          <td>26</td>
+          <td>27</td>
+          <td>28</td>
+          <td>29</td>
+          <td class="sat">30</td>
+        </tr>
+        <tr class="tr6">
+          <td class="sun">31</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="sat"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script>
+      let date;
+      $('td').on('click', function () {
+        console.log(this);
+        $('input[name=date]').val($(this).text());
+        date = this;
+      });
+
+      $('td').hover(
+        function () {
+          $(this).css('transform', 'scale(1.2)');
+        },
+        function () {
+          $(this).css('transform', 'scale(1)');
+        }
+      );
+
+      $('button').on('click', function button() {
+        const content = $('input[name=content]').val();
+        $(date).append(`<br />` + content);
+      });
+    </script>
+  </body>
+</html>
