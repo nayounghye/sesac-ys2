@@ -1,0 +1,45 @@
+:root {
+  --color-main: navy;
+  --height-header-lg: 80px;
+  /* 위 내용은 큰 화면에서는 헤더를 80px로 가져가겠다라는 뜻 */
+}
+
+.container {
+  margin-top: var(--height-header-lg);
+  width: 500px;
+  height: 500px;
+  background-color: var(--color-main);
+  display: flex;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+}
+
+.red {
+  background-color: red;
+}
+
+.orange {
+  background-color: orange;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+/* @media 미디어유형 and (크기 규칙) */
+/* print */
+@media print {
+  .container {
+    background-color: blue;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .container {
+    flex-direction: column;
+    /* display: block; */
+  }
+}
