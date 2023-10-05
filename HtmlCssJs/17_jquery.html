@@ -1,34 +1,38 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>jQuery</title>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <Style>
-        .container{
-            width: 600px;
-            height: 400px;
-            background-color: beige;
-            display: flex;
-            flex-wrap: wrap;
-        }
-        .box{
-            width: 100px;
-            height: 100px;
-        }
-        .red {
-            background-color: red;
-        }
-        .orange {
-            background-color: orange;
-        }
-        .yellow {
-            background-color: yellow;
-        }
-    </Style>
-</head>
-<body>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      .container {
+        width: 600px;
+        height: 400px;
+        background-color: beige;
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .box {
+        width: 100px;
+        height: 100px;
+      }
+      .red {
+        background-color: red;
+      }
+      .orange {
+        background-color: orange;
+      }
+      .yellow {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
     <input type="text" name="name" id="input" value="Jordy" />
     <button type="button" onclick="useVal()">val() 사용하기</button>
     <button type="button" onclick="useAttr()">attr() 사용하기</button>
@@ -38,117 +42,117 @@
     <button type="button" onclick="useCss">css() 사용하기</button>
 
     <div class="container">
-        <div class="box red" id="red"></div>
-        <div class="box orange"></div>
-        <div class="box yellow"></div>
+      <div class="box red" id="red"></div>
+      <div class="box orange"></div>
+      <div class="box yellow"></div>
     </div>
     <button type="button" onclick="useAppend()">append() 사용하기</button>
     <button type="button" onclick="useRemove()">remove() 사용하기</button>
     <button type="button" onclick="useParent()">요소 탐색하기</button>
     <button type="button" onclick="controlClass()">클래스 조작하기</button>
 
-
-
     <script>
-        // jQuery: $("선택자").동작함수();
-        // JS: documnet.get~ / document.querySelector~~ 이게 ("선택자")로 사용하고,
-        // JS: .innerHTML / append 요걸 제쿼는 동작함수로 적는다.
-        
-        function useVal(){
+      // jQuery: $("선택자").동작함수();
+      // JS: documnet.get~ / document.querySelector~~ 이게 ("선택자")로 사용하고,
+      // JS: .innerHTML / append 요걸 제쿼는 동작함수로 적는다.
+
+      function useVal() {
         // id가 input인 태그를 선택하여, 그 input의 value를 가져오는 코드
-        const value = $("#input").val();
+        const value = $('#input').val();
         // 위 내용을 JS로 작성한다면? document.getElementsById("input").value;
-        console.log(value)
+        console.log(value);
 
         // id가 input인 태그를 선택하여, 그 input의 value를 설정하는 코드
-        $("#input").val("설정하고 싶은 값");
+        $('#input').val('설정하고 싶은 값');
         // 위 내용을 JS로 작성한다면? document.getElementById("input").value = '설정하고 싶은 값';
-        
-    
-        // id가 input인 태그를 선택하여, 그 input의 value를 설정하는 코드
-        }
 
-        function useCss(){
-            // .css() : style 을 변경
-            const sapn = $("#span1");
-            $("#span1").css("font-size", "30px");
-            $("#span1").css("color", "blue");
-            /* 동시에 쓰려면?
+        // id가 input인 태그를 선택하여, 그 input의 value를 설정하는 코드
+      }
+
+      function useCss() {
+        // .css() : style 을 변경
+        const sapn = $('#span1');
+        $('#span1').css('font-size', '30px');
+        $('#span1').css('color', 'blue');
+        /* 동시에 쓰려면?
             $("#span1").css("color","blue") */
 
-            /* 위 내용을 JS로 작성한다면? 
+        /* 위 내용을 JS로 작성한다면? 
             document.getElementById("input").value = '설정하고 싶은 값';
             const sapn = document.getElementById("span1");
             sapn.style = "font-size: 30px; color: blue;"
             */
-    }
+      }
 
-    function useAttr(){
-        $("#input").val("");
-        $("#input").attr("placeholder", "이름을 입력하세요.")
+      function useAttr() {
+        $('#input').val('');
+        $('#input').attr('placeholder', '이름을 입력하세요.');
         /* 위 내용을 JS로 작성한다면? 
         setAttributes() */
-    }
+      }
 
-    function useText(){
+      function useText() {
         // = JS: innerText
         // $("#span1").text("Hello Jordy");
 
         // = JS: innerHTML
-        $("#span1").html("hello <b>Jordy</b>")
+        $('#span1').html('hello <b>Jordy</b>');
         /* 위 내용을 JS로 작성한다면? 
         setAttributes() */
-    }
+      }
 
-    function useAppend(){
-
+      function useAppend() {
         //.containerd의 마지막 자식으로 추가
-        $(".container").append(`<div class="box red"></div>`)
+        $('.container').append(`<div class="box red"></div>`);
 
-         //.containerd의 첫번째 자식으로 추가
-         $(".container").prepend(`<div class="box red"></div>`)
+        //.containerd의 첫번째 자식으로 추가
+        $('.container').prepend(`<div class="box red"></div>`);
 
-          //.containerd의 앞 형제로 추가
-        $(".container").before(`<div class="box red"></div>`)
-        
-         //.containerd의 뒤 형제로 추가
-         $(".container").after(`<div class="box red"></div>`)
-    }
-    
-    function useRemove(){
-        $(".box.orange").remove();
-        
-        $(".box.orange").empty();
+        //.containerd의 앞 형제로 추가
+        $('.container').before(`<div class="box red"></div>`);
+
+        //.containerd의 뒤 형제로 추가
+        $('.container').after(`<div class="box red"></div>`);
+      }
+
+      function useRemove() {
+        $('.box.orange').remove();
+
+        $('.box.orange').empty();
         /* 위 내용을 JS로 작성한다면?  .container의 내용을 싹 비우겠다 라는 뜻!
         const container = document.querySelector(".container");
         container.innerHTML = "";
         $(".container").empty(); */
-    }
+      }
 
-
-    function useParent(){
+      function useParent() {
         //parent()
-        console.log("parent", $(".box.red").parent())
+        console.log('parent', $('.box.red').parent());
         //parents()
-        console.log("parents", $(".box.red").parents())
+        console.log('parents', $('.box.red').parents());
         //next()
-        console.log("next", $(".box.red").next())
+        console.log('next', $('.box.red').next());
         //prev()
-        console.log("prev", $(".box.orange").prev())
+        console.log('prev', $('.box.orange').prev());
         //children()
-        console.log("children", $(".container").children())
-    }   
+        console.log('children', $('.container').children());
+      }
 
-    // 자주 쓰임!!
-    function controlClass(){
-        const redBox = $("#red")
+      // 자주 쓰임!!
+      function controlClass() {
+        const redBox = $('#red');
         // if(redBox.hasClass("red")) redBox.removeClass("red")
         // else redBox.addClass("red")
-    // 위와 같은 기능으로 toggle을 써도 됨!    
-        redBox.toggleClass("red")
-    }
+        // 위와 같은 기능으로 toggle을 써도 됨!
+        redBox.toggleClass('red');
+      }
 
-    
+      // 자주 헷갈리므로 잘 기억할 것!
+      document.getElementById('아이디'); // 하나만 선택
+      document.querySelector('선택자'); // 하나만 선택
+      // 이 외의 선택함수들은 하나만 선택하는게 아님! 전체 선택이다!
+
+      // 제쿼는 하나만 선택하는 것이 아닌 모든걸 다 선택함!
     </script>
-</body>
+  </body>
 </html>
