@@ -1,0 +1,53 @@
+:root {
+  --nav-height-lg: 100px;
+  --nav-height-sm: 60px;
+}
+
+body {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* HEADER */
+header {
+  width: 100%;
+  height: var(--nav-height-lg);
+  z-index: 100;
+  /* position: fixed; */
+}
+
+/* 768px 보다 클때의 header */
+header .inner {
+  background-color: lightblue;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* LOGO */
+header .inner .logo {
+  color: white;
+  font-size: 30px;
+  left: 150px;
+}
+
+header .inner .menu {
+  display: flex;
+  justify-content: center;
+}
+
+header .inner .menu li {
+  font-weight: bold;
+}
+
+.boxbox {
+  display: flex;
+  justify-content: space-around;
+}
+/* 미디어 쿼리 작성 768px 이하일 때  */
