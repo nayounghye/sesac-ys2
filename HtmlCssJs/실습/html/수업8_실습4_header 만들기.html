@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>수업8_실습4_header 만들기</title>
-    <link rel="stylesheet" href="../css/수업8_실습4_header 만들기2.css" />
+    <link rel="stylesheet" href="../css/수업8_실습4_header 만들기.css" />
     <script
       src="https://kit.fontawesome.com/837ff3adc1.js"
       crossorigin="anonymous"
@@ -22,7 +22,7 @@
         <div class="logo">
           <i class="fa-solid fa-igloo"></i>
         </div>
-        <ul class="menu">
+        <ul class="menu active">
           <li>메뉴1</li>
           <li>메뉴2</li>
           <li>메뉴3</li>
@@ -30,5 +30,22 @@
         </ul>
       </div>
     </header>
+    <script>
+      $(document).ready(function () {
+        $('i').click(function () {
+          $(this).toggleClass('active');
+          $('.menu').toggleClass('active');
+        });
+      });
+
+      $('i').hover(
+        function () {
+          $(this).css('transform', 'scale(1.2)');
+        },
+        function () {
+          $(this).css('transform', 'scale(1)');
+        }
+      );
+    </script>
   </body>
 </html>
