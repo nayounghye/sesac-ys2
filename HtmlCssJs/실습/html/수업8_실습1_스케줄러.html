@@ -17,6 +17,25 @@
       .sat {
         color: blue;
       }
+      /* 선생님이 css 넣은 방법 */
+      /* tr > td:first-child,
+      tr > th:first-child {
+        color: red;
+      }
+
+      tr > td:last-child,
+      tr > th:last-child {
+        color: blue;
+      } */
+
+      td {
+        cursor: pointer;
+        /* calc 함수 : 계산을 해주는 css 기본 함수 */
+        /* 부모 요소 전체 넓이 (100%) 나누기 7 연산 진행 후 결과를 px로 변환 */
+        width: calc((100% / 7));
+        height: 80px;
+        vertical-align: top;
+      }
 
       .tablehead {
         color: green;
@@ -113,6 +132,19 @@
     </table>
 
     <script>
+      // 1. 날짜(td 태그)를 클릭했을 때,
+      // 클릭된 날짜의 텍스트가 첫번째 input 태그로 들어간다
+      // 1) td 태그에 클릭 이벤트 걸기
+      // 2) 클릭된 td 태그의 텍스트를 가져오기
+      // 3) 날짜 input 태그 선택하기
+      // 4) 선택된 input 태그의 value로 2)에서 가져온 날짜 넣기
+
+      // 2. 내용 input에 작성한 값을 캘린더에 추가하기
+      // 1) 작성 버튼에 함수를 건다
+      // 2) 작성 버튼에 걸릴 함수를 정의한다.
+      // 3) 내용 input의 value를 가져온다.
+      // 4) 3)에서 가져온 값을 캘린더에 추가한다.
+
       let date;
       $('td').on('click', function () {
         console.log(this);
@@ -133,6 +165,21 @@
         const content = $('input[name=content]').val();
         $(date).append(`<br />` + content);
       });
+
+      // 위 내용 선생님 작성 버전
+      // let dateEl;
+
+      // $("td").on("click", function () {
+      //   const date = $(this).text();
+      //   $("input[name=date]").val(date);
+      //   dateEl = this;
+      //   console.log(dateEl);
+      // });
+
+      // function addSchedule() {
+      //   const todo = $("input[name=todo]").val();
+      //   $(dateEl).append(`<div>${todo}</div>`);
+      // }
     </script>
   </body>
 </html>

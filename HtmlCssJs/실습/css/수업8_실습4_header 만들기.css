@@ -58,6 +58,7 @@ header .inner .menu li {
   header .inner .logo {
     position: fixed;
     left: 46%;
+    cursor: pointer;
   }
 
   header .inner .menu {
@@ -65,7 +66,7 @@ header .inner .menu li {
     position: relative;
     top: 111.5px;
     width: 100%;
-    background-color: azure;
+    background-color: aliceblue;
     opacity: 0;
     visibility: hidden;
     transform: translateY(-50%);
@@ -83,5 +84,6 @@ header .inner .menu li {
   header .inner .menu li {
     font-weight: normal;
     z-index: 3;
+    cursor: pointer;
   }
 }
