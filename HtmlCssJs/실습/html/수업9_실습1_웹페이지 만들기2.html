@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>수업9_실습1_웹페이지 만들기</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../css/수업9_실습1_웹페이지 만들기.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="inner">
+        <div class="d-flex justify-content-end">
+          <select>
+            <option>한국어</option>
+            <option>English</option>
+            <option>中文(简体)</option>
+            <option>中文(台灣)</option>
+          </select>
+        </div>
+
+        <a class="link" href="http://www.naver.com">
+          <img class="logo" src="../이미지파일/수업9_실습1_네이버로고.png" />
+        </a>
+      </div>
+    </header>
+    <content>
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            aria-current="page"
+            href="../html/수업9_실습1_웹페이지 만들기.html"
+            ><i class="bi bi-box-arrow-in-right"></i> ID 로그인</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            href="../html/수업9_실습1_웹페이지 만들기2.html"
+            ><i class="bi bi-1-square"></i> 일회용 번호</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../html/수업9_실습1_웹페이지 만들기3.html"
+            ><i class="bi bi-qr-code"></i> QR코드</a
+          >
+        </li>
+      </ul>
+      <main class="idpw">
+        <div class="inputbox">
+          <div class="word">
+            <span
+              >네이버앱의
+              <span style="color: #03c75a"
+                >메뉴>설정 <i class="bi bi-gear"></i> >로그인 아이디 관리>
+                <br />더보기<i class="bi bi-three-dots-vertical"></i>> 일회용
+                로그인 번호</span
+              >에 보이는 번호를 입력해 주세요.
+            </span>
+            <br />
+            <i class="bi bi-question-circle-fill"></i>
+          </div>
+          <br />
+          <form>
+            <div class="border id">
+              <input
+                type="text"
+                class="inputid"
+                placeholder="번호를 입력하세요."
+              /><i class="bi bi-x-circle-fill"></i>
+            </div>
+          </form>
+          <div class="d-grid gap-2 col-6 mx-auto">
+            <button class="btn btn-success" type="button">로그인</button>
+          </div>
+        </div>
+      </main>
+    </content>
+    <ul class="nav justify-content-center">
+      <li class="nav-item"></li>
+      <li class="nav-item">
+        <a
+          class="nav-link active"
+          href="https://nid.naver.com/user2/help/pwInquiry?lang=ko_KR"
+          >비밀번호 찾기</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link active"
+          href="https://nid.naver.com/user2/help/idInquiry?lang=ko_KR"
+          >아이디 찾기</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link active"
+          href="https://nid.naver.com/user2/join/agree?lang=ko_KR&domain=www.naver.com"
+          >회원가입</a
+        >
+      </li>
+    </ul>
+  </body>
+</html>
