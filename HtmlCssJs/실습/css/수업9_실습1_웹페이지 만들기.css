@@ -124,10 +124,47 @@ main .inputbox form .border .inputid,
 }
 
 /* 체크박스 */
+
+.nav-check {
+  margin-top: 10px;
+  width: 402px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* 동그란 체크박스 위치 조절 */
+.nav-check .check .form-check-input {
+  position: relative;
+  right: 40px;
+}
+
+/* IP보안 위치 역순으로 변경 */
+.nav-check .check .form-check.form-switch {
+  position: relative;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+/* IP보안 글자 위치 조절 */
+.form-check .form-check-label {
+  position: relative;
+  left: -40px;
+}
+
+.nav-check .check {
+  position: relative;
+  right: -45px;
+}
+/* IP보안 토글 위치 조절 */
+.form-switch .form-check-input {
+  position: relative;
+  right: -60px;
+}
+
+/* 로그인 버튼 */
 .form-switch .form-check-input {
   background-image: var(--bs-form-switch-bg);
 }
-
 .form-check-input {
   background-color: #ffffff;
 }
