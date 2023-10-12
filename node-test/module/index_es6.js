@@ -1,9 +1,12 @@
+// 1) 하나만 내보내는 경우
+
 // 하나만 불러올 때는 'add'의 이름을 바꿔된다.
 // import add2 from './math_es6.js';
 // // math_es6파일에서 default로 export 하고 있는 add2라는 식별자로 받아옴.
 // console.log(add2(2, 3));
 
-// 여러 개 가져오는 방법
+//2) 여러개 내보내는 경우
+
 // import { add } from './math_es6.js';
 // console.log(add(2, 3));
 
