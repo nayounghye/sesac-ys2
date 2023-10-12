@@ -41,9 +41,31 @@ console.log(arr3);
 const hello = [...'hello'];
 console.log(hello);
 
-//실습
+//--실습 :
 const word1 = 'abc';
 const word2 = 'xyz';
 
 const word3 = [...word1, ...word2];
 console.log(word3);
+//--실습 끝
+
+const obj2 = {
+  name: 'Jordy',
+  gender: '?',
+  color: 'mint',
+};
+
+const obj3 = {
+  ...obj2,
+  age: '?',
+};
+console.log(obj3);
+
+const values = [10, 20, 30];
+function get(a, ...rest) {
+  console.log('a', a); // 10 출력
+  // rest 파라미터 : 호출하는 함수의 인자 순서에 맞춰 값을 설정한 후 앞에 출력된 값을 제외하고 남은 값을 배열로 설정한다.
+  console.log('rest', rest); // [20, 30] 출력
+}
+
+get(...values);
