@@ -7,6 +7,14 @@ const PORT = 8000; // 포트 번호를 8000번으로 설정!
 // 보통 사용하는 포트 번호는 3000번대, 8000번대 ,8010, 3010, 3001 등 이다.
 // 단, 3306은 mySQL에서 사용하므로, 3306은 피해서 사용할 것.
 
+// app 객체의 view engine 설정을 ejs로 변경하는 명령어
+app.set('view engine', 'ejs');
+
+// app 객체의 view 폴더를 설정 (기본값: ./views)
+app.set('views', './views');
+// app 객체의 view 폴더명을 view로 바꾸고 싶다면 아래와 같이 입력
+// app.set('views', './view');
+
 // get 메소드(http 메소드) : 클라이언트가 요청할 수 있는 방법들을 정의한다. (http메소드 중에 get메소드가 있다.)
 // localhost:8000/ 을 입력해서 인터넷 접속이 가능하게 만들어주는 명렁어이다.
 app.get('/', function (req, res) {
@@ -24,5 +32,13 @@ app.listen(PORT, function () {
 
 // -----Quiz 'localhost:8000/test' 라는 링크로 접속할 수 있도록 추가하려면?
 app.get('/test', function (req, res) {
-  res.send('Hello Jordy test');
+  //   res.send('<div style="color : green">Hello Jordy test</div>');
+  // _dirname : 현재 절대 경로
+  res.sendFile(__dirname + '/index.html');
+});
+
+app.get('/ejs', function (req, res) {
+  // render 메소드의 기본 dir(디렉토리) : "./views/"
+  //   res.render('index'); //views 폴더 안에 있는 index.ejs 파일을 불러오는 경우
+  res.render('test/index'); //views 폴더>test폴더 안에 있는 index.ejs 파일을 불러오는 경우
 });
