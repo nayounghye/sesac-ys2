@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <%=name  %>
+    <!-- <%=product %> -->
+
+
+
+    <!-- ejs 태그 안에 오는 자바스크립트 코드는 한줄로 끝나야 한다. -->
+    <!-- ejs 태그 안에 바로 =이 오면 = 뒤에 있는 변수나 값을 HTML로 출력하겠다는 의미이다. -->
+    <% for(let i = 0; i < product.length; i++) { %>
+    <div>상품 <%=product[i] %></div>
+    <% } %>
+
+
+    <!-- ejs 태그 안에 바로 =이 오면 = 뒤에 있는 변수나 값을 HTML로 출력하겠다는 의미이다. -->
+    <%="hello jordy" %>
+    <!-- ejs 태그 안에 바로 =이 오면 = 뒤에 있는 변수나 값을 HTML로 출력하겠다는 의미이다. -->
+    <%="<div>안녕?</div>"%>
+    <!-- ejs 태그 안에 바로 -가 오면 - 뒤에 있는 변수나 값을 HTML로 출력하겠다는 의미이다.(html태그 적용된 채로 출력) -->
+    <%-"<div>안녕?</div>"%>
+
+    <%-include("index.ejs") %>
+  </body>
+</html>

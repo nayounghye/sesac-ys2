@@ -10,6 +10,12 @@ const PORT = 8000; // 포트 번호를 8000번으로 설정!
 // app 객체의 view engine 설정을 ejs로 변경하는 명령어
 app.set('view engine', 'ejs');
 
+// app.use('/static', express.static(__dirname + '/static'));
+//__dirname : ~~/01-express/static에 클라이언트가 /static 이름의 주소로 들어올 수 있다.
+
+app.use('/public', express.static(__dirname + '/static'));
+//__dirname : ~~/01-express/static에 클라이언트가 /public 이름의 주소로 들어올 수 있다.
+
 // app 객체의 view 폴더를 설정 (기본값: ./views)
 app.set('views', './views');
 // app 객체의 view 폴더명을 view로 바꾸고 싶다면 아래와 같이 입력
@@ -18,7 +24,7 @@ app.set('views', './views');
 // get 메소드(http 메소드) : 클라이언트가 요청할 수 있는 방법들을 정의한다. (http메소드 중에 get메소드가 있다.)
 // localhost:8000/ 을 입력해서 인터넷 접속이 가능하게 만들어주는 명렁어이다.
 app.get('/', function (req, res) {
-  res.send('Hello Jordy'); // 응답 객체 내의 send 메소드를 실행하는 명령어. send 메소드 : 응답을 전송한다.
+  res.send('Hello Jordy'); // 응답 객체 내의 send 메소드를 실행하는 명령어. send 메소드 :  값을 보낸다.
 });
 // http 메소드의 두번째 인자로 넘겨주는 콜백함수의 매개변수 2개
 // 첫번째 매개변수 : request 객체 (요청)
@@ -41,4 +47,11 @@ app.get('/ejs', function (req, res) {
   // render 메소드의 기본 dir(디렉토리) : "./views/"
   //   res.render('index'); //views 폴더 안에 있는 index.ejs 파일을 불러오는 경우
   res.render('test/index'); //views 폴더>test폴더 안에 있는 index.ejs 파일을 불러오는 경우
+});
+
+app.get('/naraka', function (req, res) {
+  res.render('naraka', {
+    name: 'naraka',
+    product: ['운동화', '후드집업', '스웨터', '티셔츠'],
+  });
 });
