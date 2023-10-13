@@ -42,10 +42,19 @@ select {
   border-top: 0;
 }
 
+.nav-item a {
+  position: relative;
+  width: 153.33px;
+  height: 61px;
+  text-align: center;
+  padding-top: 15px;
+}
+
 .nav-tabs .nav-item.show .nav-link,
 .nav-tabs .nav-link {
   border-bottom: 0;
   background-color: #f7f7f7;
+  border-width: 1px 1px 0px 1px;
 }
 
 .bi-box-arrow-in-right::before {
@@ -56,16 +65,28 @@ select {
 
 content {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 content main {
   position: relative;
-}
-
-content main .inputbox {
-  position: relative;
   border: 1px solid #d4d4d4;
   margin-top: 0px;
+  /* id/pw 담은 네모박스 크기 */
+  width: 459.99px;
+  border-radius: 0px 0px 6px 6px;
+  z-index: 999;
+  top: -5px;
+}
+
+/* input 박스 */
+content main .inputbox {
+  margin-top: 0px;
+  /* position: relative;
+  border: 1px solid #d4d4d4;
+  */
 }
 
 /* ID/PW 입력창 */
@@ -149,6 +170,8 @@ main .inputbox form .border .inputid,
 .form-check .form-check-label {
   position: relative;
   left: -40px;
+  color: #777;
+  font-size: 14px;
 }
 
 .nav-check .check {
@@ -158,13 +181,26 @@ main .inputbox form .border .inputid,
 /* IP보안 토글 위치 조절 */
 .form-switch .form-check-input {
   position: relative;
-  right: -60px;
+  right: -53px;
 }
 
 /* 로그인 버튼 */
-.form-switch .form-check-input {
-  background-image: var(--bs-form-switch-bg);
+
+.d-grid.gap-2.col-6.mx-auto {
+  margin-top: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
+
+.btn-success {
+  width: 402px;
+}
+
+/* .form-switch .form-check-input {
+  background-image: var(--bs-form-switch-bg);
+} */
+
 .form-check-input {
   background-color: #ffffff;
 }
@@ -173,6 +209,8 @@ main .inputbox form .border .inputid,
   background-color: #1ec800;
   border: 0;
 }
+
+/* 로그인버튼 끝 */
 
 header .inner {
   height: 138px;
