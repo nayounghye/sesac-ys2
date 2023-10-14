@@ -18,20 +18,46 @@
 
 //-------------------------- Promise 를 사용해서 해결해보기! ---------------------------
 
-// var color = function() {
-//     var colorcg = document.body.style.backgroundColor();
+//  -------------------------- 쌤이 작성하신 코드 (중복되는 부분 변수처리! 배울것!)
+// function red() {
+//   return new Promise((resolve) => {
+//     setTimeout(function () {
+//       document.body.style.backgroundColor = color;
+//       resolve();
+//     }, 1000);
+//   });
 // }
-// console
 
-// let bgc () {
-//     document.body.style.backgroundColor
+// async-await 방법으로 작성한 경우
+// async function exec() {
+//   await changeColor('red');
+//   await changeColor('orange');
+//   await changeColor('yellow');
+//   await changeColor('green');
+//   await changeColor('blue');
 // }
+// exec()
+
+// promise 방법으로 작성한 경우
+// changeColor('red')
+//   .then(() => {
+//     return changeColor('orange');
+//   })
+//   .then(() => {
+//     return changeColor('yellow');
+//   })
+//   .then(() => {
+//     return changeColor('green');
+//   })
+//   .then(() => {
+//     changeColor('blue');
+//   });
 
 function red() {
   return new Promise((resolve) => {
     setTimeout(function () {
       document.body.style.backgroundColor = 'red';
-      resolve(result);
+      resolve();
     }, 1000);
   });
 }
@@ -40,7 +66,7 @@ function orange() {
   return new Promise((resolve) => {
     setTimeout(function () {
       document.body.style.backgroundColor = 'orange';
-      resolve(result);
+      resolve();
     }, 1000);
   });
 }
@@ -49,7 +75,7 @@ function yellow() {
   return new Promise((resolve) => {
     setTimeout(function () {
       document.body.style.backgroundColor = 'yellow';
-      resolve(result);
+      resolve();
     }, 1000);
   });
 }
@@ -58,7 +84,7 @@ function green() {
   return new Promise((resolve) => {
     setTimeout(function () {
       document.body.style.backgroundColor = 'green';
-      resolve(result);
+      resolve();
     }, 1000);
   });
 }
@@ -67,7 +93,7 @@ function blue() {
   return new Promise((resolve) => {
     setTimeout(function () {
       document.body.style.backgroundColor = 'blue';
-      resolve(result);
+      resolve();
     }, 1000);
   });
 }
