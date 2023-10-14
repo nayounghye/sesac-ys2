@@ -38,7 +38,6 @@ select {
 .nav.nav-tabs {
   position: relative;
   justify-content: center;
-  border: 1px solid #f1f1f1;
   border-top: 0;
 }
 
@@ -48,6 +47,7 @@ select {
   height: 61px;
   text-align: center;
   padding-top: 15px;
+  z-index: 0;
 }
 
 .nav-tabs .nav-item.show .nav-link,
@@ -72,7 +72,7 @@ content {
 
 content main {
   position: relative;
-  border: 1px solid #d4d4d4;
+  border: 1px solid #dfe3e7;
   margin-top: 0px;
   /* id/pw 담은 네모박스 크기 */
   width: 459.99px;
@@ -83,7 +83,10 @@ content main {
 
 /* input 박스 */
 content main .inputbox {
+  position: relative;
   margin-top: 0px;
+  z-index: 100;
+  background-color: #ffffff;
   /* position: relative;
   border: 1px solid #d4d4d4;
   */
