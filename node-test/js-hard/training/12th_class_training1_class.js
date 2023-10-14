@@ -1,3 +1,4 @@
+//-------------------------- 수업12_실습1-1. 클래스 생성 --------------------------
 class Shape {
   constructor(width, height) {
     this.width = width;
@@ -12,7 +13,7 @@ class Shape {
 let rec1 = new Shape(3, 4);
 console.log(rec1.getArea());
 
-// 실습2. 클래스 상속1
+//-------------------------- 수업12_실습1-2. 클래스 상속1 --------------------------
 class Rectangle extends Shape {
   constructor(width, height) {
     super(width, height);
@@ -58,4 +59,4 @@ class Circle {
   }
 }
 
-//실습3. 클래스 상속2
+//-------------------------- 수업12_실습1-3. 클래스 상속 --------------------------

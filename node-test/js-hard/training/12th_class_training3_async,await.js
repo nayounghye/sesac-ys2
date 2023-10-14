@@ -30,7 +30,7 @@
 //   });
 // });
 
-//-------------------------- Promise 를 사용해서 해결해보기! ---------------------------
+//-------------------------- 수업12_실습2 Promise 를 사용해서 해결해보기! ---------------------------
 
 // function call(name) {
 //     return new Promise(function (resolve) {
@@ -73,7 +73,7 @@
 //       console.log(err);
 //     });
 
-//-------------------------- Promise(async/await) 를 사용해서 해결해보기! ---------------------------
+//-------------------------- 수업12_실습3 Promise(async/await) 를 사용해서 해결해보기! ---------------------------
 
 async function call(name) {
   return new Promise(function (resolve) {
@@ -101,10 +101,13 @@ async function hell() {
 }
 
 async function exec() {
+  // call의 reslove 인자로 넘겨준 값이 A에 담기게 된다. / A = "kim"
   const A = await call('kim');
   console.log(A, '반가워');
+  // B = "back"
   const B = await back(A);
   console.log(B, '을 실행했구나');
+  // C = "callback"
   const C = await hell(B);
   console.log('여기는 callback', C);
 }
