@@ -107,7 +107,7 @@ pickDrink().then(() => {
 
 async function exec() {
   goMart();
-  await pickDrink('제로 콜라', 2000);
+  await pickDrink();
   pay(product, price);
 }
 
