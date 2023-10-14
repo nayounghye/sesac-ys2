@@ -82,8 +82,8 @@ function mul(n) {
   return new Promise((resolve, reject) => {
     setTimeout(function () {
       let result = n * 2;
-      //   resolve(result);
-      reject('오류 발생');
+      resolve(result);
+      //   reject('오류 발생'); resolve 주석 처리하고 reject 활성화하면 오류발생 예시 볼 수 있음!
     }, 700);
   });
 }
@@ -112,3 +112,44 @@ add(4, 3)
   .catch((err) => {
     console.log(err);
   });
+
+//--------------------------- (promise) async/await 로 바꿔보자! ---------------------------
+async function add(n1, n2) {
+  return new Promise((resolve) => {
+    setTimeout(function () {
+      let result = n1 + n2;
+      resolve(result);
+    }, 1000);
+  });
+}
+
+async function mul(n) {
+  return new Promise((resolve, reject) => {
+    setTimeout(function () {
+      let result = n * 2;
+      resolve(result);
+      //   reject('오류 발생'); resolve 주석 처리하고 reject 활성화하면 오류발생 예시 볼 수 있음!
+    }, 700);
+  });
+}
+
+async function sub(n) {
+  return new Promise((resolve) => {
+    setTimeout(function () {
+      let result = n - 1;
+      resolve(result);
+    }, 500);
+  });
+}
+// 1. async 함수는 promise를 return 한다.
+// 2. await 키워드는 async 함수 내부에서만 사용이 가능하다.
+async function exec() {
+  const x = await add(4, 3); // x = 7
+  console.log('1: ', x);
+  const y = await mul(x); // y = 14
+  console.log('2: ', y);
+  const z = await sub(y); // z = 13
+  console.log('3: ', z);
+}
+
+exec();
