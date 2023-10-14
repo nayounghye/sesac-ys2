@@ -38,7 +38,11 @@ class Apartment extends House {
 // }
 // overloading(1, 3); // a: 1, b: 3, c: undefined 로 출력 즉, 두 함수 중에 나중에 쓴 함수에 입력됨.
 
-//해결하고 싶다면?
+// 해결하고 싶다면? 조금의 기술을 쓰셔서 하나의 함수로 조건에 따라서 잘 실행되도록 하는 함수 생성
+// function test(a, b = 0, c = 0) {
+//   console.log(`a: ${a}, b: ${b}, c: ${c}`);
+//   return a + b + c;
+// }
 
 const apart = new Apartment('종암동 레미안', 1862, 25);
 console.log(apart.name, apart.floor);
