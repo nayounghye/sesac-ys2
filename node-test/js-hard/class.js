@@ -39,7 +39,7 @@ class Niniz {
     console.log('니니');
   }
 
-  // niniz의 종보를 콘솔로 찍는 메소드
+  // niniz의 정보를 콘솔로 찍는 메소드
   info() {
     console.log(`이름은 ${this.name}, 나이는 ${this.age}`);
   }
