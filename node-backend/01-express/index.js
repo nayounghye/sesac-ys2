@@ -1,8 +1,8 @@
 const express = require('express');
 // express 모듈을 import하는 코드
 
-const app = express(); // 함수를 이용해서 server 객체를 만듦!
-const PORT = 8000; // 포트 번호를 8000번으로 설정!
+const app = express(); // 함수를 이용해서 server 객체를 만든다.
+const PORT = 8000; // 포트 번호를 8000번으로 설정한다.
 // 포트 번호 1 ~ 65536까지 존재, 1 ~ 1024번까지는 사전에 기능이 정해져 있다.
 // 보통 사용하는 포트 번호는 3000번대, 8000번대 ,8010, 3010, 3001 등 이다.
 // 단, 3306은 mySQL에서 사용하므로, 3306은 피해서 사용할 것.
