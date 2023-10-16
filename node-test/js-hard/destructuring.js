@@ -16,7 +16,7 @@ const { color, name } = obj;
 console.log(color);
 
 // 아래 코드는 위 코드와 동일한 작업을 하고 있다.
-// const age = obj.age;
+// const gender = obj.gender;
 // const name = obj.name;
 
 // 변수의 값을 선언함과 동시에 새로 할당하는 방법
@@ -41,13 +41,13 @@ console.log(arr3);
 const hello = [...'hello'];
 console.log(hello);
 
-//--실습 :
+//------------------ 수업11_실습1_Spread 연산자 사용하기 ------------------
 const word1 = 'abc';
 const word2 = 'xyz';
 
 const word3 = [...word1, ...word2];
 console.log(word3);
-//--실습 끝
+//------------------ 실습 끝 ------------------
 
 const obj2 = {
   name: 'Jordy',
