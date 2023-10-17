@@ -29,3 +29,8 @@ app.post('/post', function (req, res) {
     name: req.body.name,
   });
 });
+
+app.post('/post/vaildation', function (req, res) {
+  console.log(req.body);
+  res.render('index');
+});

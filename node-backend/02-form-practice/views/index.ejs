@@ -7,7 +7,7 @@
   </head>
   <body>
     <!-- 수업13_실습1_get으로 정보받기 -->
-    <form action="/get" method="get" name="login">
+    <!-- <form action="/get" method="get" name="login">
       이름 <input type="text" , name="name">
       <br />
       <fieldset>
@@ -15,86 +15,137 @@
         <input type="radio" , name="남자" value="man" id="man"> <label for="man">남자</label>
         <input type="radio" , name="여자" value="woman" id="woman"> <label for="woman">여자</label>
       </fieldset>
+
+      <br />
+
+      <fieldset>
+        <legend>생년월일</legend>
+        <select name="년도" value="year">
+          <% for(let i = 1970; i <= 2023; i++) { %>
+          <option value="<%= i %>"><%= i %></option>
+          <% } %>
+        </select>년
+        <select type="month" , name="월" value="month">
+          <% for(let i = 1; i <= 12; i++) { %>
+          <option value="<%= i %>"><%= i %></option>
+          <% } %>
+        </select>월
+        <select type="date" , name="일" value="day">
+          <% for(let i = 1; i <= 31; i++) { %>
+          <option value="<%= i %>"><%= i %></option>
+          <% } %>
+        </select>일
+      </fieldset>
+      <br />
+      <fieldset>
+        <legend>관심사</legend>
+        <input type="checkbox" , name="여행" value="travel"> 여행
+        <input type="checkbox" , name="패션" value="fashion"> 패션
+        <input type="checkbox" , name="음식" value="food"> 음식
+      </fieldset>
+      <br />
+      <button type="submit">회원가입</button>
+    </form> -->
+    <br />
+    <hr>
+    <br />
+
+    <!-- 수업13_실습2_post로 정보받기 -->
+
+    <!-- <form action="/post" method="post" name="login">
+      이름 <input type="text" , name="name" required>
+      <br />
+      <fieldset>
+        <legend>성별</legend>
+        <input type="radio" , name="gender" value="man" id="man" required> <label for="man">남자</label>
+        <input type="radio" , name="gender" value="woman" id="woman"> <label for="woman">여자</label>
+      </fieldset>
+
+      <br />
+      <fieldset>
+        <legend>생년월일</legend>
+        <select name="년도" value="year">
+          <% for(let i = 1970; i <= 2023; i++) { %>
+          <option value="<%= i %>"><%= i %></option>
+          <% } %>
+        </select>년
+        <select type="month" , name="월" value="month">
+          <% for(let i = 1; i <= 12; i++) { %>
+          <option value="<%= i %>"><%= i %></option>
+          <% } %>
+        </select>월
+        <select type="date" , name="일" value="day">
+          <% for(let i = 1; i <= 31; i++) { %>
+          <option value="<%= i %>"><%= i %></option>
+          <% } %>
+        </select>일
+      </fieldset>
+      <br />
+      <fieldset>
+        <legend>관심사</legend>
+        <input type="checkbox" , name="여행" value="travel"> 여행
+        <input type="checkbox" , name="패션" value="fashion"> 패션
+        <input type="checkbox" , name="음식" value="food"> 음식
+      </fieldset>
+      <br />
+      <fieldset>
+        <legend>선택</legend>
+        좋아하는 색상 <input type="color" id="color" name="색상" value="#5cffd1" />
+      </fieldset>
+      <br />
+      <input type="reset" value="초기화" />
+      <button type="submit">회원가입</button>
+      <br /><br />
+      <hr>
+      <br />
+    </form> -->
+
+    <!-- 수업13_실습3_form vaildation 적용하기 -->
+    <form action="/post/vaildation" method="post" name="login">
+
+      <fieldset>
+        <legend>회원가입</legend>
+        id : <input type="text" , name="id" oninput="vaildCheckId(this)" required>
+        <br /><br />
+        비밀번호 : <input type="password" , name="pw" oninput="vaildCheckPw(this)" required>
+        <br /><br />
+        이름 : <input type="text" , name="name" required>
+        <br /><br />
+        성별 :
+        <input type="radio" , name="gender" value="man" id="man" required> <label for="man">남자</label>
+        <input type="radio" , name="gender" value="woman" id="woman"> <label for="woman">여자</label>
+        <br /><br />
+        전화번호 : <input type="tel" , name="tel" placeholder="010-" pattern="010-[0-9]{,4}-[0-9]{,4}" title="전화번호는 010-XXXX-XXXX 형식으로 입력하세요." required>
+        <br /><br />
+        <button type="submit">회원가입</button>
+      </fieldset>
+      <script>
+        function vaildCheckId(el) {
+          const regexId = /^[a-z0-9]{5,}$/;
+          const value = el.value;
+          const error2 = document.getElementById("error-id")
+          if (regexId.test(value)) {
+            error2.innerHTML = ""
+            console.log("정규식 일치")
+          } else {
+            error2.innerHTML = "ID는 영어 소문자/숫자만 사용가능하며, 총 길이는 5글자 이상이어야 합니다."
+            console.log("정규식 불일치")
+          }
+        }
+
+        function vaildCheckPw(el) {
+          const regexPw = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[\W_])[a-zA-Z0-9\W_]{8,}$/
+          const value = el.value;
+          const error1 = document.getElementById("error-pw")
+          if (regexPw.test(value)) {
+            error1.innerHTML = ""
+            console.log("정규식 일치")
+          } else {
+            error1.innerHTML = "비밀번호는 영어 소문자, 대문자, 숫자, 특수문자를 각각 최소 1번 이상 사용하며, 총 길이는 8글자 이상이어야 합니다."
+            console.log("정규식 불일치")
+          }
+        }
+      </script>
   </body>
-  <br />
-
-  <fieldset>
-    <legend>생년월일</legend>
-    <select name="년도" value="year">
-      <% for(let i = 1970; i <= 2023; i++) { %>
-      <option value="<%= i %>"><%= i %></option>
-      <% } %>
-    </select>년
-    <select type="month" , name="월" value="month">
-      <% for(let i = 1; i <= 12; i++) { %>
-      <option value="<%= i %>"><%= i %></option>
-      <% } %>
-    </select>월
-    <select type="date" , name="일" value="day">
-      <% for(let i = 1; i <= 31; i++) { %>
-      <option value="<%= i %>"><%= i %></option>
-      <% } %>
-    </select>일
-  </fieldset>
-  <br />
-  <fieldset>
-    <legend>관심사</legend>
-    <input type="checkbox" , name="여행" value="travel"> 여행
-    <input type="checkbox" , name="패션" value="fashion"> 패션
-    <input type="checkbox" , name="음식" value="food"> 음식
-  </fieldset>
-  <br />
-  <button type="submit">회원가입</button>
-  </form>
-  <br /><br />
-  <hr>
-  <br />
-
-  <!-- 수업13_실습2_post로 정보받기 -->
-
-  <form action="/post" method="post" name="login">
-    이름 <input type="text" , name="name" required>
-    <br />
-    <fieldset>
-      <legend>성별</legend>
-      <input type="radio" , name="gender" value="man" id="man" required> <label for="man">남자</label>
-      <input type="radio" , name="gender" value="woman" id="woman"> <label for="woman">여자</label>
-    </fieldset>
-    </body>
-    <br />
-    <fieldset>
-      <legend>생년월일</legend>
-      <select name="년도" value="year">
-        <% for(let i = 1970; i <= 2023; i++) { %>
-        <option value="<%= i %>"><%= i %></option>
-        <% } %>
-      </select>년
-      <select type="month" , name="월" value="month">
-        <% for(let i = 1; i <= 12; i++) { %>
-        <option value="<%= i %>"><%= i %></option>
-        <% } %>
-      </select>월
-      <select type="date" , name="일" value="day">
-        <% for(let i = 1; i <= 31; i++) { %>
-        <option value="<%= i %>"><%= i %></option>
-        <% } %>
-      </select>일
-    </fieldset>
-    <br />
-    <fieldset>
-      <legend>관심사</legend>
-      <input type="checkbox" , name="여행" value="travel"> 여행
-      <input type="checkbox" , name="패션" value="fashion"> 패션
-      <input type="checkbox" , name="음식" value="food"> 음식
-    </fieldset>
-    <br />
-    <fieldset>
-      <legend>선택</legend>
-      좋아하는 색상 <input type="color" id="color" name="색상" value="#5cffd1" />
-    </fieldset>
-    <br />
-    <input type="reset" value="초기화" />
-    <button type="submit">회원가입</button>
-    </body>
   </form>
 </html>
