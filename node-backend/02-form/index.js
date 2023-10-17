@@ -52,7 +52,7 @@ app.get('/get', function (req, res) {
   res.send('get 요청 성공!');
 });
 
-app.get('/get', function (req, res) {
+app.get('/get/signin', function (req, res) {
   console.log(req.query);
   res.send('회원가입 성공!');
 });
@@ -68,6 +68,14 @@ app.get('/get', function (req, res) {
 app.post('/post', function (req, res) {
   console.log(req.body);
   res.send('post 요청 성공!');
+});
+
+app.post('/post/welcome', function (req, res) {
+  console.log(req.body);
+  res.render('result', {
+    name: req.body.name,
+    email: req.body.email,
+  });
 });
 
 app.listen(PORT, function () {

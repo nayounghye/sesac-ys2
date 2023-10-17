@@ -41,6 +41,18 @@
         <button type="submit">제출</button>
       </form>
     </fieldset>
+
+    <br />
+    <fieldset>
+      <legend>회원가입 post 요청</legend>
+      <form action="/post/welcome" method="post">
+        ID: <input type="text" name="id" />
+        PW: <input type="password" name="pw" />
+        이름: <input type="text" name="name" />
+        이메일: <input type="email" name="email" />
+        <button type="submit">제출</button>
+      </form>
+    </fieldset>
   </body>
   <script>
     console.dir(document.forms["login"])
