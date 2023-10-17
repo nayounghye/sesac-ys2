@@ -20,5 +20,12 @@ app.get('/', function (req, res) {
 
 app.get('/get', function (req, res) {
   console.log(req.query);
-  res.send('정보입력 완료!');
+  res.send('get 요청 완료!');
+});
+
+app.post('/post', function (req, res) {
+  console.log(req.body);
+  res.render('result', {
+    name: req.body.name,
+  });
 });
