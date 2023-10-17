@@ -41,6 +41,7 @@ app.get('/', function (req, res) {
 // 데이터 전송 시에 form 태그를 이용할 경우, method룰 get으로 해놓으면 get 요청이 된다.
 // 클라이언트가 get 요청으로 데이터를 보낼 때 url에 직접 query를 만들어서 전송이 가능하다.
 // get은 url에 데이터가 노출된다!! 즉, 개인정보를 위한 전송은 get을 사용하지 않는다.
+// 보통은 정보를 조회하는 요청에 주로 사용한다. (CRUD 중 read를 의미하는 요청에 사용된다.)
 // localhost:8000/get?id=nyh&pw=1234
 app.get('/get', function (req, res) {
   console.log(req.query); // {id: nyh, pw: 1234}
@@ -54,6 +55,19 @@ app.get('/get', function (req, res) {
 app.get('/get', function (req, res) {
   console.log(req.query);
   res.send('회원가입 성공!');
+});
+
+// 소프트웨어 프로그램을 만들 때 발생하는 일들은 아래와 같다.
+// 조회, 데이터 저장(DB에 데이터 삽입), 원래 있던 데이터를 변경하기 위해, 데이터를 삭제
+// = CRUD (create, read, update, delete)
+
+// localhost:8000/post 주소로 post 요청을 받기 위한 준비
+// post 요청은 url 로 직접 요청(접속)하는 건 불가능하다.
+// post 요청에 대한 데이터는 req.body에 담아서 온다.
+// 정보가 url에 노출되지 않고 숨겨진다. -> 보통은 데이터를 새로 생성하는 요청에 주로 사용한다. (CRUD 중 create를 의미하는 요청에 사용된다.)
+app.post('/post', function (req, res) {
+  console.log(req.body);
+  res.send('post 요청 성공!');
 });
 
 app.listen(PORT, function () {
