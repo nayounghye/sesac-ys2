@@ -44,10 +44,13 @@
 
     <br />
     <fieldset>
-      <legend>회원가입 post 요청</legend>
+      <legend>회원가입 post 요청2</legend>
+
+      <!-- oninput : 이벤트를 걸어서 타자를 입력할 때마다 이벤트가 발생하도록 걸 수 있다. -->
       <form action="/post/welcome" method="post">
-        ID: <input type="text" name="id" />
-        PW: <input type="password" name="pw" />
+        ID: <input type="text" name="id" pattern="^([a-zA-Z0-9가-힣]$),{4,12}" title="소문자, 대문자, 한글, 숫자로 조합된 4~12자 문자열로 입력하세요." required />
+        PW: <input type="password" name="pw" oninput="vaildCheckPw(this)" />
+        <div id="error-pw"></div>
         이름: <input type="text" name="name" />
         이메일: <input type="email" name="email" />
         <button type="submit">제출</button>
@@ -57,5 +60,19 @@
   <script>
     console.dir(document.forms["login"])
     // console.log(document.forms["login"])
+
+    function vaildCheckPw(el) {
+      const regexPw = /^([a-z0-9]$),{8,12}$/
+      const value = el.value
+      const error = document.getElementById("error-pw")
+      // regexPw.test("검사하고 싶은 값") => true/false return
+      if (regexPw.test(value)) {
+        error.innerHTML = ""
+        console.log("정규식 일치")
+      } else {
+        error.innerHTML = "소문자, 숫자로 조합된 8~12자리로 입력"
+        console.log("정규식 불일치")
+      }
+    }
   </script>
 </html>
