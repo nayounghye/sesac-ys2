@@ -25,6 +25,8 @@
         <button type="button" onclick="ajaxPost()">ajax post 전송</button>
         <button type="button" onclick="axiosGet()">axios get 전송</button>
         <button type="button" onclick="axiosPost()">axios post 전송</button>
+        <button type="button" onclick="fetchGet()">fetch get 전송</button>
+        <button type="button" onclick="fetchPost()">fetch post 전송</button>
       </div>
     </form>
     <h3 id="result"></h3>
@@ -122,23 +124,25 @@
         })
       }
 
-      // function axiosPost() {
-      //   const data = getData()
-      //   if (!data) return;
-      //   axios({
-      //     method: "POST",
-      //     url: "/axios",
-      //     data: data,
-      //   }).then((res) => {
-      //     console.log(res.data)
-      //     const {
-      //       name
-      //     } = res.data
-      //     $("#result").html(`axios post 요청 성공 ${name}님 환영합니다.`)
-      //   })
-      // }
+      //  -------------- axiosPost --------------
 
-      // 위 axiosPost를 async/await 으로 사용하면?
+      function axiosPost() {
+        const data = getData()
+        if (!data) return;
+        axios({
+          method: "POST",
+          url: "/axios",
+          data: data,
+        }).then((res) => {
+          console.log(res.data)
+          const {
+            name
+          } = res.data
+          $("#result").html(`axios post 요청 성공 ${name}님 환영합니다.`)
+        })
+      }
+
+      //  --------------  위 axiosPost를 async/await 으로 사용하면? --------------
       async function axiosPost() {
         // 동적 폼 전송을 하면서, 폼 유효성 검사도 하고 싶다면?
         // 폼 유효성 검사를 input태그의 pattern, minlength 등의 속성 이용하여 하려고 함!
@@ -155,12 +159,85 @@
         const res = await axios({
           method: "POST",
           url: "/axios",
-          data: data,
+          data: data, // post일 경우 서버에 데이터를 보낼 때, data 키에 데이터를 보내면 된다.
         })
         console.log("res", res);
         console.log("res.data", res.data)
-        $("#result").html(`axios post 요청 성공 ${res,data.name}님 환영합니다.`)
+        $("#result").html(`axios post 요청 성공 ${res.data.name}님 환영합니다.`)
       }
+
+
+      function fetchGet() {
+        const data = getData();
+        if (!data) return;
+        //  fetch(url, option 객체)
+        // url -> action 에 쓰는 그 url
+        //option 객체에 method가 있음!
+        // fetch는 method 기본값이 get이다.
+        // fetch는 get 요청 시 데이터를 query로 만들어서 url과 함께 전송해야한다.
+
+        // const urlQuery = `id=$(data.id)&name=${data.name}&pw=${data.password}`
+        // 위처럼 쿼리를 직접 입력하는 건 번거로우므로 쿼리를 만드는 함수를 사용한다. (아래 참고)
+        // URLSearchParams : 파라미터를 관리하는 메소드고, 얘의 속성인 toString 을 사용하면 쿼리 모양으로 출력해줌!
+        const urlQuery = new URLSearchParams(data).toString()
+
+
+
+        // -------------- 방법 1 (then 체이닝 사용) ----------------
+        fetch(`/fetch ?${urlQuery}`).then((res) => {
+          console.log(res)
+          // // json() 메소드를 이용해서 parsing 해야함.
+          // // json() 은 promise 기반이므로 동작하는데 시간이 걸림.
+          // return res.json();
+          // console.log(data) // 이거 출력은 promise pending (undefined) 발생함. (문제발생!)
+          return res.json()
+        }).then((res) => {
+          // 위에서 파싱해서 return하고 있기 때문에, 이 함수의 res는 서버에서 내가 응답한 객체이다.
+          console.log("파싱", res)
+        })
+
+
+        // -------------- 방법 2 (반만 async/awiat 사용) ---------------- 
+        fetch(`/fetch?${urlQuery}`).then(async (res) => {
+          console.log("원본", res);
+          console.log("파싱", await res.json());
+          // 응답을 파싱해야함.
+          //•json(),'•text(),
+        })
+
+        //응답을 파싱해야함.
+        // .json(), .text()
+
+
+        // -------------- 방법 3 (async/awiat 사용)----------------
+        const oriRes = await fetch(`/fetch ?${urlQuery}`)
+        const res = await res.json()
+        console.log(res)
+
+
+
+
+        function fetchPost() {
+          const data = getData();
+          if (!data) return;
+
+          // 원래는 content-type의 기본값 사용: application/x-wwww-form-urlencoded 형태로 사용하고 있었음! (지금까지 한 애들은 전부다 이형식으로 사용했음.)
+          // 하지만 fetch post 요청 시엔 content-type의 기본값을 사용하면 동작을 안하므로, 바꿔줘야 한다.
+          // content-type을 application/json 형태로 변경해야 한다.
+          fetch("/fetch", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data) // stringify : data 객체(js형태)를 json 형태로 바꾸는 함수
+          }).then((res) => {
+            return res.json()
+          }).then((res) => {
+            console.log(res)
+            $("#result").html(`fetch post 요청 성공 ${res.name}님 환영합니다.`)
+          })
+
+        }
     </script>
 
 

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수업14_실습1,2,3 동적폼전송</title>
+    <!-- 제이쿼리 3.7.1 minified -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <!--axios cdn : axios 사용을 위함-->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  </head>
+  <body>
+
+    <!------------------------ 수업14_실습1_ axios get 회원가입 ------------------------>
+
+    <h3 style="text-align: center;">수업14_실습1_axios get 회원가입</h3>
+    <h2 style="text-align: center;">Axios get 회원가입</h2>
+    <form name="sign-up">
+      이름 <input type="text" name="name">
+      <fieldset>
+        <legend>성별</legend>
+        <input type="radio" , name="gender" value="man" id="man"> <label for="man">남자</label>
+        <input type="radio" , name="gender" value="woman" id="woman"> <label for="woman">여자</label>
+      </fieldset>
+      <br />
+      <fieldset>
+        <legend>생년월일</legend>
+        <select name="year">
+          <% for(let i = 1970; i <=2023; i++) { %>
+          <option value="<%= i %>"><%= i %></option>
+          <% } %>
+        </select> 년
+        <select name="month">
+          <% for(let i = 1; i <=12; i++) { %>
+          <option value="<%= i %>"><%= i %></option>
+          <% } %>
+        </select> 월
+        <select name="day">
+          <% for(let i = 1; i <=31; i++) { %>
+          <option value="<%= i %>"><%= i %></option>
+          <% } %>
+        </select> 일
+      </fieldset>
+      <br />
+      <!-- 아래 체크박스들은 체크되었는지 안되었는지 여부를 확인 후 이걸 배열로 만들어서 값을 가져가야함! -->
+      <fieldset>
+        <legend>관심사</legend>
+        <input type="checkbox" , name="interest" value="여행" id="travel"> <label for="travel">여행</label>
+        <input type="checkbox" , name="interest" value="패션" id="fashon"> <label for="fashon">패션</label>
+        <input type="checkbox" , name="interest" value="음식" id="food"> <label for="food">음식</label>
+      </fieldset>
+      <br />
+      <div>
+        <button type="button" onclick="axiosGet()">회원가입</button>
+      </div>
+    </form>
+    <h4 id="result"></h4>
+    <br />
+    <hr />
+    <br />
+    <!------------------------ 수업14_실습2_axios post 로그인 ------------------------>
+    <h3 style="text-align: center;">수업14_실습2_axios post 로그인</h3>
+    <h2 style="text-align: center;">Axios post 로그인</h2>
+    <form name="sign-up2">
+      <fieldset>
+        <legend>회원가입</legend>
+        ID : <input type="text" name="id"></input>
+        PW : <input type="password" name="pw"></input>
+      </fieldset>
+      <br />
+      <div>
+        <button type="button" onclick="axiosPost()">회원가입</button>
+      </div>
+    </form>
+    <h4 id="result2"></h4>
+
+
+
+
+
+    <script>
+      // ------------------------ 수업14_실습1_ axios get 회원가입 ------------------------
+
+      function getData() {
+        const form = document.forms["sign-up"]
+        const interest = []
+        for (let input of form.interest) {
+          if (input.checked) interest.push(input.value);
+        }
+        const data = {
+          name: form.name.value,
+          gender: form.gender.value,
+          birth: form.year.value + "년 " + form.month.value + "월 " + form.day.value + "일",
+          interest: interest,
+        }
+        return data
+      }
+
+      function axiosGet() {
+        const data = getData()
+        axios({
+          method: "GET",
+          url: "/axios",
+          params: data,
+        }).then((res) => {
+          console.log("sign-up", res);
+          console.log("res.data", res.data);
+          const {
+            name
+          } = res.data;
+
+          $("#result").html(`${name}님 가입을 환영합니다.`)
+        })
+      }
+
+      // ------------------------ 수업14_실습2_ axios post 로그인 ------------------------
+
+      function getData() {
+        const form = document.forms["sign-up2"]
+        const data = {
+          ID: form.id.value,
+          PW: form.pw.value,
+        }
+        return data
+      }
+
+
+      function axiosPost() {
+        const data = getData()
+        axios({
+          method: "post",
+          url: "/axios",
+          data: data,
+        }).then((res) => {
+          console.log("sign-up2", res);
+          console.log("res.data", res.data);
+          const {
+            name
+          } = res.data;
+          if (res.data.success == true) {
+            $("#result2").html(`${name}님 가입을 환영합니다.`)
+          }
+
+
+        })
+      }
+    </script>
+  </body>
+</html>
