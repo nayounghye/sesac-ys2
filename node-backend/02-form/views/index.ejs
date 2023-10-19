@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
@@ -12,10 +12,12 @@
     ex) localhost:8000/get/test  이라는 곳으로 보내고 싶다면  action="/get/test"-->
     <!--  method : 어떤 방식의 요청을 사용할 지 (get/post -->
     <form action="/get" method="get" name="login" target="_blank">
-      ID: <input type="text" name="id" />
-      PW: <input type="password" name="pw" />
-      <input type="radio" name="gender" value="남자" id="man" /> <label for="man">남자</label>
-      <input type="radio" name="gender" value="여자" id="woman" /> <label for="woman">여자</label>
+      ID: <input type="text" name="id" /> PW:
+      <input type="password" name="pw" />
+      <input type="radio" name="gender" value="남자" id="man" />
+      <label for="man">남자</label>
+      <input type="radio" name="gender" value="여자" id="woman" />
+      <label for="woman">여자</label>
       <!-- button type이 submit인 경우, 버튼을 감싸고 있는 form 태그의 정보에 맞게 form을 제출한다. -->
       <button type="submit">제출</button>
     </form>
@@ -23,10 +25,10 @@
     <fieldset>
       <legend>회원가입 get 요청</legend>
       <form action="/get/singin" method="get">
-        ID: <input type="text" name="id" />
-        PW: <input type="password" name="pw" />
-        이름: <input type="text" name="name" />
-        이메일: <input type="email" name="email" />
+        ID: <input type="text" name="id" /> PW:
+        <input type="password" name="pw" /> 이름:
+        <input type="text" name="name" /> 이메일:
+        <input type="email" name="email" />
         <button type="submit">제출</button>
       </form>
     </fieldset>
@@ -34,10 +36,10 @@
     <fieldset>
       <legend>회원가입 post 요청</legend>
       <form action="/post" method="post">
-        ID: <input type="text" name="id" />
-        PW: <input type="password" name="pw" />
-        이름: <input type="text" name="name" />
-        이메일: <input type="email" name="email" />
+        ID: <input type="text" name="id" /> PW:
+        <input type="password" name="pw" /> 이름:
+        <input type="text" name="name" /> 이메일:
+        <input type="email" name="email" />
         <button type="submit">제출</button>
       </form>
     </fieldset>
@@ -48,30 +50,37 @@
 
       <!-- oninput : 이벤트를 걸어서 타자를 입력할 때마다 이벤트가 발생하도록 걸 수 있다. -->
       <form action="/post/welcome" method="post">
-        ID: <input type="text" name="id" pattern="^([a-zA-Z0-9가-힣]$),{4,12}" title="소문자, 대문자, 한글, 숫자로 조합된 4~12자 문자열로 입력하세요." required />
+        ID:
+        <input
+          type="text"
+          name="id"
+          pattern="^([a-zA-Z0-9가-힣]$),{4,12}"
+          title="소문자, 대문자, 한글, 숫자로 조합된 4~12자 문자열로 입력하세요."
+          required
+        />
         PW: <input type="password" name="pw" oninput="vaildCheckPw(this)" />
         <div id="error-pw"></div>
-        이름: <input type="text" name="name" />
-        이메일: <input type="email" name="email" />
+        이름: <input type="text" name="name" /> 이메일:
+        <input type="email" name="email" />
         <button type="submit">제출</button>
       </form>
     </fieldset>
   </body>
   <script>
-    console.dir(document.forms["login"])
+    console.dir(document.forms['login']);
     // console.log(document.forms["login"])
 
     function vaildCheckPw(el) {
-      const regexPw = /^([a-z0-9]$),{8,12}$/
-      const value = el.value
-      const error = document.getElementById("error-pw")
+      const regexPw = /^([a-z0-9]$),{8,12}$/;
+      const value = el.value;
+      const error = document.getElementById('error-pw');
       // regexPw.test("검사하고 싶은 값") => true/false return
       if (regexPw.test(value)) {
-        error.innerHTML = ""
-        console.log("정규식 일치")
+        error.innerHTML = '';
+        console.log('정규식 일치');
       } else {
-        error.innerHTML = "소문자, 숫자로 조합된 8~12자리로 입력"
-        console.log("정규식 불일치")
+        error.innerHTML = '소문자, 숫자로 조합된 8~12자리로 입력';
+        console.log('정규식 불일치');
       }
     }
   </script>
