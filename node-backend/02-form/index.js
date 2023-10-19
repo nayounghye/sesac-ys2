@@ -25,7 +25,6 @@ app.set('view engine', 'ejs');
 
 // req.body를 해석하기 위한 코드
 // extended : true -> qs 모듈(외부 모듈)을 사용한다. / extended : false -> 내장 모듈인 queryString을 사용한다.
-
 app.use(express.urlencoded({ extended: true }));
 // x-www-form-urlencoded 형태의 데이터를 해석
 app.use(express.json());

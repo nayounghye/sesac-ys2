@@ -1,0 +1,46 @@
+// -------- index.js 코드에 기본적으로 있어야하는 코드들 --------
+const express = require('express');
+const app = express();
+const PORT = 8000;
+
+app.set('view engine', 'ejs');
+
+// req.body를 해석하기 위한 코드
+// extended : true -> qs 모듈(외부 모듈)을 사용한다. / extended : false -> 내장 모듈인 queryString을 사용한다.
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.get('/', function (req, res) {
+  res.render('index');
+});
+
+// ajax 파일을 받을 땐 render로 하면 안된다. 왜냐, render는 html 코드로 전달하기 때문!
+app.get('/ajax', function (req, res) {
+  console.log(req.query);
+  // 예상되는 쿼리의 객체 : { key: value, key: value}
+  res.send(req.query);
+});
+
+app.post('/ajax', function (req, res) {
+  console.log(req.body);
+  // 예상되는 쿼리의 객체 : { key: value, key: value}
+  res.send(req.body);
+});
+
+app.get('/axios', function (req, res) {
+  console.log(req.query);
+  res.send(req.query);
+});
+
+app.post('/axios', function (req, res) {
+  console.log(req.body);
+  const data = {
+    ...req.body,
+    msg: '반가워요',
+  };
+  res.send(data);
+});
+
+app.listen(PORT, function () {
+  console.log(`Sever Open: ${PORT}`);
+});
