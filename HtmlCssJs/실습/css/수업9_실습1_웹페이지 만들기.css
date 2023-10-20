@@ -145,7 +145,19 @@ main .inputbox form .border .inputid,
   outline: none;
 }
 
+.inputid.visible {
+  display: inline-block;
+}
+
+/* ID/PW X자 버튼(초기화 버튼) */
+
 .bi-x-circle-fill {
+  display: none;
+  color: #afafaf;
+}
+
+.bi-x-circle-fill.visible {
+  display: inline-block;
   color: #afafaf;
 }
 

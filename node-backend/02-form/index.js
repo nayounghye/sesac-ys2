@@ -15,11 +15,21 @@
 //   console.log(`Sever Open: ${PORT}`);
 // });
 
+// localhost:8000 url 접속에 대한 응답을 위해 만든 코드
+// app.get('/', function (req, res) {
+//   res.render('index');
+// });
+
 // -------- index.js 코드에 기본적으로 있어야하는 코드들 끝 --------
 
 const express = require('express');
 const app = express();
 const PORT = 8000;
+
+// localhost:8000 url 접속에 대한 응답을 위해 만든 코드
+app.get('/', function (req, res) {
+  res.render('index');
+});
 
 app.set('view engine', 'ejs');
 
@@ -29,11 +39,6 @@ app.use(express.urlencoded({ extended: true }));
 // x-www-form-urlencoded 형태의 데이터를 해석
 app.use(express.json());
 // application/json 형태의 데이터를 해석
-
-// localhost:8000 url 접속에 대한 응답을 위해 만든 코드
-app.get('/', function (req, res) {
-  res.render('index');
-});
 
 // get 요청은 url로 접속이 가능하다.
 // get 요청은 req.query에 데이터가 담겨서 온다.
