@@ -153,12 +153,16 @@
   </body>
 
   <script>
+    // 1. 아이콘 생성
+    // 2. 텍스트에 입력이 되면 아이콘 숨김
+    // 3. 아이콘을 숨기려면, 활성화됐을 때 숨기는 함수 필요
+
     // resetInput : ID/PW x자 버튼 클릭하면 입력하면 초기화 하도록 설정
     function resetInput1(inputId, idxIcon) {
       const inputElement = document.getElementById(inputId);
       const iconElement = document.getElementById(idxIcon);
-      inputElement.value = '';
-      iconElement.classList.remove('visible');
+      inputElement.value = ''; // 입력값 초기화
+      iconElement.classList.remove('visible'); // 초기화 후 아이콘 숨김
     }
 
     function resetInput2(inputPw, pwxIcon) {
