@@ -17,14 +17,10 @@ app.use('/uploads', express.static(__dirname + '/uploads'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-const upload = multer({
-  dest: 'uploads/',
-});
-
 const uploadDetail = multer({
   storage: multer.diskStorage({
     destination: function (req, file, done) {
-      done(null, 'uploads/');
+      done(null, 'uploads');
     },
     filename: function (req, file, done) {
       const ext = path.extname(file.originalname);
@@ -34,17 +30,36 @@ const uploadDetail = multer({
   }),
 });
 
-app.post('/uploads', uploadDetail.single('userfile'), function (req, res) {
-  console.log('file detail : ', req.file);
-  console.log('body detail : ', req.body);
-  res.render('result', {
-    src: req.file.path,
-    id: req.body.userid,
-    pw: req.body.userpw,
-    name: req.body.username,
-    age: req.body.userage,
-  });
-});
+app.post(
+  '/uploads/dynamic',
+  uploadDetail.single('userfile'),
+  function (req, res) {
+    console.log('file detail : ', req.file);
+    console.log('body detail : ', req.body);
+    res.send({
+      src: req.file.path,
+      id: req.body.userid,
+      pw: req.body.userpw,
+      name: req.body.username,
+      age: req.body.userage,
+    });
+  }
+);
+
+// --------- 동적 폼 전송(axios)를 이용한 파일 업로드
+app.post(
+  '/uploads/dynamic',
+  uploadDetail.single('userfile'),
+  function (req, res) {
+    res.send({
+      src: req.file.path,
+      id: req.body.userid,
+      pw: req.body.userpw,
+      name: req.body.username,
+      age: req.body.userage,
+    });
+  }
+);
 
 app.listen(PORT, function () {
   console.log(`Sever Open: ${PORT}`);
