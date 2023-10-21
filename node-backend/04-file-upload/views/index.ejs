@@ -6,6 +6,7 @@
     <title>파일 업로드</title>
 </head>
 <body>
+    <h2>가장 기본적인 설정</h2>
     <!-- 일반 폼 전송을 이용해서 파일 업로드 하기 (동적 폼 전송 x) -->
     <!--파일 전송은 method=POST 로 해야한다-->
     <!-- 기본값 : "enctype : application/x-www-form-urlencoded" -->
@@ -14,7 +15,13 @@
     <input type="file" name="userfile" /> <br/>
     <input type="text" name="title" />
     <button type="submit">업로드</button>
+    </form>
 
+    <h2>multer storage를 이용한 설정</h2>
+    <form action="/upload/detail" method="POST" enctype="multipart/form-data"> 
+    <input type="file" name="userfile" /> <br/>
+    <input type="text" name="title" />
+    <button type="submit">업로드</button>
     </form>
 
 
