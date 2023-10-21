@@ -1,31 +1,60 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>파일 업로드</title>
-</head>
-<body>
+  </head>
+  <body>
     <h2>가장 기본적인 설정</h2>
     <!-- 일반 폼 전송을 이용해서 파일 업로드 하기 (동적 폼 전송 x) -->
     <!--파일 전송은 method=POST 로 해야한다-->
     <!-- 기본값 : "enctype : application/x-www-form-urlencoded" -->
     <!-- 파일을 전송하려면 "enctype="multipart/form-data" 로 해야한다 -->
-    <form action="/upload" method="POST" enctype="multipart/form-data"> 
-    <input type="file" name="userfile" /> <br/>
-    <input type="text" name="title" />
-    <button type="submit">업로드</button>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+      <input type="file" name="userfile" /> <br />
+      <input type="text" name="title" />
+      <button type="submit">업로드</button>
     </form>
 
     <h2>multer storage를 이용한 설정</h2>
-    <form action="/upload/detail" method="POST" enctype="multipart/form-data"> 
-    <input type="file" name="userfile" /> <br/>
-    <input type="text" name="title" />
-    <button type="submit">업로드</button>
+    <form action="/upload/detail" method="POST" enctype="multipart/form-data">
+      <input type="file" name="userfile" /> <br />
+      <input type="text" name="title" />
+      <button type="submit">업로드</button>
     </form>
 
+    <h2>파일 여러개 업로드(하나의 input 이용)</h2>
+    <form action="/upload/array" method="POST" enctype="multipart/form-data">
+      <!-- input type file의 multiple 속성 : 여러 개의 파일을 선택할 수 있게 한다. -->
+      <input type="file" name="userfile" multiple /> <br />
+      <input type="text" name="title" />
+      <button type="submit">업로드</button>
+    </form>
 
+    <h2>파일 여러개 업로드(여러 개의 input 이용)</h2>
+    <form action="/upload/fields" method="POST" enctype="multipart/form-data">
+      <!-- input type file의 multiple 속성 : 여러 개의 파일을 선택할 수 있게 한다. -->
+      <input type="file" name="userfile1" multiple /> <br />
+      <input type="text" name="title1" />
+      <br />
+      <input type="file" name="userfile2" multiple /> <br />
+      <input type="text" name="title2" />
+      <br />
+      <button type="submit">업로드</button>
+    </form>
 
-     <!-- fetch를 이용한 동적 폼 전송의 content-type 지정을 했어어야 했다. -->
-</body>
+    <h2>결과값으로 클라이언트가 업로드한 이미지를 보여주려면?</h2>
+    <form
+      action="/upload/detail/v1"
+      method="POST"
+      enctype="multipart/form-data"
+    >
+      <input type="file" name="userfile" /> <br />
+      <input type="text" name="title" />
+      <button type="submit">업로드</button>
+    </form>
+
+    <!-- fetch를 이용한 동적 폼 전송의 content-type 지정을 했어어야 했다. -->
+  </body>
 </html>

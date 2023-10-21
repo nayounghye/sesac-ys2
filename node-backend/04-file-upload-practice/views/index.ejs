@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>수업15_실습1_파일 업로드</title>
+  </head>
+  <body>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+      <input type="text" name="userid" placeholder="아이디" />
+      <input type="password" name="userpw" placeholder="비밀번호" />
+      <input type="text" name="username" placeholder="이름" />
+      <input type="text" name="userage" placeholder="나이" />
+      <input type="file" name="userfile" />
+    </form>
+  </body>
+</html>
