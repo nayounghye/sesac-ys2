@@ -54,8 +54,8 @@
         <input
           type="text"
           name="id"
-          pattern="^([a-zA-Z0-9가-힣]$),{4,12}"
-          title="소문자, 대문자, 한글, 숫자로 조합된 4~12자 문자열로 입력하세요."
+          pattern="^([a-z0-9]$),{4,12}"
+          title="소문자, 숫자로 조합된 4~12자 문자열로 입력하세요."
           required
         />
         PW: <input type="password" name="pw" oninput="vaildCheckPw(this)" />

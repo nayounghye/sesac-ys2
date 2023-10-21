@@ -46,13 +46,13 @@
       <!-- 아래 체크박스들은 체크되었는지 안되었는지 여부를 확인 후 이걸 배열로 만들어서 값을 가져가야함! -->
       <fieldset>
         <legend>관심사</legend>
-        <input type="checkbox" , name="interest" value="여행" id="travel"> <label for="travel">여행</label>
-        <input type="checkbox" , name="interest" value="패션" id="fashon"> <label for="fashon">패션</label>
-        <input type="checkbox" , name="interest" value="음식" id="food"> <label for="food">음식</label>
+        <input type="checkbox" name="interest" value="여행" id="travel"> <label for="travel">여행</label>
+        <input type="checkbox" name="interest" value="패션" id="fashon"> <label for="fashon">패션</label>
+        <input type="checkbox" name="interest" value="음식" id="food"> <label for="food">음식</label>
       </fieldset>
       <br />
       <div>
-        <button type="button" onclick="axiosGet()">회원가입</button>
+        <button type="button" onclick="clickSignup()">회원가입</button>
       </div>
     </form>
     <h4 id="result"></h4>
@@ -70,7 +70,7 @@
       </fieldset>
       <br />
       <div>
-        <button type="button" onclick="axiosPost()">회원가입</button>
+        <button type="button" onclick="clickSignup2()">회원가입</button>
       </div>
     </form>
     <h4 id="result2"></h4>
@@ -80,21 +80,23 @@
       // ------------------------ 수업14_실습1_ axios get 회원가입 ------------------------
 
       function getData() {
-        const form = document.forms["sign-up"]
+        const form = document.forms["sign-up"]  //form 태그에 있는 name값을 입력
+        // ↓ check 박스에 있는 value 값을 담기 위한 코드 
         const interest = []
         for (let input of form.interest) {
-          if (input.checked) interest.push(input.value);
+          //input의 type이 radio/checkbox인 경우 input의 속성으로 'checked(체크됐을 때 값이 true, 안됐을 때 false)' 라는 속성이 존재한다. 
+          if (input.checked) interest.push(input.value); // input 에 checked가 찍혔을 때 interest의 input value의 값을 갖고(push) 온다는 의미.  
         }
         const data = {
           name: form.name.value,
-          gender: form.gender.value,
+          gender: form.gender.value, // radio 박스는 value 값이 알아서 담긴다.
           birth: form.year.value + "년 " + form.month.value + "월 " + form.day.value + "일",
-          interest: interest,
+          interest: interest, // check 박스는 value 값이 자동으로 담기지 않으므로, 배열로 만들어서 값을 가져와야 한다.
         }
         return data
       }
 
-      function axiosGet() {
+      function clickSignup() {
         const data = getData()
         axios({
           method: "GET",
@@ -106,7 +108,6 @@
           const {
             name
           } = res.data;
-
           $("#result").html(`${name}님 가입을 환영합니다.`)
         })
       }
@@ -120,27 +121,39 @@
           PW: form.pw.value,
         }
         return data
-      }
+      } // 1. 데이터가 잘 만들어졌는지 확인한다.
 
-      function axiosPost() {
+      function clickSignup2() {
         const data = getData()
         axios({
           method: "post",
           url: "/axios",
           data: data,
-        }).then((res) => {
-          console.log("sign-up2", res);
-          console.log("res.data", res.data);
+        }).then((res) => { // 2.응답이 잘 오는지 확인한다.
           const {
-            name
-          } = res.data;
-          if (res.data.success == true) {
-            $("#result2").html(`${name}님 가입을 환영합니다.`)
-          } else {
-            $ {
-              "#result2"
-            }.html(`아이디 또는 비밀번호를 잘못 입력했습니다. \n 입력하신 내용을 다시 확인해주세요.`) {}
-          }
+            inSuccess,
+            msg
+          } = res.data
+          console.log(inSuccess)
+          const element = document.querySelector(".result2");
+          element.innerHTML = msg;
+          
+          const color = inSuccess ? "blue" : "red"; 
+          element.style.color = color
+        
+          // ---------------------- 내가 작성하다 망한 부분 윗 부분은 쌤 해답으로 변경함 ----------------------
+          // console.log("sign-up2", res);
+          // console.log("res.data", res.data);
+          // const {
+          //   name
+          // } = res.data;
+          // if (res.data.success == true) {
+          //   $("#result2").html(`${name}님 가입을 환영합니다.`)
+          // } else {
+          //   $ {
+          //     "#result2"
+          //   }.html(`아이디 또는 비밀번호를 잘못 입력했습니다. \n 입력하신 내용을 다시 확인해주세요.`) {}
+          // }
         })
       }
     </script>

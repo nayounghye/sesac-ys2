@@ -18,20 +18,24 @@ app.get('/axios', function (req, res) {
   res.send(req.query);
 });
 
+
 app.post('/axios', function (req, res) {
   const id = 'jordy';
   const pw = '1234';
 
   console.log(req.body);
+  let data;
   if (req.body.id == id && req.body.pw == pw) {
-    res.send({ success: true, message: '로그인 성공!' });
+    data ={
+      isSuccess: true,
+      msg : "로그인 성공"
+    };
   } else {
-    res.send({
-      success: false,
-      message:
-        '아이디 또는 비밀번호를 잘못 입력했습니다. \n 입력하신 내용을 다시 확인해주세요.',
-    });
+    data = { 
+    isSuccess: false,
+    msg : "로그인 실패!"};
   }
+  res.send(data);
 });
 
 app.listen(PORT, function () {
