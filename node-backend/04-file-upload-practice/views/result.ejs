@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>수업15_실습1,2_파일 업로드</title>
+    <style>
+      body {
+        position: relative;
+        text-align: center;
+        background-color: black;
+        display: flex;
+        justify-content: center;
+      }
+      .box {
+        position: relative;
+        background-color: white;
+        border-radius: 30px;
+        width: 230px;
+        height: 330px;
+      }
+
+      img {
+        width: 100px;
+        height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <br />
+      <img src="/<%=src%>" />
+      <h3><%=id%>님 환영합니다!</h3>
+      <br />
+      <p>비밀번호: <%=pw%></p>
+      <p>이름: <%=name%></p>
+      <p>나이: <%=age%></p>
+      <br />
+    </div>
+  </body>
+</html>
