@@ -83,5 +83,5 @@ app.post('/post/welcome', function (req, res) {
 });
 
 app.listen(PORT, function () {
-  console.log(`Sever Open: ${PORT}`);
+  console.log(`Server Open: ${PORT}`);
 });
