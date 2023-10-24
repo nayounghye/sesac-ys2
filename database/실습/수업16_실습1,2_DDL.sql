@@ -1,5 +1,5 @@
 
--- 수업16_실습1_DDL.sql
+-- 수업16_실습1_DDL
 
 create table member(
 	id varchar(20) primary key not null,
@@ -10,8 +10,9 @@ create table member(
     promotion varchar(2) DEFAULT 'x'
 );
 
--- 수업16_실습2_DDL.sql (id 컬럼: 값형식 변경, age 컬럼: 삭제, interest컬럼: 추가)
+-- 수업16_실습2_DDL (id 컬럼: 값형식 변경, age 컬럼: 삭제, interest컬럼: 추가)
 
 alter table member modify id varchar(10);
 alter table member drop column age;
 alter table member add interest varchar(100);
+
