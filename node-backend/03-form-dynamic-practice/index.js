@@ -18,7 +18,6 @@ app.get('/axios', function (req, res) {
   res.send(req.query);
 });
 
-
 app.post('/axios', function (req, res) {
   const id = 'jordy';
   const pw = '1234';
@@ -26,14 +25,16 @@ app.post('/axios', function (req, res) {
   console.log(req.body);
   let data;
   if (req.body.id == id && req.body.pw == pw) {
-    data ={
+    data = {
       isSuccess: true,
-      msg : "로그인 성공"
+      msg: '로그인 성공',
     };
   } else {
-    data = { 
-    isSuccess: false,
-    msg : "로그인 실패!"};
+    data = {
+      isSuccess: false,
+      msg: '로그인 실패!',
+    };
+    msg: 123;
   }
   res.send(data);
 });
