@@ -3,25 +3,29 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>수업17_실습1_mvc1</title>
+    <title>수업17_실습2_mvc1</title>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
   <body>
-    <div class="register-result"></div>
-    <h2>실습 2. 로그인</h2>
-    <form name="login">
-      <fieldset>
-        <legend>ID</legend>
-        <input type="text" name="userid" />
-      </fieldset>
-      <fieldset>
-        <legend>Password</legend>
-        <input type="password" name="password" />
-      </fieldset>
-
-      <button type="button" onclick="clickLogin()">로그인</button>
-    </form>
-    <div class="login-result"></div>
+    <fieldset>
+      <legend>
+        <h2>실습17_실습1_mvc2</h2>
+      </legend>
+      <form name="login">
+        <fieldset>
+          <legend>ID</legend>
+          <input type="text" name="userid" />
+        </fieldset>
+        <fieldset>
+          <legend>Password</legend>
+          <input type="password" name="password" />
+        </fieldset>
+        <br />
+        <button type="button" onclick="clickLogin()">로그인</button>
+      </form>
+      <br />
+      <div class="login-result"></div>
+    </fieldset>
 
     <script>
       function clickLogin() {
@@ -35,7 +39,8 @@
 
         axios({
           method: "POST",
-          url: "/login",
+          url: "/user/login",
+          // url: "/login",
           data: data
         }).then((res) => {
           // { isSuccess: ??, msg : ?? }

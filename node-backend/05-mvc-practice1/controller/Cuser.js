@@ -11,10 +11,10 @@ exports.login = (req, res) => {
   // 아래 데이터는 이제 model로 넘어가야한다.. db에서 가져온다고 가정해서 할거임!
   //   const id = 'lily';
   //   const pw = '12345';
-  const userDate = User.getUser();
+  const userData = User.getUser();
   // userDate = {id: "jordy", pw: "1234"}
   let data;
-  if (req.body.userid == userDate.id && req.body.password == userDate.pw) {
+  if (req.body.userid == userData.id && req.body.password == userData.pw) {
     data = {
       isSuccess: true,
       msg: '로그인 성공!',
