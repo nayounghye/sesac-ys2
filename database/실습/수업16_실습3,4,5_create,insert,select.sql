@@ -37,20 +37,12 @@ select * from practice where birthday like '%6___' order by birthday ASC;
 
 --5. gender 컬럼의 값이 'm' 이고, 1970년대에 태어난 회원의 목록을 가져오시오.
 select * from practice where gender like 'm' AND birthday like '1970%';
-
+g
 --6. 모든 회원목록 중 age를 기준으로 내림차순 정렬하여 가져오는데, 그때 처음 3개의 레코드만 가져오시오.
 select * from practice order by age DESC limit 3;
 
 --7. 모든 회원 목쪽 중 나이가 25 이상 50 이하인 회원의 목록을 출력하시오.
 select * from practice where age between 25 and 50;
-
---8. id 컬럼의 값이 hong1234 인 레코드의 pw 컬럼의 값을 12345678로 변경하시오.
-update practice set pw = '12345678' where id = 'hong1234';
-
---9. id 컬럼의 값이 jungkrat인 레코드를 삭제하시오.
-delete from practice where id = 'jungkrat';
-
-
 
 --8. id 컬럼의 값이 hong1234 인 레코드의 pw 컬럼의 값을 12345678로 변경하시오.
 update practice set pw = '12345678' where id = 'hong1234';
@@ -61,3 +53,7 @@ select id, pw from practice where id = 'hong1234'; -- 로 조회해보면 변경
 -- insert into practice (password) values ('12345678');
 -- alter table practice (pw) modify id = 'hong1234' 12345678;
 -- select * from practice where id = 'hong1234', ....????
+
+--9. id 컬럼의 값이 jungkrat인 레코드를 삭제하시오.
+delete from practice where id = 'jungkrat';
+
