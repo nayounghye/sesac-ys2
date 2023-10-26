@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // routes 폴더에 있는 index.js 파일을 불러와야한다.
 const router = require('./routes/index');
-// routes 폴더에 있는 index.js 파일을 불러오는 경우엔 폴더 경로만 써도 알아서 index.js파일을 불러온다. index.js만 아래처럼 축약가능
+// routes 폴더에 있는 index.js 파일을 불러오는 경우엔 폴더 경로만 써도 자동으로 index.js파일을 불러온다. index.js만 아래처럼 축약가능 다른 파일은 모든 경로를 적어줘야함.
 // const router = require("./routes");
 app.use('/comment', router);
 //localhost:8000/comment~~~~~ 여깃 ~~~~~부분이 다 router에 들어간다.
@@ -32,5 +32,5 @@ app.get('*', function (req, res) {
 });
 
 app.listen(PORT, function () {
-  console.log(`Sever Open: ${PORT}`);
+  console.log(`Server Open: ${PORT}`);
 });

@@ -5,10 +5,12 @@ const router = express.Router();
 
 const controller = require('../controller/Cmain');
 
+//아래 부분은 요청에 대한 정보를 모아둔다.
+
 //localhost:8000/comment 이다. 왜냐 상위폴더에 있는 index.js에서 router에 대해 "/comment"로 설정했기 때문!
 router.get('/', controller.main);
 
-//localhost:8000/comment/guest 이다.
+//localhost:8000/comment/guest
 router.get('/guest', controller.guest);
 
 //localhost:8000/comment/test

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>수업14_실습1,2,3 동적폼전송</title>
+    <title>수업14_실습1,2,3_동적폼전송</title>
     <!-- 제이쿼리 3.7.1 minified -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <!--axios cdn : axios 사용을 위함-->
@@ -80,7 +80,7 @@
       // ------------------------ 수업14_실습1_ axios get 회원가입 ------------------------
 
       function getData() {
-        const form = document.forms["sign-up"]  //form 태그에 있는 name값을 입력
+        const form = document.forms["sign-up"] //form 태그에 있는 name값을 입력
         // ↓ check 박스에 있는 value 값을 담기 위한 코드 
         const interest = []
         for (let input of form.interest) {
@@ -137,10 +137,10 @@
           console.log(inSuccess)
           const element = document.querySelector(".result2");
           element.innerHTML = msg;
-          
-          const color = inSuccess ? "blue" : "red"; 
+
+          const color = inSuccess ? "blue" : "red";
           element.style.color = color
-        
+
           // ---------------------- 내가 작성하다 망한 부분 윗 부분은 쌤 해답으로 변경함 ----------------------
           // console.log("sign-up2", res);
           // console.log("res.data", res.data);
