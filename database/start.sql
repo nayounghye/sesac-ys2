@@ -36,4 +36,4 @@ insert into user values ('nardy', '1234', 31, '여자');
 -- 아래 명령어는 'user라는 테이블의 모든 값을 조회하겠다.'라는 뜻이다.
 select * from user;
 -- user 테이블의 id 속성을 모두 조회
-select id,  password from user;
+select id, password from user;
