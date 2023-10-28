@@ -1,5 +1,6 @@
 // mysql 사용시 모듈적는 부분에 mysql 불러오는 코드 작성
 const mysql = require('mysql');
+const { visitor } = require('../controller/Cvisitor');
 
 // createConnection : 여기 적은 mysql 연결 정보를 받아서 mysql과 연결한다.
 // DB를 연결할 때 어떤 정보가 필요할까? host(ip),user(db 사용자), password, database 이름
@@ -27,6 +28,37 @@ exports.getVisitors = (cb) => {
     // throw를 만나면 함수가 여기서 종료된다. 그러므로 다음 함수를 입력해줘야 한다.
     console.log('visitor', rows);
     cb(rows);
+  });
+};
+
+// 아래에서 콜백 함수는 Cvisitor 파일에 있는 postVisitor 함수를 의미한다.
+exports.insertVisitor = (data, cb) => {
+  //insert into visitor (username, comment) values ('??', '??')
+  const sql = `insert into visitor (username, comment) values ('${data.username}', '${data.comment}')`;
+
+  conn.query(sql, (err, result) => {
+    if (err) {
+      throw err;
+    }
+    console.log('visitor insert', result);
+    cb(result.insertId);
+  });
+};
+
+exports.delVisitor = (id, cb) => {
+  // delete 할 id가 필요함.
+  const sql = `delete from visitor where id =  ${id}`;
+  conn.query(sql, (err, result) => {
+    if (err) {
+      throw err;
+    }
+    // 아래 if는 좀더 정확한 동작을 위한 선택사항
+    let flag = false;
+    if (result.affectedRows) {
+      flag = true;
+    }
+    console.log('visitor delete', result);
+    cb(flag);
   });
 };
 

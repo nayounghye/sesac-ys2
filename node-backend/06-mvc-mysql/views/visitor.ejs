@@ -3,8 +3,10 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- axios -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
+    <!-- 제이쿼리 -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <title>방명록</title>
   </head>
   <body>
@@ -12,9 +14,9 @@
       <fieldset>
         <legend>방명록 등록</legend>
         <input type="text" name="username" placeholder="이름" />
-        <br />
+        <br /><br />
         <input type="text" name="comment" placeholder="내용" />
-        <br />
+        <br /><br />
         <button type="button" onclick="addVisitor()">등록</button>
       </fieldset>
     </form>
@@ -36,8 +38,10 @@
             <td><%= data[i].id %></td>
             <td><%= data[i].username %></td>
             <td><%= data[i].comment %></td>
-            <td><button type="button" onclick="">수정</button></td>
-            <td><button type="button" onclick="">삭제</button></td>
+            <td><button type="button" onclick="updateVisitor('<%= data[i].id %>', this.parentElement.parentElement)">수정</button></td>
+            <td><button type="button" onclick="deleteVisitor('<%= data[i].id %>', this.parentElement.parentElement)">삭제</button></td>
+            <!--  = <td><button type="button" onclick="deleteVisitor(this.parentElement.parentElement)">삭제</button></td> -->
+
           </tr>
           <% } %>
         </tbody>
@@ -56,9 +60,43 @@
           method: 'post',
           url: '/visitor',
           data: data,
-        })
-        // 3. axios 응답을 받으면, table에 행 추가(동적으로)
+        }).then((res) => {
+          // 3. axios 응답을 받으면, table에 행 추가(동적으로)
+          const {
+            id,
+            username,
+            comment
+          } = res.data;
 
+          $("tbody").append(
+            `<tr>
+          <td>${id}</td>
+          <td>${username}</td>
+          <td>${comment}</td>
+          <td><button type="button" onclick="updateVisitor(${id}, this.parentElement.parentElement)">수정</button></td>
+          <td><button type="button" onclick="deleteVisitor(${id}, this.parentElement.parentElement)">삭제</button></td>
+           </tr>`)
+        })
+      }
+
+      function deleteVisitor(id, Trelement) {
+        // 삭제할 id가 필요하다.
+        // id를 어떻게 받아와야할까?
+        // 본 문서 42번째 줄처럼 수정해야함.
+        // id를 이용해서 url을 완성해서 요청을 보낸다.
+        axios({
+          method: 'delete',
+          url: `/visitor/${id}`,
+        }).then((res) => {
+          console.log(res.data)
+
+          if (res.data.result) {
+            //삭제할 td태그가 필요하다.
+            $(Trelement).remove();
+          } else {
+            alert("존재하지 않는 방명록 입니다.")
+          }
+        })
       }
     </script>
   </body>
