@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>수업18_실습1_mvc_MySQL</title>
+    <!-- axios 사용을 위한 cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <!-- 서버에 올릴 때 ./css/수업9_실습1_웹페이지 만들기.css-->
+    <!--로컬 원본 ../css/수업9_실습1_웹페이지 만들기.css-->
+  </head>
+  <body>
+    <header class="header">
+      <div class="inner">
+        <select>
+          <option>한국어</option>
+          <option>English</option>
+          <option>中文(简体)</option>
+          <option>中文(台灣)</option>
+        </select>
+
+        <a class="link" href="http://www.naver.com">
+          <img class="logo" src="../static/img/naverlogo.png" />
+        </a>
+        <!-- 서버에 올릴 때 ./image/naver_logo.png-->
+        <!--로컬 원본 ../이미지파일/수업9_실습1_네이버로고.png-->
+      </div>
+    </header>
+    <content>
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="./수업9_실습1_웹페이지 만들기.html"><i class="bi bi-box-arrow-in-right"></i> ID 로그인</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./수업9_실습1_웹페이지 만들기2.html"><i class="bi bi-1-square"></i> 일회용 번호</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./수업9_실습1_웹페이지 만들기3.html"><i class="bi bi-qr-code"></i> QR코드</a>
+        </li>
+      </ul>
+      <main class="idpw">
+        <div class="inputbox">
+          <form name="login">
+            <div class="border id">
+              <i class="bi bi-person"></i>
+              <input type="text" class="inputid" id="inputId" name="userid" oninput="toggleClearIcon1('inputId','idxIcon')" placeholder="아이디" />
+              <i class="bi bi-x-circle-fill" onclick="resetInput1('inputId', 'idxIcon')" id="idxIcon"></i>
+            </div>
+            <div class="border pw">
+              <i class="bi bi-lock"></i>
+              <input type="password" class="inputpw" id="inputPw" name="userpw" oninput="toggleClearIcon2('inputPw', 'pwxIcon')" placeholder="비밀번호" />
+              <i class="bi bi-x-circle-fill" onclick="resetInput2('inputPw', 'pwxIcon')" id="pwxIcon"></i>
+            </div>
+          </form>
+          <nav class="nav-check">
+            <div class="check">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" />
+                <label class="form-check-label" for="inlineRadio1">로그인 상태 유지</label>
+              </div>
+            </div>
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
+              <label class="form-check-label" for="flexSwitchCheckDefault">IP 보안</label>
+            </div>
+          </nav>
+
+          <!-- <nav class="nav-login"> -->
+          <div class="d-grid gap-2 col-6 mx-auto">
+            <div class="login-result"></div>
+            <button class="btn btn-success" type="button" onclick="clickLogin()">
+              로그인
+            </button>
+          </div>
+          <!-- </nav> -->
+        </div>
+      </main>
+    </content>
+
+    <ul class="nav justify-content-center">
+      <li class="nav-item"></li>
+      <li class="nav-item">
+        <a class="nav-link active" href="https://nid.naver.com/user2/help/pwInquiry?lang=ko_KR">비밀번호 찾기</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="https://nid.naver.com/user2/help/idInquiry?lang=ko_KR">아이디 찾기</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="/register">회원가입</a>
+      </li>
+    </ul>
+  </body>
+  <script>
+    // tip : 함수들 순서도 중요했다..! 버튼에 선언한 함수를 가장 상단에 두었더니 계속 오류가 나서,
+    // 순서를 바꿨더니 바로 해결이 되었다.
+    // 나의 생각 알고리즘..
+    // 1. 아이콘 만들기
+    // 2. 텍스트가 입력된다 -> 입력을 감지하면 아이콘을 숨긴다.
+    // 3. 아이콘을 숨기려면, 활성화됐을 때 숨기는 함수 필요
+
+    // resetInput : ID/PW x자 버튼 클릭하면 입력하면 초기화 하도록 설정
+    function resetInput1(inputId, idxIcon) {
+      const inputElement = document.getElementById(inputId);
+      const iconElement = document.getElementById(idxIcon);
+      inputElement.value = ''; // 입력값 초기화
+      iconElement.classList.remove('visible'); // 초기화 후 아이콘 숨김
+    }
+
+    function resetInput2(inputPw, pwxIcon) {
+      const inputElement = document.getElementById(inputPw);
+      const iconElement = document.getElementById(pwxIcon);
+      inputElement.value = ''; // 입력값 초기화
+      iconElement.classList.remove('visible'); // 초기화 후 아이콘 숨김
+    }
+
+    // toggleClearIcon : ID/PW 에 텍스트가 입력되면 x 아이콘이 뜨도록 설정
+    function toggleClearIcon1(inputId, idxIcon) {
+      const inputElement = document.getElementById(inputId);
+      const iconElement = document.getElementById(idxIcon);
+
+      if (inputElement.value) {
+        iconElement.classList.add('visible'); // 내용이 있으면 아이콘 표시
+      } else {
+        iconElement.classList.remove('visible'); // 내용이 없으면 아이콘 숨김
+      }
+    }
+
+    function toggleClearIcon2(inputPw, pwxIcon) {
+      const inputElement = document.getElementById(inputPw);
+      const iconElement = document.getElementById(pwxIcon);
+
+      if (inputElement.value) {
+        iconElement.classList.add('visible'); // 내용이 있으면 아이콘 표시
+      } else {
+        iconElement.classList.remove('visible'); // 내용이 없으면 아이콘 숨김
+      }
+    }
+    // 로그인 버튼 함수
+    function clickLogin() {
+      const form = document.forms['login'];
+      const data = {
+        userid: form.userid.value,
+        userpw: form.userpw.value,
+      };
+
+      axios({
+        method: 'POST',
+        url: 'user/login',
+        data: data,
+      }).then((res) => {
+        const {
+          isSuccess,
+          msg
+        } = res.data;
+        console.log(isSuccess);
+        const element = document.querySelector('.login-result');
+        element.innerHTML = msg;
+
+        const color = isSuccess ? 'blue' : 'red';
+        element.style.color = color;
+      });
+    }
+  </script>
+</html>

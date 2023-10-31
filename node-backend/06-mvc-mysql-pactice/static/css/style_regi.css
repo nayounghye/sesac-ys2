@@ -1,0 +1,197 @@
+body {
+  margin: 0;
+}
+
+header {
+  position: relative;
+}
+
+/* 헤더 - 네이버로고 */
+h1 {
+  padding: 25px 115px 25px 20px;
+}
+
+.logo {
+  width: 95px;
+  height: 18px;
+}
+
+/* 콘텐츠창 */
+
+content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+content main {
+  position: relative;
+  /* id/pw 담은 네모박스 크기 */
+  width: 459.99px;
+  border-radius: 0px 0px 6px 6px;
+  z-index: 999;
+  top: -5px;
+}
+
+/* input 박스 */
+content main .inputbox {
+  position: relative;
+  margin-top: 0px;
+  z-index: 100;
+  background-color: #ffffff;
+  /* position: relative;
+    border: 1px solid #d4d4d4;
+    */
+}
+
+/* ID/PW 입력창 */
+
+/* 일회용 번호 설명 */
+main .idpw .inputbox {
+  position: relative;
+  display: flex;
+  align-content: center;
+}
+
+main .idpw .inputbox .word {
+  position: relative;
+  align-content: center;
+}
+
+.bi-question-circle-fill::before {
+  color: rgb(128, 172, 212);
+}
+
+body main .idpw .inputbox form .border {
+  position: relative;
+  border: 1px solid #dadada;
+  display: flex;
+}
+.border {
+  padding: 5px 5px 5px 15px;
+  width: 402px;
+  height: 48px;
+}
+
+.border.id {
+  border-radius: 6px 6px 0 0;
+}
+
+.border.name {
+  border-radius: 0cm;
+}
+
+.border.pw {
+  border-radius: 0 0 6px 6px;
+  box-shadow: 0 2px 6px 0 rgba(68, 68, 68, 0.08);
+}
+
+main form .border .inputid,
+.inputpw,
+.inputname {
+  border: 0;
+  padding: 5px 5px 5px 5px;
+  cursor: pointer;
+  width: 330px;
+}
+
+main form .border .inputid,
+.inputpw,
+.inputname:focus {
+  outline: none;
+}
+
+.inputid.visible {
+  display: inline-block;
+}
+
+/* 로그인 결과 텍스트 (로그인 성공/실패) */
+.regi-result {
+  font-size: 13px;
+}
+
+/* 로그인 버튼 */
+
+.d-grid.gap-2.col-6.mx-auto {
+  margin-top: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-success {
+  width: 402px;
+}
+
+/* .form-switch .form-check-input {
+    background-image: var(--bs-form-switch-bg);
+  } */
+
+.form-check-input {
+  background-color: #ffffff;
+}
+
+.form-check-input:checked {
+  background-color: #1ec800;
+  border: 0;
+}
+
+/* 로그인버튼 끝 */
+
+header .inner {
+  height: 138px;
+  width: 100%;
+  padding-bottom: 30px;
+}
+
+/* header .inner select {
+    position: relative;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    width: 100px;
+    height: 30px;
+   font-size: smaller;
+  } */
+
+header .link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header .logo {
+  height: 30px;
+  width: 150px;
+  margin-top: 38px;
+  cursor: pointer;
+}
+
+main .inputbox {
+  position: relative;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+}
+
+main .inputbox .ip {
+  position: relative;
+  height: 50px;
+  width: 400px;
+  border-width: 1.7px;
+  border-radius: 8px;
+  border: 1px, solid, #dadada;
+}
+
+.nav-link {
+  color: rgb(122, 122, 122);
+}
+
+.btn-success {
+  background-color: #03c75a;
+  border-color: #03c75a;
+  border: solid 1px rgba(0, 0, 0, 0.15);
+}

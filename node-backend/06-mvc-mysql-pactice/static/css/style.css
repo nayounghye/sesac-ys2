@@ -1,0 +1,292 @@
+:root {
+  --nav-height-lg: 100px;
+  --nav-height-sm: 30px;
+  --bs-border-radius-sm: 0rem;
+}
+
+body {
+  margin: 0;
+}
+
+header {
+  position: relative;
+}
+
+/* 언어 선택 */
+body .header .inner {
+  position: relative;
+}
+
+body .header .inner select {
+  position: relative;
+  height: 30px;
+  width: 95px;
+  padding: 4px 10px 6px 8px;
+  text-align: left;
+  font-size: small;
+  border: 1px solid #dadada;
+  color: #3d3d3d;
+  margin-top: 20px;
+  right: -1000px;
+  cursor: pointer;
+}
+
+/* 탭창 */
+.nav {
+  position: relative;
+}
+
+.nav.nav-tabs {
+  position: relative;
+  justify-content: center;
+  border-top: 0;
+}
+
+.nav-item a {
+  position: relative;
+  width: 153.33px;
+  height: 61px;
+  text-align: center;
+  padding-top: 15px;
+  z-index: 0;
+}
+
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link {
+  border-bottom: 0;
+  background-color: #f7f7f7;
+  border-width: 1px 1px 0px 1px;
+  border: 1px solid #dadada;
+}
+
+.bi-box-arrow-in-right::before {
+  color: #777;
+}
+
+/* 콘텐츠창 */
+
+content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+content main {
+  position: relative;
+  border: 1px solid #dfe3e7;
+  margin-top: 0px;
+  /* id/pw 담은 네모박스 크기 */
+  width: 459.99px;
+  border-radius: 0px 0px 6px 6px;
+  z-index: 999;
+  top: -5px;
+}
+
+/* input 박스 */
+content main .inputbox {
+  position: relative;
+  margin-top: 0px;
+  z-index: 100;
+  background-color: #ffffff;
+  /* position: relative;
+    border: 1px solid #d4d4d4;
+    */
+}
+
+/* ID/PW 입력창 */
+
+/* 일회용 번호 설명 */
+main .idpw .imputbox {
+  position: relative;
+  display: flex;
+  align-content: center;
+}
+
+main .idpw .imputbox .word {
+  position: relative;
+  align-content: center;
+}
+
+.bi-question-circle-fill::before {
+  color: rgb(128, 172, 212);
+}
+
+body main .idpw .imputbox form .border {
+  position: relative;
+  border: 1px solid #dadada;
+  display: flex;
+}
+.border {
+  padding: 5px 5px 5px 15px;
+  width: 402px;
+  height: 48px;
+}
+
+.border.id {
+  border-radius: 6px 6px 0 0;
+}
+
+.border.pw {
+  border-radius: 0 0 6px 6px;
+  box-shadow: 0 2px 6px 0 rgba(68, 68, 68, 0.08);
+}
+
+main .inputbox form .border .inputid,
+.inputpw {
+  border: 0;
+  padding: 5px 5px 5px 5px;
+  cursor: pointer;
+  width: 330px;
+}
+
+main .inputbox form .border .inputid,
+.inputpw:focus {
+  outline: none;
+}
+
+.inputid.visible {
+  display: inline-block;
+}
+
+/* ID/PW X자 버튼(초기화 버튼) */
+
+.bi-x-circle-fill {
+  display: none;
+  color: #afafaf;
+}
+
+.bi-x-circle-fill.visible {
+  display: inline-block;
+  color: #afafaf;
+}
+
+/* 로그인 결과 텍스트 (로그인 성공/실패) */
+.login-result {
+  font-size: 13px;
+}
+
+/* 체크박스 */
+
+.nav-check {
+  margin-top: 10px;
+  width: 402px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* 동그란 체크박스 위치 조절 */
+.nav-check .check .form-check-input {
+  position: relative;
+  right: 40px;
+}
+
+/* IP보안 위치 역순으로 변경 */
+.nav-check .check .form-check.form-switch {
+  position: relative;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+/* IP보안 글자 위치 조절 */
+.form-check .form-check-label {
+  position: relative;
+  left: -40px;
+  color: #777;
+  font-size: 14px;
+}
+
+.nav-check .check {
+  position: relative;
+  right: -45px;
+}
+/* IP보안 토글 위치 조절 */
+.form-switch .form-check-input {
+  position: relative;
+  right: -53px;
+}
+
+/* 로그인 버튼 */
+
+.d-grid.gap-2.col-6.mx-auto {
+  margin-top: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-success {
+  width: 402px;
+}
+
+/* .form-switch .form-check-input {
+    background-image: var(--bs-form-switch-bg);
+  } */
+
+.form-check-input {
+  background-color: #ffffff;
+}
+
+.form-check-input:checked {
+  background-color: #1ec800;
+  border: 0;
+}
+
+/* 로그인버튼 끝 */
+
+header .inner {
+  height: 138px;
+  width: 100%;
+  padding-bottom: 30px;
+}
+
+/* header .inner select {
+    position: relative;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    width: 100px;
+    height: 30px;
+   font-size: smaller;
+  } */
+
+header .link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header .logo {
+  height: 30px;
+  width: 150px;
+  margin-top: 38px;
+  cursor: pointer;
+}
+
+main .inputbox {
+  position: relative;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+}
+
+main .inputbox .ip {
+  position: relative;
+  height: 50px;
+  width: 400px;
+  border-width: 1.7px;
+  border-radius: 8px;
+  border: 1px, solid, #dadada;
+}
+
+.nav-link {
+  color: rgb(122, 122, 122);
+}
+
+.btn-success {
+  background-color: #03c75a;
+  border-color: #03c75a;
+  border: solid 1px rgba(0, 0, 0, 0.15);
+}

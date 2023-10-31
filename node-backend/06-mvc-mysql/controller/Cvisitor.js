@@ -25,7 +25,6 @@ exports.home = (req, res) => {
 //   const data = visitor.getVisitors();
 //   res.render('visitor', { data: data });
 // };
-
 // mysql로 db를 불러오면 여기가 아래처럼 변경되야함.
 exports.visitor = (req, res) => {
   Visitor.getVisitors((rows) => {
