@@ -1,23 +1,23 @@
-const Visitor = require("../model/Visitor");
+const Visitor = require('../model/Visitor_mysql');
 
 exports.home = (req, res) => {
-  res.render("index");
+  res.render('index');
 };
 
 exports.visitor = (req, res) => {
   //   const data = Visitor.getVisitors();
   //   res.render("visitor", { data: data });
   Visitor.getVisitors((rows) => {
-    res.render("visitor", { data: rows });
+    res.render('visitor', { data: rows });
   });
 };
 
 // POST /visitor => 방명록 insert
 exports.postVisitor = (req, res) => {
   // insert할 데이터
-  console.log("req.body", req.body);
+  console.log('req.body', req.body);
   Visitor.insertVisitor(req.body, (id) => {
-    console.log("ctrl postVisitor ", id);
+    console.log('ctrl postVisitor ', id);
     res.send({
       ...req.body,
       id,
@@ -36,7 +36,7 @@ exports.deleteVisitor = (req, res) => {
 // GET /visitor/:id => 방명록 하나 조회
 exports.getVisitorById = (req, res) => {
   Visitor.getVisitorById(req.params.id, (result) => {
-    console.log("ctrl getVisitorById: ", result);
+    console.log('ctrl getVisitorById: ', result);
     res.send(result);
   });
 };
@@ -46,7 +46,7 @@ exports.patchVisitor = (req, res) => {
   console.log(req.body);
 
   Visitor.patchVisitor(req.body, (result) => {
-    console.log("ctrl getVisitorById: patchVisitor", result);
+    console.log('ctrl getVisitorById: patchVisitor', result);
     res.send({ result: true });
   });
 };

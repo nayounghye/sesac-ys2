@@ -1,0 +1,20 @@
+// db에 대한 설정/정보를 관리
+
+{
+  // 개발 버전
+  "development": {
+    "host": "localhost",
+    "database": "sesac_test",
+    "username": "user",
+    "password": "qwe123!@#",
+    "dialect": "mysql" //mysql 이라는 db를 사용하겠다는 뜻이다.
+  },
+  //배포 버전
+  "production": {
+    "host": "",
+    "database": "",
+    "username": "",
+    "password": "",
+    "dialect": ""
+  }
+}
