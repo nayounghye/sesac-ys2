@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>수업17_실습2_mvc1</title>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
@@ -29,32 +29,29 @@
 
     <script>
       function clickLogin() {
-        const form = document.forms["login"];
+        const form = document.forms['login'];
         const data = {
           userid: form.userid.value,
-          password: form.password.value
-        }
+          password: form.password.value,
+        };
 
         // console.log(data); // 1차적으로 데이터 잘 만들어졌는지 확인
 
         axios({
-          method: "POST",
-          url: "/user/login",
+          method: 'POST',
+          url: '/user/login',
           // url: "/login",
-          data: data
+          data: data,
         }).then((res) => {
           // { isSuccess: ??, msg : ?? }
-          const {
-            isSuccess,
-            msg
-          } = res.data
-          console.log(isSuccess) // 2. 응답 잘 오는지 확인
-          const element = document.querySelector(".login-result");
+          const { isSuccess, msg } = res.data;
+          console.log(isSuccess); // 2. 응답 잘 오는지 확인
+          const element = document.querySelector('.login-result');
           element.innerHTML = msg;
 
-          const color = isSuccess ? "blue" : "red";
-          element.style.color = color
-        })
+          const color = isSuccess ? 'blue' : 'red';
+          element.style.color = color;
+        });
       }
     </script>
   </body>

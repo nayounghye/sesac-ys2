@@ -1,15 +1,11 @@
 const express = require('express');
-const userController = require('./controller/Cuser');
+// const userController = require('./controller/Cuser');
 const app = express();
 const PORT = 8000;
 
 app.set('view engine', 'ejs');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-// app.get('/', function (req, res) {
-//   res.render('index');
-// });
 
 const router = require('./routes/user');
 app.use('/user', router);
@@ -19,6 +15,11 @@ app.use('/user', router);
 // 2. controller 분리 (들어온 요청에 대해 데이터 처리, view를 render 등을 담당, client에 응답하는 역할을 함.)
 // 3. model 분리 (db에 접근하여 데이터를 select,insert,update,delete 등 을 한다.)
 // ----------------------------------------------- 여기부터 분해해야함
+
+// app.get('/', function (req, res) {
+//   res.render('index');
+// });
+
 // app.get(
 //   '/',
 
