@@ -15,7 +15,7 @@ const sequelize = new Sequelize(
   config.password,
   config
 );
-// sequelize 객체를 만드는 코드 (11-17줄))
+// sequelize 객체를 만드는 코드 (11-17줄) 여기는 규칙이라 그냥 외울 것!)
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
