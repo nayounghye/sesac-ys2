@@ -25,6 +25,12 @@ content {
   align-items: center;
 }
 
+/* Form 부분 */
+form {
+  position: relative;
+  justify-content: center;
+}
+
 content main {
   position: relative;
   /* id/pw 담은 네모박스 크기 */
