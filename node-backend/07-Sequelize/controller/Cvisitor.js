@@ -9,7 +9,7 @@ exports.visitor = (req, res) => {
   Visitor.findAll() // = SELECT * FROM visitor; 과 같은 뜻
     .then((result) => {
       console.log('findAll result : ', result);
-      console.log('0 index의 username', result[0].dataValues.username); // dataValues는 생략 가능!
+      console.log('0 index의 username : ', result[0].dataValues.username); // dataValues는 생략 가능!
       // 나왔으면 하는 결과값 : [{id: , username: , comment: }]
       res.render('visitor', { data: result });
     });
