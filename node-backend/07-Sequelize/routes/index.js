@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const controller = require('../controller/Cvisitor_mysql');
+const controller = require('../controller/Cvisitor');
 
 // ~~~~~:8000 -> index.ejs render
 router.get('/', controller.home);
