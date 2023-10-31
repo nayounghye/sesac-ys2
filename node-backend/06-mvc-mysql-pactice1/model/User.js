@@ -28,6 +28,6 @@ exports.insertUsers = (data, cb) => {
       throw err;
     }
     console.log('user insert', result);
-    cb(result.inserId);
+    cb(result.insertId);
   });
 };
