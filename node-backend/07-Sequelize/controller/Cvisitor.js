@@ -4,6 +4,8 @@ exports.home = (req, res) => {
   res.render('index');
 };
 
+// ---------------------- 방명록 관련 ----------------------
+
 // GET /visitor => 기존 방명록을 전체 조회 후 render 'visitor.ejs'
 exports.visitor = (req, res) => {
   Visitor.findAll() // = SELECT * FROM visitor; 과 같은 뜻
@@ -101,4 +103,66 @@ exports.getTest = (req, res) => {
     console.log('findOne result : ', result);
     res.send(result);
   });
+};
+
+// ---------------------- 회원가입 페이지 관련 ----------------------
+
+exports.index2 = (req, res) => {
+  res.render('index2');
+};
+
+exports.signup = (req, res) => {
+  res.render('signup');
+};
+
+// User 테이블에 데이터 insert
+exports.post_signup = async (req, res) => {
+  const data = {
+    id: req.body.id,
+    userid: req.body.userid,
+    name: req.body.name,
+    pw: req.body.pw,
+  };
+  const createUser = await UserActivation.create(data);
+  res.send(createUser);
+};
+
+exports.signin = (req, res) => {
+  res.render('signin');
+};
+
+// -------------------GET /visitor/:id => 방명록 하나 조회
+exports.getVisitorById = (req, res) => {
+  // SELECT * FROM visitor WHERE id = ?? LIMIT 1; 을 아래처럼 작성!
+  Visitor.findOne({
+    where: {
+      id: req.params.id,
+    },
+  }).then((result) => {
+    console.log('findOne result : ', result);
+    res.send(result);
+  });
+};
+// -----------------------
+
+// 모델과 연결해 실제로 회원이 있는지 검색해야므로 모델과 연결을 해줘야함!
+exports.getUserId = (req, res) => {
+  const { name, pw } = req.body;
+  User.findOne({
+    where: {
+      name: name,
+      pw: pw,
+    },
+  })
+    .then((result) => {
+      if (result) {
+        res.send({ result: true, id: user.id });
+      } else {
+        res.send({ result: false });
+      }
+    })
+    .catch((err) => {
+      console.errer(err);
+      res.status(500).send('오류가 발생했습니다.');
+    });
 };
