@@ -14,6 +14,7 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 // db = {sequelize : sequelize, Sequelize : Sequelize} 지금 db안에는 안에 sequelize가 들어있다.
 
+//model폴더에 있는 각 db테이블들(Customer.js 등)을 연결해주는 코드
 db.Customer = require('./Customer')(sequelize, Sequelize);
 db.Orders = require('./Orders')(sequelize, Sequelize);
 

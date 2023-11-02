@@ -27,4 +27,6 @@ db.Sequelize = Sequelize;
 db.Visitor = require('./Visitor')(sequelize, Sequelize);
 // db.Visitor에는 sequelize로 visitor 테이블을 정의한 객체가 담겨있다.
 
+db.User = require('./User')(sequelize, Sequelize);
+
 module.exports = db;

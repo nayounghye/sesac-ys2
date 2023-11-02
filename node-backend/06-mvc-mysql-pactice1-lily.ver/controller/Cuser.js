@@ -15,7 +15,7 @@ exports.post_signup = (req, res) => {
   });
 };
 
-exports.signin = (req, rmes) => {
+exports.signin = (req, res) => {
   res.render('signin');
 };
 exports.post_signin = (req, res) => {

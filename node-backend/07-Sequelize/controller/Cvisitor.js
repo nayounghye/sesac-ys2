@@ -1,4 +1,4 @@
-const { Visitor } = require('../model');
+const { Visitor, User } = require('../model');
 
 exports.home = (req, res) => {
   res.render('index');
@@ -116,37 +116,31 @@ exports.signup = (req, res) => {
 };
 
 // User 테이블에 데이터 insert
-exports.post_signup = async (req, res) => {
-  const data = {
-    id: req.body.id,
-    userid: req.body.userid,
-    name: req.body.name,
-    pw: req.body.pw,
-  };
-  const createUser = await UserActivation.create(data);
-  res.send(createUser);
+// exports.post_signup = async (req, res) => {
+//   const data = {
+//     id: req.params.id,
+//     userid: req.params.userid,
+//     name: req.params.name,
+//     pw: req.params.pw,
+//   };
+//   const createUser = await User.create(data);
+//   res.send(createUser);
+// };
+
+exports.post_signup = (req, res) => {
+  // 모델과 연결하여, user 테이블에 회원가입 정보 insert
+  // 결과를 send({result: true}) 방식으로 노출할 예정.
+  User.post_signup(req.body, () => {
+    res.send({ result: true });
+  });
 };
 
 exports.signin = (req, res) => {
   res.render('signin');
 };
 
-// -------------------GET /visitor/:id => 방명록 하나 조회
-exports.getVisitorById = (req, res) => {
-  // SELECT * FROM visitor WHERE id = ?? LIMIT 1; 을 아래처럼 작성!
-  Visitor.findOne({
-    where: {
-      id: req.params.id,
-    },
-  }).then((result) => {
-    console.log('findOne result : ', result);
-    res.send(result);
-  });
-};
-// -----------------------
-
 // 모델과 연결해 실제로 회원이 있는지 검색해야므로 모델과 연결을 해줘야함!
-exports.getUserId = (req, res) => {
+exports.post_signin = (req, res) => {
   const { name, pw } = req.body;
   User.findOne({
     where: {
@@ -165,4 +159,43 @@ exports.getUserId = (req, res) => {
       console.errer(err);
       res.status(500).send('오류가 발생했습니다.');
     });
+};
+
+exports.profile = async (req, res) => {
+  try {
+    const user = await user.findByPk(req.body.id);
+    if (user) {
+      res.render('profile', { data: user });
+    } else {
+      res.redirenct('/user/signin');
+    }
+  } catch (error) {
+    console.error('오류가 발생했습니다.', error);
+  }
+};
+
+exports.profile_edit = async (req, res) => {
+  try {
+    const data = {
+      ...req.body,
+      id: req.params.id,
+    };
+    await User.update(data, {
+      where: { id: data.id },
+    });
+    res.send({ result: true });
+  } catch (error) {
+    console.error('오류가 발생했습니다.', error);
+  }
+};
+
+exports.profile_delete = async (req, res) => {
+  try {
+    await User.destroy({
+      where: { id: req.params.id },
+    });
+    res.send({ result: true });
+  } catch (error) {
+    console.error('오류가 발생했습니다.', error);
+  }
 };
