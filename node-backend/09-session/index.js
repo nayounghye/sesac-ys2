@@ -30,6 +30,7 @@ app.get('/', (req, res) => {
 app.get('/set', (req, res) => {
   // 주의) 클라이언트 별로 세션을 갖고 있어서 req로 조회하나, 실제 저장공간은 서버이다.
   console.log('1 : ', req.session);
+  // 1. 로그인 성공한 시점에 req.session.user 안에 user를 식별할 수 있는 고유한 값을 넣는다.
   req.session.user = 'jordy';
   //   req.session.user = {
   //     name: '죠르디',
@@ -40,6 +41,12 @@ app.get('/set', (req, res) => {
 });
 
 app.get('/get', (req, res) => {
+  // 2. 식별할 수 있는 값을 통해 조회하고 그 값을 넘긴다.
+  if (req.session.user) {
+    res.render('profile', {});
+  } else {
+    res.redirect('/login');
+  }
   console.log('user: ', req.session.user);
   res.send({ user: req.session.user });
 });
