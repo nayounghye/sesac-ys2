@@ -18,6 +18,7 @@ exports.post_signup = (req, res) => {
 exports.signin = (req, res) => {
   res.render('signin');
 };
+
 exports.post_signin = (req, res) => {
   // 모델과 연결해서 실제로 회원이 존재하는지 검색해야 하므로
   // 모델과 연결하는 부분이 필요하다.
