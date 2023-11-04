@@ -26,7 +26,7 @@ const cookieConfig = {
   maxAge: 30000, // 24 * 60 * 60 * 1000 처럼 연산식으로 적어도 된다. (24시간을 밀리초로 바꾼 연산식)
   //   expires: '2023-11-04T18:00', // 모든 유저가 동일한 만료기간을 가질 때 사용.
   //   path: '/', // '/test' -> localhost:8000 는 쿠키 적용 x
-  //   secure: true, // https 보안 서버에서만 쿠키를 동작하게 한다.
+  //   secure: true, // https 보안 서버에서만 쿠키를 동작하게 한다. (기본값: false)
   //   signed: true, // 쿠키를 암호화한다.
 };
 
