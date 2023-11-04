@@ -24,16 +24,22 @@ const router = require('./routes');
 app.use('/', router);
 
 const cookieConfig = {
-  maxAge: 24 * 60 * 60 * 1000,
+  //   maxAge: 24 * 60 * 60 * 1000,
+  maxAge: 1000,
 };
 
 router.get('/', (req, res) => {
-  res.render('index');
+  const noPopup = req.cookies.popup;
+  res.render('index', { noPopup: noPopup });
 });
 
-router.post('/setCookie', (req, res) => {
-  res.cookie('popup', 'yes', cookieConfig);
-  res.send({ result: true });
+router.get('/set', (req, res) => {
+  res.cookie('popup', 'value1', cookieConfig);
+  res.send('set cookie');
+});
+
+router.get('/get', (req, res) => {
+  res.send(req.cookies);
 });
 
 app.listen(PORT, function () {
