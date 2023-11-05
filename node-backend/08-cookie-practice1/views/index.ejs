@@ -41,19 +41,23 @@
     <script>
       const myModal = new bootstrap.Modal('#popup')
       myModal.show() // 체크 유무에
-
-      function noPupup() {
-        const checkbox = document.getElementById("no-popup");
-        if (checkbox.checked) { //체크가 되있다면 아래 코드 작동!
-          axios({
-            method: 'post',
-            url: '/setCookie'
-          }).then((res) => {
-            console.log(res.data)
-            //myModal : hide;
-          })
-        }
-
+      
+      function sendCb(cbStatus) {
+        const isChecked = cbStatus.checked;
+        fetch('/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+              hideToday: isChecked
+            }).then(response => response.json())
+            .then(data => {
+              console.log('Success : ', data);
+            }).catch((err) => {
+              console.error('Error : ', err)
+            })
+        })
       }
     </script>
   </body>

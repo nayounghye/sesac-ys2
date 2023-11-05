@@ -48,25 +48,21 @@
       if ("<%noPopup%>" != 'y') myModal.show()
       // "<%noPopup%>"에 값이 y가 아니라면, 팝업을 보여주겠다라는 코드.
 
+      function noPupup() {
+        const checkbox = document.getElementById("no-popup");
+        if (checkbox.checked) { //체크가 되있다면 아래 코드 작동!
+          axios({
+            method: 'post',
+            url: '/setCookie'
+          }).then((res) => {
+            console.log(res.data)
+            //myModal : hide;
+          })
+        }
 
-
-      function sendCb(cbStatus) {
-        const isChecked = cbStatus.checked;
-        fetch('/', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-              hideToday: isChecked
-            }).then(response => response.json())
-            .then(data => {
-              console.log('Success : ', data);
-            }).catch((err) => {
-              console.error('Error : ', err)
-            })
-        })
       }
+
+     
     </script>
   </body>
 </html>

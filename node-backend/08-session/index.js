@@ -40,6 +40,14 @@ app.get('/set', (req, res) => {
   res.send('Set Session');
 });
 
+// 세션을 삭제하는 방법
+app.get('/', (req, res) => {
+  req.session.destroy((err) => {
+    if (err) throw err;
+    res.send('로그아웃 성공');
+  });
+});
+
 app.get('/get', (req, res) => {
   // 2. 식별할 수 있는 값을 통해 조회하고 그 값을 넘긴다.
   if (req.session.user) {
