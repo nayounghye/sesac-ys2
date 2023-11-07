@@ -10,3 +10,5 @@ SeSAC 강의 코드 관리
 - git branch test (ex. 회원가입ui 완료)
 
 -git branch test2
+
+- pr test
