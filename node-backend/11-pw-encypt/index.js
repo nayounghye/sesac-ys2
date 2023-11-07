@@ -44,8 +44,7 @@ function comparePw(pw, salt) {
     .pbkdf2Sync(pw, salt, iterations, keylen, digest)
     .toString('base64');
 }
-
-const dbSalt = '34EFPOOX9xpQzh2CTPdAFA==';
+const dbSalt = 'rPVu98YnEWfVSSWA3Ql+Sw==';
 console.log('compare result with salt: ', comparePw(input, dbSalt) == dbPwSalt); // 출력 : compare result :  true
 
-// console.log("pw 1234 with salt: ", createHashedPwWithSalt("1234"));
+// console.log('pw 1234 with salt: ', createHashedPwWithSalt('1234'));
