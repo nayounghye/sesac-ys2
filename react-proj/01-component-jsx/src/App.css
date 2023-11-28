@@ -1,0 +1,23 @@
+/* BEM 네이밍 규칙 : CSS이름을 정하는 규칙 */
+/* .FuncComponent__test-css--active {
+} */
+.test-css {
+  background-color: yellow;
+  font-size: 30px;
+}
+.prac-css1 {
+  height: 300px;
+  width: 500px;
+  padding: 15px;
+}
+
+.prac-css2 {
+  background-color: #f9eee0;
+  color: #dc8159;
+  text-align: center;
+  padding: 5px;
+}
+
+.prac-css3 {
+  text-align: center;
+}
