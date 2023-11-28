@@ -50,7 +50,7 @@ function FuncPropsEx({ title, content, number }) {
     <>
       <div>함수형 컴포넌트를 이용( Props )</div>
       <div>
-        여기는 {title}, 외쳐요 {content}!! 오늘 날짜는 {number}
+        여기는 {title}, 외쳐요 {content}!! {number}
       </div>
     </>
   );

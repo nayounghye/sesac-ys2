@@ -30,3 +30,36 @@
 .Section__title {
   color: red;
 }
+
+.Prac2__food {
+  color: red;
+}
+
+.Prac2_2__container {
+  background-color: #f6f5dc;
+  width: 300px;
+  height: 300px;
+  text-align: center;
+  padding: 3px;
+}
+
+.Prac2_2__title {
+  color: #ff7e47;
+}
+
+.Prac2_2__bookcontainer {
+  text-align: left;
+  padding: 10px;
+}
+
+.Prac2_2__booktitle {
+  font-size: 18px;
+  font-weight: 800;
+  margin-top: 10px;
+}
+
+.Prac2_2__bookcontainer {
+  font-weight: 600;
+  padding: 18px;
+  line-height: 25px;
+}
