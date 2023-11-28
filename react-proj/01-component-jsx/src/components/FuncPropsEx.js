@@ -50,15 +50,19 @@ function FuncPropsEx({ title, content, number }) {
     <>
       <div>함수형 컴포넌트를 이용( Props )</div>
       <div>
-        여기는 {title}, 외쳐요 {content}!! ({number})
+        여기는 {title}, 외쳐요 {content}!! 오늘 날짜는 {number}
       </div>
     </>
   );
 }
+// 입력해둔 props가 안넘어갈 때 대신 채워줄 default값을 입력하면 대신 채워준다!
+FuncPropsEx.defaultProps = {
+  title: "SeSAC용산",
+};
 
-FuncPropsEx.prototype = {
+FuncPropsEx.propTypes = {
   title: PropTypes.string,
-  content: PropTypes.string,
+  content: PropTypes.string.isRequired,
   number: PropTypes.number,
 };
 

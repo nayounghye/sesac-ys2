@@ -21,3 +21,12 @@
 .prac-css3 {
   text-align: center;
 }
+
+.Section__section {
+  margin-bottom: 20px;
+  border: 2px solid blue;
+}
+
+.Section__title {
+  color: red;
+}
