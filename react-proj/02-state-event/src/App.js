@@ -4,6 +4,7 @@ import StateFunc from "./components/StateFunc";
 import Prac1_1 from "./components/Prac1_1";
 import Prac1_2 from "./components/Prac1_2";
 import EventClass from "./components/EventClass";
+import EventFunc from "./components/EventFunc";
 
 function App() {
   return (
@@ -11,8 +12,9 @@ function App() {
       {/* <StateClass name="jordy" />
       <StateFunc />
       <Prac1_1 />
-      <Prac1_2 /> */}
-      <EventClass />
+      <Prac1_2 />
+      <EventClass /> */}
+      <EventFunc />
     </div>
   );
 }

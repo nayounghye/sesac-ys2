@@ -23,14 +23,15 @@ class EventClass extends Component {
   //   this에 아무 값도 안담기는 걸 해결하는 방법
   // 해결법 1. 생성자 내부에서 this를 원하는 것으로 바인딩한다.
   // 해결법 2. 함수표현식을 사용한다.
-  //정확한 설명: 함수 선언문은 동적 바인딩을 하기 때문에 함수가 사용될 때 this가 결정된다.
-  handleOnClick() {
+  //정확한 설명: 함수 선언문은 '동적 바인딩'을 하기 때문에 함수가 사용(호출)될 때 this가 결정된다.
+  handleOnClick(e) {
+    console.log(e);
     this.setState({ msg: "bye" });
   }
 
   // 함수표현식
   // 함수가 선언될 때 this를 결정짓는다. 즉, 부모에 있는 this를 가져온다.
-  //  (정적 바인딩)
+  //  정적 바인딩 : 함수가 읽힐 때 this가 결정된다.
   handleOnClickHello = () => {
     this.setState({ msg: "hello" });
   };
@@ -46,6 +47,17 @@ class EventClass extends Component {
         <br />
         <button onClick={this.handleOnClick}>잘가</button>
         <button onClick={this.handleOnClickHello}>안녕</button>
+        <button
+          onClick={(e) => {
+            // e는 리액트 합성 이벤트 객체로, 합성 이벤트에 대한 모든 정보를 담고 있다.
+            // target에 접근하면 이벤트가 걸린 태그를 확인할 수 있다.
+            console.log(e);
+            console.log(e.target);
+            console.log(e.type);
+          }}
+        >
+          test
+        </button>
       </>
     );
   }
