@@ -22,7 +22,7 @@ class StateClass extends Component {
     // const {number} = this.state
     return (
       <>
-        <div>props 예시 {this.props.name}</div>
+        {/* <div>props 예시 {this.props.name}</div> */}
         <h3>클래스형 컴포넌트 state 공부</h3>
         <div>
           number state value {this.state.number}{" "}
