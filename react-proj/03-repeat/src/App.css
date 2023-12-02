@@ -15,6 +15,7 @@ tr,
 td,
 th {
   border: 1.5px solid black;
+  text-align: center;
 }
 
 .scroll-box {

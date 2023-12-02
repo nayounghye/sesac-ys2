@@ -12,9 +12,9 @@ function App() {
       {/* <ListMap />
       <ClassRef />
       <FuncRef /> */}
-      <ScrollBox />
-      {/* <Prac1_12 />
-      <Prac1_34 /> */}
+      {/* <ScrollBox /> */}
+      {/* <Prac1_12 /> */}
+      <Prac1_34 />
     </div>
   );
 }
