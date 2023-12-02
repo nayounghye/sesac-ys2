@@ -1,10 +1,14 @@
 import "./App.css";
 import ListMap from "./components/ListMap";
+import Prac1_12 from "./components/03-repeat_Prac/Prac1_12";
+import Prac1_34 from "./components/03-repeat_Prac/Prac1_34";
 
 function App() {
   return (
     <div>
-      <ListMap />
+      {/* <ListMap /> */}
+      <Prac1_12 />
+      <Prac1_34 />
     </div>
   );
 }
