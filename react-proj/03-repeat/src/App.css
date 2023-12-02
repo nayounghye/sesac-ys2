@@ -16,3 +16,11 @@ td,
 th {
   border: 1.5px solid black;
 }
+
+.scroll-box {
+  width: 300px;
+  height: 300px;
+  overflow-y: auto;
+  background-color: black;
+  color: white;
+}
