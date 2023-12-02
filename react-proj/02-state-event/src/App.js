@@ -9,6 +9,7 @@ import Prac2_1 from "./components/02-state-event_Prac2/Prac2_1";
 import Prac2_2 from "./components/02-state-event_Prac2/Prac2_2";
 import Prac2_3 from "./components/02-state-event_Prac2/Prac2_3";
 import Prac2_4 from "./components/02-state-event_Prac2/Prac2_4";
+import Prac2_4_lily from "./components/02-state-event_Prac2/Prac2_4_lily";
 
 function App() {
   return (
@@ -21,8 +22,9 @@ function App() {
       <EventFunc /> */}
       {/* <Prac2_1 />
       <Prac2_2 />
-      <Prac2_3 /> */}
-      <Prac2_4 />
+      <Prac2_3 />
+      <Prac2_4 /> */}
+      <Prac2_4_lily />
     </div>
   );
 }
