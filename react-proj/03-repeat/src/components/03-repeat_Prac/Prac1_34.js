@@ -5,6 +5,16 @@ function Prac1_34() {
   const [list, setList] = useState(userSubmit);
   const [newTitle] = useState("");
   const [newUser] = useState("");
+
+  // 표에 추가
+  const addTable = () => {
+    const newObj = {
+      id: list[list.label - 1].id + 1,
+      title: newTitle,
+      user: newUser,
+    };
+  };
+
   return (
     <>
       <h1>map 실습 3,4</h1>
