@@ -7,7 +7,7 @@ function App() {
   return (
     <div>
       {/* <ListMap /> */}
-      <Prac1_12 />
+      {/* <Prac1_12 /> */}
       <Prac1_34 />
     </div>
   );
