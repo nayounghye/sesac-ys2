@@ -1,10 +1,13 @@
 import { useState } from "react";
 
 function Prac1_34() {
-  const userSubmit = [{ id: "1", title: "죠하", user: "죠르디" }];
-  const [list, setList] = useState(userSubmit);
+  const userSubmit = [];
+  const [list, setList] = useState([]);
   const [newTitle, setNewTitle] = useState("");
   const [newUser, setNewUser] = useState("");
+  const [searchType, setSearchType] = useState("");
+  const [searchKeyword, setSearchKeyword] = useState("");
+  const [searchResult, setSearchResult] = useState([]);
 
   // 표에 추가
   const addTable = () => {
@@ -19,19 +22,24 @@ function Prac1_34() {
     setNewUser("");
   };
 
-  // enter 키 기능 추가 : 작성
-  const handleEnter = (e) => {
-    if (e.key == "Enter") {
-      addTable();
+  // 검색 함수
+  const searchTable = () => {
+    // 작성 검색
+    if (searchType === "작성자") {
+      const result = list.filter((value) => value.user.includes(searchKeyword));
+      setSearchResult(result);
+      // 제목 검색
+    } else if (searchType === "제목") {
+      const result = list.filter((value) =>
+        value.title.includes(searchKeyword)
+      );
+      setSearchResult(result);
     }
   };
 
-  // enter 키 기능 추가 : 검색
-  // const handleSearch = (e) => {
-  //   if (e.key == "Enter") {
-  //     addSearch();
-  //   }
-  // };
+  const handleSearch = () => {
+    searchTable();
+  };
 
   return (
     <>
@@ -52,18 +60,32 @@ function Prac1_34() {
           onChange={(e) => {
             setNewTitle(e.target.value);
           }}
-          onKeyDown={handleEnter}
         />
         <button onClick={addTable}>작성</button>
       </fieldset>
       <br />
       <div id="searchBox">
-        <select>
+        <select
+          value={searchType}
+          onChange={(e) => {
+            setSearchType(e.target.value);
+          }}
+        >
           <option>작성자</option>
+          <option>제목</option>
         </select>
-        <input type="text" placeholder="검색어" />
-        <button>검색</button>
-        <button>전체</button>
+        <input
+          type="text"
+          placeholder="검색어"
+          value={searchKeyword}
+          onChange={(e) => {
+            setSearchKeyword(e.target.value);
+          }}
+        />
+        <button onClick={handleSearch}>검색</button>
+        <button onClick={() => setSearchResult([...userSubmit, ...list])}>
+          전체
+        </button>
       </div>
       <br />
       <table>
@@ -77,7 +99,7 @@ function Prac1_34() {
         <tbody>
           {list.map((value) => {
             return (
-              <tr>
+              <tr key={value.id}>
                 <td value="id" key={value.id}>
                   {value.id}
                 </td>
@@ -94,23 +116,30 @@ function Prac1_34() {
       </table>
       <br />
       <h4>검색 결과</h4>
-      <h4>검색결과가 없습니다.</h4>
-      <table>
-        <thead>
-          <tr>
-            <th>번호</th>
-            <th>제목</th>
-            <th>작성자</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td value="id"></td>
-            <td value="title"></td>
-            <td value="user"></td>
-          </tr>
-        </tbody>
-      </table>
+      {searchResult.length > 0 ? (
+        <table>
+          <thead>
+            <tr>
+              <th>번호</th>
+              <th>제목</th>
+              <th>작성자</th>
+            </tr>
+          </thead>
+          <tbody>
+            {searchResult.map((value) => {
+              return (
+                <tr key={value.id}>
+                  <td>{value.id}</td>
+                  <td>{value.title}</td>
+                  <td>{value.user}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      ) : (
+        <h4>검색 결과가 없습니다.</h4>
+      )}
     </>
   );
 }
