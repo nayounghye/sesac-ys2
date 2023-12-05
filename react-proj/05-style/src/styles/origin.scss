@@ -1,0 +1,23 @@
+$color-main: red;
+
+.scss-parents {
+  color: $color-main;
+  //   width: 100% - 200px;
+  background-color: rgb(0, 0, 0);
+}
+
+//  style 코드 블록을 함수처럼 하나로 묶어두고, 사용할 때는 @include를 이용!
+@mixin box-wh($size) {
+  width: $size;
+  height: $size;
+}
+
+.box1 {
+  @include box-wh(100px);
+  background-color: rebeccapurple;
+}
+
+.box2 {
+  @include box-wh(200px);
+  background-color: coral;
+}
