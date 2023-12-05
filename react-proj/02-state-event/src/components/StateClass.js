@@ -32,7 +32,7 @@ class StateClass extends Component {
               // state를 변경시키는 특정 함수를 사용해야 한다.
               // 클래스형 컴포넌트는 setState 메소드가 제공되며 이 함수로 state를 변경할 수 있다.
               this.setState({ number: this.state.number + 1 });
-              //  34번 코드를 연달아 쓰면 결과값이 2 -> 4 -> 6 -> 8 ... 으로 되겠지? 라고 생각하고 연달아 코드입력
+              //  34번 코드를 연달아 쓰면 결과값이 2 -> 4 -> 6 -> 8 ... 으로 되겠지? 라고 생각하고 연달아 setState 함수 입력
               this.setState({ number: this.state.number + 1 });
               // 만약 setState를 연달아 2번 사용해야할 때 위처럼 사용하면 원하는 결과를 얻을 수 없음.
               // state 변경은 비동기방식으로 실행되기 때문이다.
