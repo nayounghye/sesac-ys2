@@ -4,6 +4,7 @@ import UseMemoEx from "./components/UseMemoEx";
 import UseCallbackEx from "./components/UseCallbackEx";
 import UseCallbackEx2 from "./components/UseCallbacEx2";
 import UseReducer from "./components/UseReducer";
+import CustomHookEx from "./components/CustomHookEx";
 
 function App() {
   const [postId, setPostID] = useState(1);
@@ -14,6 +15,7 @@ function App() {
       <UseCallbackEx2 postId={postId} />
       <button onClick={() => setPostID(postId + 1)}>+1</button>
       <UseReducer />
+      <CustomHookEx />
     </div>
   );
 }
