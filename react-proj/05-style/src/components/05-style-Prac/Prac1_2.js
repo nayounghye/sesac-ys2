@@ -1,29 +1,16 @@
-import Prac1_1_style from "../../styles/Prac1_1.scss";
-import bush from "./grass.png";
+import Prac1_2_style from "../../styles/Prac1_2.scss";
 
-function Prac1_1() {
-  const image = {
-    bush: bush,
-  };
-
+function Prac1_2() {
   return (
     <>
-      <h1>실습1 Style</h1>
-      <div className="larva">
-        <div className="body body1">
-          <div className="eye eye-white">
-            <div className="eye eye-black"></div>
-          </div>
-        </div>
-        <div className="body body2"></div>
-        <div className="body body3"></div>
-        <div className="body body4"></div>
-        <div className="body body5"></div>
-
-        <img className="grass" src={[bush]} alt="잔디" />
+      <h1>실습2 Style</h1>
+      <div className="container">
+        <div className="ball ball1"></div>
+        <div className="ball ball2"></div>
+        <div className="ball ball3"></div>
       </div>
     </>
   );
 }
 
-export default Prac1_1;
+export default Prac1_2;

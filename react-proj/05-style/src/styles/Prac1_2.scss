@@ -1,14 +1,35 @@
-@mixin location($id, $positon) {
-  @keyframes move#{$id} {
-    from {
-      top: 0px;
+@mixin ballshape($color) {
+  background-color: $color;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+// @mixin location($id, $position) {
+//   @keyframes move#{$id} {
+//     from {
+//       top: 0px;
+//     }
+//     to {
+//       top: $position;
+//     }
+//   }
+// }
+
+// @include move(1, 30px);
+// @include move(2, 50px);
+// @include move(3, 100px);
+
+.container {
+  .ball {
+    &.ball1 {
+      @include ballshape(red);
     }
-    to {
-      top: $positon;
+    &.ball2 {
+      @include ballshape(orange);
+    }
+    &.ball3 {
+      @include ballshape(yellow);
     }
   }
 }
-
-@include move(1, 30px);
-@include move(2, 50px);
-@include move(3, 100px);
