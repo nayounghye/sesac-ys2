@@ -1,0 +1,14 @@
+@mixin location($id, $positon) {
+  @keyframes move#{$id} {
+    from {
+      top: 0px;
+    }
+    to {
+      top: $positon;
+    }
+  }
+}
+
+@include move(1, 30px);
+@include move(2, 50px);
+@include move(3, 100px);

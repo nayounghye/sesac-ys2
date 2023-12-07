@@ -3,6 +3,8 @@ import "./App.css";
 // import OriginCss from "./components/OriginCss";
 // import SassComponent from "./components/SassComponent";
 import StyledComponent from "./components/StyledComponent";
+import Prac1_1 from "./components/05-style-Prac/Prac1_1";
+import Prac1_2 from "./components/05-style-Prac/Prac1_2";
 
 function App() {
   return (
@@ -15,7 +17,9 @@ function App() {
       <br /> */}
       {/* <h1>SassComponent</h1>
       <SassComponent /> */}
-      <StyledComponent />
+      {/* <StyledComponent /> */}
+      {/* <Prac1_1 /> */}
+      <Prac1_2 />
     </div>
   );
 }

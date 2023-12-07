@@ -1,0 +1,55 @@
+@mixin shape($wh, $b) {
+  width: $wh;
+  height: $wh;
+  border-radius: $b;
+}
+
+@mixin lababody($location, $location2, $color) {
+  top: $location;
+  left: $location2;
+  background-color: $color;
+}
+
+.larva {
+  position: relative;
+  .body {
+    @include shape(100px, 50%);
+    position: absolute;
+    &.body1 {
+      @include lababody(100px, 80px, #0000a6);
+      .eye {
+        &.eye-white {
+          @include lababody(20px, 20px, #ffffff);
+          @include shape(35px, 50%);
+          z-index: 10;
+          position: relative;
+        }
+        &.eye-black {
+          @include lababody(3px, 0px, black);
+          @include shape(20px, 50%);
+          z-index: 20;
+          position: relative;
+        }
+      }
+    }
+    &.body2 {
+      @include lababody(140px, 140px, #243dce);
+    }
+    &.body3 {
+      @include lababody(170px, 180px, #3476e7);
+    }
+    &.body4 {
+      @include lababody(180px, 240px, #2f92e9);
+    }
+    &.body5 {
+      @include lababody(185px, 300px, #8cbffd);
+      z-index: 10;
+    }
+  }
+  .grass {
+    @include lababody(180px, 60px, none);
+    position: absolute;
+    width: 400px;
+    height: 120px;
+  }
+}
