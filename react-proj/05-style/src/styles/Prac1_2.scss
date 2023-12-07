@@ -1,35 +1,60 @@
+body {
+  height: 500px;
+  width: 500px;
+}
+
 @mixin ballshape($color) {
   background-color: $color;
   width: 30px;
   height: 30px;
   border-radius: 50%;
+  position: relative;
 }
 
-// @mixin location($id, $position) {
-//   @keyframes move#{$id} {
-//     from {
-//       top: 0px;
-//     }
-//     to {
-//       top: $position;
-//     }
-//   }
-// }
+@mixin moveball($id, $zero, $num) {
+  @keyframes moveAni#{$id} {
+    0% {
+      top: $zero;
+      left: $zero;
+    }
+    25% {
+      top: $zero;
+      left: $num;
+    }
+    50% {
+      top: $num;
+      left: $num;
+    }
+    75% {
+      top: $num;
+      left: $zero;
+    }
+    100% {
+      top: $zero;
+      left: $zero;
+    }
+  }
+}
 
-// @include move(1, 30px);
-// @include move(2, 50px);
-// @include move(3, 100px);
+@mixin ani($id) {
+  animation: moveAni#{$id} 2s ease-in infinite;
+}
 
 .container {
-  .ball {
-    &.ball1 {
-      @include ballshape(red);
-    }
-    &.ball2 {
-      @include ballshape(orange);
-    }
-    &.ball3 {
-      @include ballshape(yellow);
-    }
+  position: relative;
+  .ball1 {
+    @include ballshape(rgb(188, 69, 69));
+    @include moveball(1, 0px, 10px);
+    @include ani(1);
+  }
+  .ball2 {
+    @include ballshape(rgb(210, 131, 56));
+    @include moveball(2, 0px, 50px);
+    @include ani(2);
+  }
+  .ball3 {
+    @include ballshape(rgb(255, 213, 0));
+    @include moveball(3, 0px, 100px);
+    @include ani(3);
   }
 }
