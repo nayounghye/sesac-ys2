@@ -4,6 +4,7 @@ export default function UseCallbackEx2({ postId }) {
   const [post, setPost] = useState();
   const [text, setText] = useState("");
   const fetchData = useCallback(async () => {
+    console.log("포스트 삽입");
     const res = await fetch(
       `https://jsonplaceholder.typicode.com/posts/${postId}`
     );
