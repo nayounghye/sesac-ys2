@@ -4,7 +4,7 @@ function SassComponent() {
   return (
     // CSS를 편하게 작성하게 해주는 SCSS
     <>
-      <div className="scss-parents">
+      <div className="origin-sass">
         <div className="box red"></div>
         <div className="box orange"></div>
         <div className="box yellow"></div>
@@ -14,9 +14,16 @@ function SassComponent() {
         <div className="box purple"></div>
       </div>
 
-      <div className="scss-parents">안녕하세요</div>
+      <div className="scss-parents">
+        안녕하세요
+        <ul>
+          <li>Jordy</li>
+        </ul>
+      </div>
       <div className="box1"></div>
       <div className="box2"></div>
+      <button className="btn">일반 버튼</button>
+      <button className="btn-primary">강조 버튼</button>
     </>
   );
 }
