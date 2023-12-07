@@ -2,10 +2,6 @@ import Prac1_1_style from "../../styles/Prac1_1.scss";
 import bush from "./grass.png";
 
 function Prac1_1() {
-  const image = {
-    bush: bush,
-  };
-
   return (
     <>
       <h1>실습1 Style</h1>
