@@ -1,0 +1,64 @@
+:root {
+  --height-header: 80px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.Header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffd746;
+  position: fixed;
+  height: var(--height-header);
+  width: 100%;
+  padding: 0px 20px;
+  font-weight: 900;
+  top: 0;
+}
+
+.Header > div {
+  font-size: 35px;
+  color: black;
+}
+
+.Header > div > Link {
+  display: flex;
+}
+img {
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 55px;
+}
+
+.Header > div > a:visited {
+  text-decoration: none;
+  color: black;
+}
+
+.Header > nav {
+  display: flex;
+}
+
+.Header > nav > div {
+  margin-left: 20px;
+}
+
+main {
+  margin-top: var(--height-header);
+}
+
+.imgex {
+  height: 300px;
+  width: 300px;
+  margin: 20px 20px;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
