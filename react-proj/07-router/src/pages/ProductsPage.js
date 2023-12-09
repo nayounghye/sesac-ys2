@@ -25,7 +25,12 @@ export default function ProductsPage() {
               <li>상품 설명: {value.body}</li>
               <li>
                 {/* /product/1, /product/2 ..... */}
-                <Link to={`/products/${value.id}`}>상세페이지로 이동하기</Link>
+                <Link
+                  to={`/products
+                c/${value.id}`}
+                >
+                  상세페이지로 이동하기
+                </Link>
               </li>
             </ul>
           ))}

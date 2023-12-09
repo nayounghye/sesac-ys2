@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 
 export default function ProductDetailPage() {
-  const [product, setProduct] = useState();
+  const [product, setProduct] = useState(null);
+  const [error, setError] = useState("Loading...");
   const { id } = useParams();
   console.log(id);
   // 현재: product/:id
@@ -19,12 +20,36 @@ export default function ProductDetailPage() {
   const navigator = useNavigate();
 
   const getProduct = async () => {
-    const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
-    setProduct(await res.json());
+    try {
+      // 오류가 날 수도 있는 코드를 try 안에 넣는다.
+      const res = await fetch(
+        `https://jsonplaceholder.typicode.com/posts/${id}`
+      );
+      if (res.ok) {
+        const prod = await res.json();
+        setProduct(prod);
+      } else {
+        throw Error("존재하지 않는 상품입니다.");
+      }
+
+      //   const res = await axios(
+      //     `https://jsonplaceholder.typicode.com/posts/${id}`
+      //   );
+
+      //   const prod = res.data
+      //   setProduct(prod);
+    } catch (error) {
+      console.log(error);
+      setError(error.message);
+      // try 안에서 오류가 발생하면 catch로 이동함.
+    }
+    // navigator(-1);
   };
+
   useEffect(() => {
     getProduct();
   }, []);
+
   return (
     <>
       <div>여기는 상품 상세 페이지다니니!</div>
@@ -47,4 +72,5 @@ export default function ProductDetailPage() {
       )}
     </>
   );
+  //   나중에 이 onClick에 백엔드와 연결해서 사용하면됨!
 }
