@@ -33,7 +33,7 @@ function EventFunc(e) {
         {/* <button onClick={handleOnClick}>잘가</button>
         <button onClick={handleOnClickHello}>안녕</button>
 
-        {/* 함수에서 매개변수를 받고싶을 때 어캐해?*/}
+        {/* 함수에서 매개변수를 받고싶을 때 어떻게 할까?*/}
         {/* 방법1. onClick에서 익명함수를 선언하고, 그 내부에서 함수를 실행시킨다. */}
         {/* <button
           onClick={() => {
