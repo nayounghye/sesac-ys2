@@ -30,9 +30,10 @@ export default function Prac2() {
           {...register("age", {
             required: " 나이는 필수 항목입니다.",
             valueAsNumber: true,
+            // 방법1. validate 를 사용해 유효성 검사하는 방법
             validate: (value) => !isNaN(value) && parseFloat(value) >= 0,
           })}
-          // 0 이상 값 유효성검사 이렇게도 넣을 수 있음!
+          // 방법2. min 을 사용해 유효성 검사하는 방법
           // {...register("age", {
           //     min: {
           //       value: 0,
