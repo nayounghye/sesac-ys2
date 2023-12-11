@@ -16,11 +16,11 @@ function FuncRef() {
     <>
       <input type="text" ref={input} />
       <button type="button" onClick={focusInput}>
-        벝은
+        버튼
       </button>
       <div>{localVar.current}</div>
       <button type="button" onClick={plusLocalVar}>
-        벝은
+        버튼
       </button>
     </>
   );

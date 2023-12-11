@@ -10,11 +10,11 @@ function App() {
   return (
     <div>
       {/* <ListMap />
-      <ClassRef />
-      <FuncRef /> */}
+      <ClassRef /> */}
+      <FuncRef />
       {/* <ScrollBox /> */}
       {/* <Prac1_12 /> */}
-      <Prac1_34 />
+      {/* <Prac1_34 /> */}
     </div>
   );
 }
