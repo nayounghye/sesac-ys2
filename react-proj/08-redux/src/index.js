@@ -41,7 +41,7 @@
 //   </Provider>
 // );
 
-// 버전3. 리덕스 구조화
+// 버전3. redux 구조화
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";

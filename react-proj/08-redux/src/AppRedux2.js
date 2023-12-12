@@ -1,5 +1,7 @@
 import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
+import { increase } from "./store/counterReducer";
+import { decrease } from "./store/counterReducer";
 
 function AppRedux2() {
   return (
@@ -44,8 +46,10 @@ function Box4() {
   return (
     <div className="box">
       <h3>number : {number}</h3>
-      <button onClick={() => dispatch({ type: "INCREMENT" })}>PLUS</button>
-      <button onClick={() => dispatch({ type: "DECREMENT" })}>MINUS</button>
+      {/* <button onClick={() => dispatch({ type: "INCREMENT" })}>PLUS</button>
+      <button onClick={() => dispatch({ type: "DECREMENT" })}>MINUS</button> */}
+      <button onClick={() => dispatch(increase())}>PLUS</button>
+      <button onClick={() => dispatch(decrease())}>MINUS</button>
       <div>isData: {`${isData}`}</div>
       <button onClick={() => dispatch({ type: "CHANGE" })}>CHANGE</button>
     </div>
