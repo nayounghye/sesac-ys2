@@ -1,3 +1,4 @@
+// counter를 붙인 이유는 다른 reducer와 헷갈리지 말라고 표시한것!
 const INCREMENT = "counter/INCREMENT";
 const DECREMENT = "counter/DECREMENT";
 
