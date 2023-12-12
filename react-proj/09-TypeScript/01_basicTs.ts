@@ -52,3 +52,16 @@ let food2: readonly [string, number] = ["치킨", 29500];
 // food2[0] = "피자"; -> 에러 발생
 
 // Enum
+// 열거된 값들 중에 하나를 선택해야할 때 사용한다.
+// 죠르디, 앙몬드, 스카피
+enum NINIZ {
+  jordy = "죠르디",
+  angmond = "앙몬드",
+  scapy = "스카피",
+}
+console.log(NINIZ.jordy);
+
+const NINIZ = "죠르디";
+
+if (NINIZ == NINIZ.jordy) {
+}
