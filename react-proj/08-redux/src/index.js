@@ -10,34 +10,53 @@
 // );
 
 // 버전2. redux 적용
+// import React from "react";
+// import ReactDOM from "react-dom/client";
+// import "./index.css";
+// import AppRedux from "./AppRedux";
+
+// import { Provider } from "react-redux";
+// import { configureStore } from "@reduxjs/toolkit";
+// import { composeWithDevTools } from "redux-devtools-extension";
+
+// const initialValue = { number: 100 };
+// // state : {number : 100}
+// const reducer = (state = initialValue, action) => {
+//   switch (action.type) {
+//     case "INCREMENT":
+//       return { number: state.number + 1 };
+//     case "DECREMENT":
+//       return { number: state.number - 1 };
+//     default:
+//       return state;
+//   }
+// };
+
+// const store = configureStore({ reducer: reducer }, composeWithDevTools());
+
+// const root = ReactDOM.createRoot(document.getElementById("root"));
+// root.render(
+//   <Provider store={store}>
+//     <AppRedux />
+//   </Provider>
+// );
+
+// 버전3. 리덕스 구조화
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import AppRedux from "./AppRedux";
+import AppRedux2 from "./AppRedux2";
 
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import { composeWithDevTools } from "redux-devtools-extension";
+import rootReducer from "./store";
 
-const initialValue = { number: 100 };
-// state : {number : 100}
-const reducer = (state = initialValue, action) => {
-  switch (action.type) {
-    case "INCREMENT":
-      return { number: state.number + 1 };
-    case "DECREMENT":
-      return { number: state.number - 1 };
-    default:
-      return state;
-  }
-};
-
-const store = configureStore({ reducer: reducer }, composeWithDevTools());
-
+const store = configureStore({ reducer: rootReducer }, composeWithDevTools());
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
-    <AppRedux />
+    <AppRedux2 />
   </Provider>
 );
 

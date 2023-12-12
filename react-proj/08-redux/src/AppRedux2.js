@@ -1,7 +1,7 @@
 import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
 
-function AppRedux1() {
+function AppRedux2() {
   return (
     <div>
       <Box1 />
@@ -10,7 +10,7 @@ function AppRedux1() {
 }
 
 function Box1() {
-  const number = useSelector((state) => state.number);
+  const number = useSelector((state) => state.counter.number);
   return (
     <div className="box">
       <h3>number : {number}</h3>
@@ -20,7 +20,7 @@ function Box1() {
 }
 
 function Box2() {
-  const number = useSelector((state) => state.number);
+  const number = useSelector((state) => state.counter.number);
   return (
     <div className="box">
       <h3>number : {number}</h3>
@@ -38,15 +38,18 @@ function Box3() {
 }
 
 function Box4() {
-  const number = useSelector((state) => state.number);
+  const number = useSelector((state) => state.counter.number);
+  const isData = useSelector((state) => state.isData);
   const dispatch = useDispatch();
   return (
     <div className="box">
       <h3>number : {number}</h3>
       <button onClick={() => dispatch({ type: "INCREMENT" })}>PLUS</button>
       <button onClick={() => dispatch({ type: "DECREMENT" })}>MINUS</button>
+      <div>isData: {`${isData}`}</div>
+      <button onClick={() => dispatch({ type: "CHANGE" })}>CHANGE</button>
     </div>
   );
 }
 
-export default AppRedux1;
+export default AppRedux2;
