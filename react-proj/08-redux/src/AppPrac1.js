@@ -14,7 +14,7 @@ function BankBox() {
       <input type="number" onChange={() => {}}></input>
       <button onClick={() => dispatch(increase())}>입금</button>
       <button onClick={() => dispatch(decrease())}>출금</button>
-      <button onClick={() => dispatch({ type: "CHANGE", data: { number } })}>
+      <button onClick={() => dispatch({ type: "CHANGE", payload: { number } })}>
         CHANGE
       </button>
     </div>
