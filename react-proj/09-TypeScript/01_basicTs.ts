@@ -29,4 +29,26 @@ abc = "2";
 // any는 모든 자료형을 다 받을 수 있다.
 let anyArr: any[] = [1, "죠르디", null, undefined, {}];
 
-let obj: object;
+// 자료형이 객체인 경우
+let obj: object = {
+  name: "jordy",
+  age: "999",
+  gender: "?",
+};
+
+//Tuple
+let food: [string, number] = ["치킨", 29500];
+console.log(food[0]);
+food[0] = "피자";
+console.log(food[0]);
+
+// food[2]="햄버거" -> 에러 발생!
+// Tuple의 한계 위 처럼 할당하는 건 오류로 잡지만 push 메소드를 이용하면 오류를 잡지 않고, 실제로 값이 들어가기까지 한다.
+food.push("aaaa");
+console.log(food);
+
+// readonly : 읽기만 가능한 datatype!
+let food2: readonly [string, number] = ["치킨", 29500];
+// food2[0] = "피자"; -> 에러 발생
+
+// Enum
