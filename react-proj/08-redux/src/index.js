@@ -85,7 +85,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import Prac1 from "./Prac1";
+import AppPrac1 from "./AppPrac1";
 
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
@@ -96,7 +96,7 @@ const store = configureStore({ reducer: rootReducer }, composeWithDevTools());
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
-    <Prac1 />
+    <AppPrac1 />
   </Provider>
 );
 

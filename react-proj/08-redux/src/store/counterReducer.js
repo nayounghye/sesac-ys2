@@ -8,7 +8,7 @@ const DECREMENT = "counter/DECREMENT";
 export const increase = () => ({ type: INCREMENT });
 export const decrease = () => ({ type: DECREMENT });
 
-const initialValue = { number: 100 };
+const initialValue = { number: 0 };
 // state : {number : 100}
 const counterReducer = (state = initialValue, action) => {
   switch (action.type) {
