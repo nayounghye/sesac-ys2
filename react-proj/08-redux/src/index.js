@@ -85,7 +85,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
+import App from "./App";
 import AppPrac1 from "./AppPrac1";
+import AppRedux from "./AppRedux";
+import AppRedux2 from "./AppRedux2";
+import AppRedux3 from "./AppRedux3";
 
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
@@ -96,7 +100,16 @@ const store = configureStore({ reducer: rootReducer }, composeWithDevTools());
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
+    <h1>실습1. Redux 실습</h1>
     <AppPrac1 />
+    {/* <h1>버전1. props drilling 예시</h1>
+    <App />
+    <h1>버전2. redux 적용</h1>
+    <AppRedux />
+    <h1>버전3. redux 구조화</h1>
+    <AppRedux2 />
+    <h1>버전4. redux 구조화 + containers 컴포넌트 폴더와 presentational 컴포넌트 폴더 분리</h1>
+    <AppRedux3 /> */}
   </Provider>
 );
 

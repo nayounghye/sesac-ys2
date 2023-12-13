@@ -1,38 +1,15 @@
 import "./App.css";
-import { useDispatch, useSelector } from "react-redux";
-import { plus, minus } from "./store/PracReducer";
-import { useState } from "react";
+import { BankBox } from "./containers/Prac1Containers";
 
-function BankBox() {
-  const money = useSelector((state) => state.counter.money);
-  const isData = useSelector((state) => state.isData);
-  const dispatch = useDispatch();
-  const [amount, setAmount] = useState(0); // 사용자가 입금할 금액
+// containers 폴더 : redux store에 직접적으로 접근하는 컴포넌트를 모아두기 위해서 생성
+// components 폴더 :  redux store에 직접적으로 접근하지 않고,보통 presentational 컴포넌트만 저장.
 
-  // 사용자가 입력한 값을 상태에 반영
-  const handleInputChange = (e) => {
-    setAmount(e.target.value);
-  };
-
-  // 입금
-  const handlePlus = () => {
-    dispatch(plus(Number(amount)));
-  };
-
-  // 출금
-  const handleMinus = () => {
-    dispatch(minus(Number(amount)));
-  };
-
+function AppPrac1() {
   return (
-    <div className="bankbox">
-      <h1>NINIZ 은행</h1>
-      <h2>잔액 : {money}</h2>
-      <input type="number" onChange={handleInputChange} value={amount}></input>
-      <button onClick={handlePlus}>입금</button>
-      <button onClick={handleMinus}>출금</button>
+    <div>
+      <BankBox />
     </div>
   );
 }
 
-export default BankBox;
+export default AppPrac1;

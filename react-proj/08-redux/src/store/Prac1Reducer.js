@@ -10,18 +10,18 @@ export const minus = (amount) => ({ type: MINUS, payload: amount });
 
 const initialValue = { money: 0 };
 // state : {number : 100}
-const counterReducer = (state = initialValue, action) => {
+const Prac1Reducer = (state = initialValue, action) => {
   switch (action.type) {
-    // 액션이 "INCREMENT"이거나, INCREMENT를 만났을 때 리턴값을 보낸다.
-    case "PLUS": // INCREMENT 상수 선언 전 버전 3
-    case PLUS: // INCREMENT 상수 선언 후 버전 3-1
+    // 액션이 "PLUS"이거나, PLUS 만났을 때 리턴값을 보낸다.
+    case "PLUS": // PLUS 상수 선언 전 버전 3
+    case PLUS: // PLUS 상수 선언 후 버전 3-1
       return { ...state, money: state.money + Number(action.payload) };
-    case "MINUS": // DECREMENT 상수 선언 전 버전 3
-    case MINUS: // DECREMENT 상수 선언 후 버전 3-1
+    case "MINUS": // MINUS 상수 선언 전 버전 3
+    case MINUS: // MINUS 상수 선언 후 버전 3-1
       return { ...state, money: state.money - Number(action.payload) };
     default:
       return state;
   }
 };
 
-export default counterReducer;
+export default Prac1Reducer;
