@@ -1,3 +1,4 @@
+// TS Type 실습
 // 아래 나와 있는 heroGame_A 와 heroGame_B 를 만족할 수 있는 interface Game 만들어보기
 
 interface Game {
