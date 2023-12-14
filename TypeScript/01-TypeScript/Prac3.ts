@@ -13,4 +13,4 @@ console.log(sumsum(5, 11));
 const sumsumsum = (...num: number[]): number => {
   return num.reduce((a, b) => a + b, 0);
 };
-console.log(sumsumsum(1, 2, 3, 4, 10)); // 20
+console.log(sumsumsum(1, 2, 3, 4, 10));
