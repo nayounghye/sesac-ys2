@@ -1,5 +1,5 @@
 let str: string = "hello";
-//str = 5 ; -> 에러발생함!
+//str = 5 ; -> 에러 발생함!
 console.log(str);
 
 let num: number;
@@ -55,13 +55,25 @@ let food2: readonly [string, number] = ["치킨", 29500];
 // 열거된 값들 중에 하나를 선택해야할 때 사용한다.
 // 죠르디, 앙몬드, 스카피
 enum NINIZ {
+  jordy,
+  angmond,
+  scapy,
+}
+
+console.log(NINIZ.jordy);
+
+const niniz = 0;
+
+if (niniz == NINIZ.jordy) {
+  console.log("죠하!");
+}
+let aaa: NINIZ = 2; // 출력: 스카피
+// let aaaaa: Weather = 3; // error
+
+enum NINIZ2 {
   jordy = "죠르디",
   angmond = "앙몬드",
   scapy = "스카피",
 }
-console.log(NINIZ.jordy);
 
-const NINIZ = "죠르디";
-
-if (NINIZ == NINIZ.jordy) {
-}
+console.log(NINIZ2.jordy);
