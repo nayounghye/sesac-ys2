@@ -59,7 +59,6 @@ enum NINIZ {
   angmond,
   scapy,
 }
-
 console.log(NINIZ.jordy);
 
 const niniz = 0;
@@ -67,8 +66,9 @@ const niniz = 0;
 if (niniz == NINIZ.jordy) {
   console.log("죠하!");
 }
-let aaa: NINIZ = 2; // 출력: 스카피
-// let aaaaa: Weather = 3; // error
+
+let aaa: NINIZ = 2;
+// let aaaaa: NINIZ = 3; // error
 
 enum NINIZ2 {
   jordy = "죠르디",
@@ -76,4 +76,4 @@ enum NINIZ2 {
   scapy = "스카피",
 }
 
-console.log(NINIZ2.jordy);
+console.log(NINIZ2.jordy); // 출력: 죠르디
