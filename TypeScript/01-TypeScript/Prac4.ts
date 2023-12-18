@@ -18,3 +18,6 @@ const arrElement2 = <T>(arr: T[], index: number): T | boolean => {
   return arr[index];
 };
 console.log(arrElement2<string>(["a"], 1)); // false
+
+
+
