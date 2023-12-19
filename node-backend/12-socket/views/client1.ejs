@@ -10,6 +10,9 @@
   <body>
     <h3>소켓 연습</h3>
     <button onclick="hello()">hello</button>
+    <!-- 소켓은 각각 클라이언트에게만 정보를 전달할 수 있다. 
+      만약 전체 클라이언트에게 정보를 전달하고자 하면 server에서 보내줘야한다! -->
+    <button onclick="entry()">입장</button>
     <!-- 소켓 객체 생성 -->
     <script>
       // 커넥션은 id()를 통해 커넥션 이벤트가 발생한다. -> 이걸 서버에서 받아줘야 함!
@@ -21,8 +24,19 @@
         // 전송할 데이터의 형태는 자유롭게 쓰면 된다. (문자열, 숫자, 객체)
         socket.emit("hello", { msg: "죠하!" });
       }
+
+      // 이벤트를 특정함수 안에 넣어둘 때 주의할 점, 해당 이벤트가 1번만 실행하게끔 해야한다.
+      // 그래서 대체로 특정함수 안에 이벤트를 잘 넣지 않음!
       socket.on("bye", (res) => {
         console.log(res);
+      });
+
+      function entry() {
+        socket.emit("entry");
+      }
+
+      socket.on("notice", (res) => {
+        console.log(res.msg);
       });
     </script>
   </body>

@@ -27,7 +27,15 @@ io.on("connection", (socket) => {
   socket.on("hello", (res) => {
     // res에선 클라이언트에서 socket을 이용해 보내준 데이터를 받아온다.
     console.log(res);
+    // 클라이언트로 bye를 보냄.
     socket.emit("bye", { msg: "죠바!" });
+  });
+
+  // 서버에서 io객체를 사용하면 클라이언트들 전체를 대상으로 하는 것!
+  socket.on("entry", (res) => {
+    console.log("entry : ", res);
+    // 전체 클라이언트를 대상으로 데이터를 보낼 땐 io.meit 사용
+    io.emit("notice", { msg: `${socket.id}님이 입장했습니다.` });
   });
 });
 
