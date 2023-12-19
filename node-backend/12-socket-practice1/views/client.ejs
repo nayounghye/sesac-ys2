@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>소켓</title>
+    <!-- 소켓io를 클라이언트에서 불러오는 스크립트 -->
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+  <body>
+    <h3>실습1 Socket 연습</h3>
+    <button onclick="hello()">죠하</button>
+    <button onclick="study()">죠스</button>
+    <button onclick="bye()">죠바</button>
+    <div id="text"></div>
+    <script>
+      const socket = io();
+      const text = document.getElementById("text");
+      function hello() {
+        socket.emit("hello", { msg: "죠르디 안녕?" });
+      }
+      socket.on("hh", (res) => {
+        text.innerHTML = res.msg;
+        console.log(res.msg);
+      });
+
+      function study() {
+        socket.emit("study", { msg: "죠르디 공부해!" });
+      }
+      socket.on("ss", (res) => {
+        text.innerHTML = res.msg;
+        console.log(res.msg);
+      });
+
+      function bye() {
+        socket.emit("bye", { msg: "죠르디 잘가!" });
+      }
+      socket.on("bb", (res) => {
+        text.innerHTML = res.msg;
+        console.log(res.msg);
+      });
+    </script>
+  </body>
+</html>
