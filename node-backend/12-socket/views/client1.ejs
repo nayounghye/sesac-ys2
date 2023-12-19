@@ -4,8 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>소켓</title>
+    <!-- 소켓io를 클라이언트에서 불러오는 스크립트 -->
+    <script src="/socket.io/socket.io.js"></script>
   </head>
   <body>
     <h3>소켓 연습</h3>
+    <button onclick="hello()">hello</button>
+    <!-- 소켓 객체 생성 -->
+    <script>
+      // 커넥션은 id()를 통해 커넥션 이벤트가 발생한다. -> 이걸 서버에서 받아줘야 함!
+      const socket = io();
+      // 소켓을 이용해 데이터 전송하는 함수 : emit
+      // 소켓을 이용해 데이터 수신하는 이벤트 : on
+      function hello() {
+        // (전송할 이벤트 이름 [, 전송할 데이터])
+        // 전송할 데이터의 형태는 자유롭게 쓰면 된다. (문자열, 숫자, 객체)
+        socket.emit("hello", { msg: "죠하!" });
+      }
+      socket.on("bye", (res) => {
+        console.log(res);
+      });
+    </script>
   </body>
 </html>
