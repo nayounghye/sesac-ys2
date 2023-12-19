@@ -38,19 +38,26 @@ const io = require("socket.io")(server, {
   },
 });
 
+const userIdArr = {};
+// { key : value }형태로 저장이 된다 -> {"socket.id": "user.id"}
+
 io.on("connection", (socket) => {
-  console.log("socket id", socket.id);
-  socket.on("hello", (res) => {
-    console.log(res);
-    socket.emit("resHello", { msg: "안녕하세요!" });
+  console.log("socket id : ", socket.id);
+  //   실습 3 : socket id를 이용해 입장 공지
+  io.emit("notice", { msg: `${socket.id}님이 입장하셨습니다.` });
+
+  socket.on("entry", (res) => {
+    // 실습 3-1 : 입장 시에 받은 user id로 입장 공지
+
+    // 실습 3-2 : 닉네임 중복 여부에 따라 정상적으로 notice를 하든지, 닉네임 중복 오류 메시지를 보내든지 해야 한다.
+    // io.emit("notice", { msg: `${res.userId}님이 입장하셨습니다.` });
+    userIdArr[socket.id] = res.userId;
   });
-  socket.on("study", (res) => {
-    console.log(res);
-    socket.emit("resStudy", { msg: "공부하세요!" });
-  });
-  socket.on("bye", (res) => {
-    console.log(res);
-    socket.emit("resBye", { msg: "안녕히가세요!" });
+
+  //   실습 3-3 : 퇴장 시키기
+  socket.on("disconnect", () => {
+    io.emit("notice", { msg: `${userIdArr[socket.id]}님이 퇴장하셨습니다.` });
+    delete userIdArr[socket.id];
   });
 });
 
