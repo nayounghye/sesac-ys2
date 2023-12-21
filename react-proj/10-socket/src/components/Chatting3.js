@@ -1,5 +1,5 @@
 import "../styles/chat.css";
-import { useCallback, useEffect, useState, useMemo } from "react";
+import { useCallback, useEffect, useState, useMemo, useRef } from "react";
 import Chat from "./Chat";
 import Notice from "./Notice";
 import io from "socket.io-client";
@@ -17,6 +17,24 @@ export default function Chatting3() {
     console.log("connected", socket.connected);
     if (!socket.connected) socket.connect();
   };
+
+  // 입력 필드에 대한 참조 생성
+  const userIdInputRef = useRef(null);
+  const msgInputRef = useRef(null);
+
+  // 닉네임 입력창 포커스
+  useEffect(() => {
+    if (userIdInputRef.current) {
+      userIdInputRef.current.focus();
+    }
+  }, []);
+
+  // 채팅 입력창 포커스
+  useEffect(() => {
+    if (userId && msgInputRef.current) {
+      msgInputRef.current.focus();
+    }
+  }, [userId]);
 
   useEffect(() => {
     socket.on("error", (res) => {
@@ -121,6 +139,7 @@ export default function Chatting3() {
               value={msgInput}
               onChange={(e) => setMsgInput(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && sendMsg()}
+              ref={msgInputRef}
             />
             <button onClick={sendMsg}>전송</button>
           </div>
@@ -128,11 +147,13 @@ export default function Chatting3() {
       ) : (
         <>
           <div className="input-container">
+            닉네임 :
             <input
               type="text"
               value={userIdInput}
               onChange={(e) => setUserIdInput(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && entryChat()}
+              ref={userIdInputRef}
             />
             <button onClick={entryChat}>입장</button>
           </div>
