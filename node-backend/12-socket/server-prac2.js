@@ -40,24 +40,70 @@ const io = require("socket.io")(server, {
 
 const userIdArr = {};
 // { key : value }형태로 저장이 된다 -> {"socket.id": "user.id"}
+// {"socket.id": "user.id"}
+
+// 실습 5 : DM기능을 위한 현재 채팅방 인원
+const updateUserList = () => {
+  io.emit("userList", userIdArr);
+};
 
 io.on("connection", (socket) => {
   console.log("socket id : ", socket.id);
   //   실습 3 : socket id를 이용해 입장 공지
-  io.emit("notice", { msg: `${socket.id}님이 입장하셨습니다.` });
+  // io.emit("notice", { msg: `${socket.id}님이 입장하셨습니다.` });
 
+  // 실습 3-3 : 퇴장시키기 -> 누가 입장하고 있는지 알아야 하고, 해당 정보를 전체적으로 저장할 필요가 있어 아래 코드 작성.
+  // userIdArr[socket.id] = res.userId;
+
+  // 실습 3-1 : 입장 시에 받은 user id로 입장 공지
   socket.on("entry", (res) => {
-    // 실습 3-1 : 입장 시에 받은 user id로 입장 공지
+    // 실습 3-2 : 퇴장시키기
+    // 닉네임 중복 여부에 따라 정상적으로 notice를 하든지, 닉네임 중복 오류 메시지를 보내든지 해야 한다.
+    // Object.values(userIdArr) =>  ["userIda", "userIdb", "userIdc"]
+    // includes : 문자열이나 배열에서 인자로 넘겨준 값이 존재하는지 안하는지 찾을 수 있음!
+    // indexOf : 배열에서 인자로 넘겨준 값의 인덱스를 추출, 없다면 -1 을 반환하는 함수이다.
 
-    // 실습 3-2 : 닉네임 중복 여부에 따라 정상적으로 notice를 하든지, 닉네임 중복 오류 메시지를 보내든지 해야 한다.
-    // io.emit("notice", { msg: `${res.userId}님이 입장하셨습니다.` });
-    userIdArr[socket.id] = res.userId;
+    if (Object.values(userIdArr).includes(res.userId)) {
+      // 닉네임이 중복될 경우
+      socket.emit("error", { msg: "중복된 ID가 존재하여 입장이 불가합니다." });
+    } else {
+      // 중복되지 않을 경우에
+      io.emit("notice", { msg: `${res.userId}님이 입장하셨습니다.` });
+      socket.emit("entrySuccess", { userId: res.userId });
+      userIdArr[socket.id] = res.userId;
+      updateUserList();
+    }
+    console.log(userIdArr);
+
+    // - 이 들어간 요소를 점접근법으로 작성하는 방법 : [] 에 담는다!
+    // const obj = {abc: "aaa". "cd-e" : "bbb"};
+    // obj.abc;
+    //obj["cd-e"] // '-'같은 기호가 들어있으면 대괄호로 담아서 적어야한다.
+
+    //   실습 3-3 : 퇴장 시키기
+    socket.on("disconnect", () => {
+      io.emit("notice", { msg: `${userIdArr[socket.id]}님이 퇴장하셨습니다.` });
+      delete userIdArr[socket.id];
+      console.log(userIdArr);
+      updateUserList();
+    });
   });
-
-  //   실습 3-3 : 퇴장 시키기
-  socket.on("disconnect", () => {
-    io.emit("notice", { msg: `${userIdArr[socket.id]}님이 퇴장하셨습니다.` });
-    delete userIdArr[socket.id];
+  // 실습 4 : 채팅창 메시지 전송
+  socket.on("sendMsg", (res) => {
+    if (res.dm === "all") io.emit("chat", { userId: res.userId, msg: res.msg });
+    else {
+      // io.to(소켓아이디).emit() 로 사용이 가능 : 선택한 소켓아이디에게만 전달
+      io.to(res.dm).emit("chat", {
+        userId: res.userId,
+        msg: res.msg,
+        dm: true,
+      });
+      socket.emit("chat", {
+        userId: res.userId,
+        msg: res.msg,
+        dm: true,
+      });
+    }
   });
 });
 

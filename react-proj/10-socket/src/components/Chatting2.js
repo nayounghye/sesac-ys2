@@ -32,6 +32,13 @@ export default function Chatting1() {
 
   useEffect(() => {
     // initSocketConnect();
+    socket.on("error", (res) => {
+      alert(res.msg);
+    });
+
+    socket.on("entrySuccess", (res) => {
+      setUserId(res.userId);
+    });
   }, []);
 
   useEffect(() => {
@@ -48,11 +55,11 @@ export default function Chatting1() {
 
   const sendMsg = () => {};
 
-  //   실습 3-2 : 바로 userId에 값을 할당하지 않고, 서버에서 닉네임 중복 여부에 따라 성공/실패 여부에 따라 다르게 처리한다.
   const entryChat = () => {
     initSocketConnect();
     socket.emit("entry", { userId: userIdInput });
-    setUserId(userIdInput);
+    //   실습 3-2 : 바로 userId에 값을 할당하지 않고, 서버에서 닉네임 중복 여부에 따라 성공/실패 여부에 따라 다르게 처리한다.
+    // setUserId(userIdInput);
   };
   return (
     <>
