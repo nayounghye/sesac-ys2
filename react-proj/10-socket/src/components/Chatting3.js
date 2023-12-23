@@ -111,6 +111,19 @@ export default function Chatting3() {
     socket.emit("entry", { userId: userIdInput });
   };
 
+  // 채팅 목록을 변환하고 isFirstOfType 속성을 추가
+  const enhancedChatList = chatList.reduce((acc, chat, i, arr) => {
+    let isFirstOfType = false;
+
+    if (chat.type === "other") {
+      if (i === 0 || (i > 0 && arr[i - 1].type !== "other")) {
+        isFirstOfType = true;
+      }
+    }
+
+    acc.push({ ...chat, isFirstOfType });
+    return acc;
+  }, []);
   return (
     <>
       {/* <h3>실습 4, 5번</h3>
@@ -123,20 +136,18 @@ export default function Chatting3() {
         <>
           <div>{userId}님 환영합니다.</div>
           <div className="chat-container">
-            {chatList.map((chat, i) => {
-              const isFirstChild = i === 1;
-              const isLastChild = i === chatList.length - 1;
-              if (chat.type === "notice") return <Notice key={i} chat={chat} />;
-              else
-                return (
-                  <Chat
-                    key={i}
-                    chat={chat}
-                    isFirst={isFirstChild}
-                    isLast={isLastChild}
-                    userId={chat.userId}
-                  />
-                );
+            {enhancedChatList.map((chat, i) => {
+              // 여기에서 isFirstOfType을 chat 객체에서 추출
+              return chat.type === "notice" ? (
+                <Notice key={i} chat={chat} />
+              ) : (
+                <Chat
+                  key={i}
+                  chat={chat}
+                  isFirstOfType={chat.isFirstOfType} // 올바른 참조
+                  userId={chat.userId}
+                />
+              );
             })}
           </div>
           <div className="input-container chat">
