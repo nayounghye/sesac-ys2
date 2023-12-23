@@ -122,34 +122,42 @@ export default function Chatting3() {
       {userId ? (
         <>
           <div>{userId}님 환영합니다.</div>
-          <div className="all-container">
-            <div className="chat-container">
-              {chatList.map((chat, i) => {
-                if (chat.type === "notice")
-                  return <Notice key={i} chat={chat} />;
-                else return <Chat key={i} chat={chat} />;
-              })}
-            </div>
-            <div className="input-container">
-              <select value={dmTo} onChange={(e) => setDmTo(e.target.value)}>
-                <option value="all">전체</option>
-                {userListOptions}
-                <option></option>
-              </select>
-              <input
-                type="text"
-                value={msgInput}
-                onChange={(e) => setMsgInput(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && sendMsg()}
-                ref={msgInputRef}
-              />
-              <button onClick={sendMsg}>전송</button>
-            </div>
+          <div className="chat-container">
+            {chatList.map((chat, i) => {
+              const isFirstChild = i === 1;
+              const isLastChild = i === chatList.length - 1;
+              if (chat.type === "notice") return <Notice key={i} chat={chat} />;
+              else
+                return (
+                  <Chat
+                    key={i}
+                    chat={chat}
+                    isFirst={isFirstChild}
+                    isLast={isLastChild}
+                  />
+                );
+            })}
+          </div>
+          <div className="input-container chat">
+            <select value={dmTo} onChange={(e) => setDmTo(e.target.value)}>
+              <option value="all">전체</option>
+              {userListOptions}
+              <option></option>
+            </select>
+            <input
+              type="text"
+              value={msgInput}
+              onChange={(e) => setMsgInput(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && sendMsg()}
+              ref={msgInputRef}
+            />
+
+            <button onClick={sendMsg}>전송</button>
           </div>
         </>
       ) : (
         <>
-          <div className="input-container">
+          <div className="input-container name">
             닉네임 :
             <input
               type="text"
