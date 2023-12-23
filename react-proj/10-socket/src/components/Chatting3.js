@@ -77,7 +77,7 @@ export default function Chatting3() {
       const content = `&{res.dm ? "(속닥속닥)" : ''} ${res.userId}:${res.msg}`;
       const newChatList = [
         ...chatList,
-        { type: type, content: `${res.userId}:${res.msg}` },
+        { type: type, userId: res.userId, content: `${res.msg}` },
       ];
       setChatList(newChatList);
     },
@@ -113,11 +113,11 @@ export default function Chatting3() {
 
   return (
     <>
-      <h3>실습 4, 5번</h3>
+      {/* <h3>실습 4, 5번</h3>
       <ul>
         <li>채팅창 메시지 전송</li>
         <li>DM 기능 구현</li>
-      </ul>
+      </ul> */}
 
       {userId ? (
         <>
@@ -134,37 +134,51 @@ export default function Chatting3() {
                     chat={chat}
                     isFirst={isFirstChild}
                     isLast={isLastChild}
+                    userId={chat.userId}
                   />
                 );
             })}
           </div>
           <div className="input-container chat">
-            <select value={dmTo} onChange={(e) => setDmTo(e.target.value)}>
-              <option value="all">전체</option>
-              {userListOptions}
-              <option></option>
-            </select>
-            <input
-              type="text"
-              value={msgInput}
-              onChange={(e) => setMsgInput(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && sendMsg()}
-              ref={msgInputRef}
-            />
+            <div className="send-container">
+              <select value={dmTo} onChange={(e) => setDmTo(e.target.value)}>
+                <option value="all">전체</option>
+                {userListOptions}
+                <option></option>
+              </select>
+              <input
+                type="text"
+                value={msgInput}
+                onChange={(e) => setMsgInput(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && sendMsg()}
+                ref={msgInputRef}
+              />
 
-            <button onClick={sendMsg}>전송</button>
+              <button type="button" onClick={sendMsg}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-send"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z" />
+                </svg>
+              </button>
+            </div>
           </div>
         </>
       ) : (
         <>
           <div className="input-container name">
-            닉네임 :
             <input
               type="text"
               value={userIdInput}
               onChange={(e) => setUserIdInput(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && entryChat()}
               ref={userIdInputRef}
+              placeholder="닉네임을 입력하세요."
             />
             <button onClick={entryChat}>입장</button>
           </div>
