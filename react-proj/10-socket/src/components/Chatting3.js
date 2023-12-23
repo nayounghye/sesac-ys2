@@ -113,15 +113,20 @@ export default function Chatting3() {
 
   // 채팅 목록을 변환하고 isFirstOfType 속성을 추가
   const enhancedChatList = chatList.reduce((acc, chat, i, arr) => {
-    let isFirstOfType = false;
+    let isFirst = i === 0 || arr[i - 1].type !== chat.type;
+    let isLast = i === arr.length - 1 || arr[i + 1].type !== chat.type;
+    acc.push({
+      ...chat,
+      isFirst,
+      isLast,
+    });
 
     if (chat.type === "other") {
       if (i === 0 || (i > 0 && arr[i - 1].type !== "other")) {
-        isFirstOfType = true;
+        isFirst = true;
       }
     }
 
-    acc.push({ ...chat, isFirstOfType });
     return acc;
   }, []);
   return (
@@ -144,7 +149,8 @@ export default function Chatting3() {
                 <Chat
                   key={i}
                   chat={chat}
-                  isFirstOfType={chat.isFirstOfType} // 올바른 참조
+                  isFirst={chat.isFirst}
+                  isLast={chat.isLast}
                   userId={chat.userId}
                 />
               );

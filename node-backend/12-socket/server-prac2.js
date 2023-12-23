@@ -105,6 +105,14 @@ io.on("connection", (socket) => {
       });
     }
   });
+
+  socket.on("startTyping", (userId) => {
+    socket.broadcast.emit("userTyping", { userId, typing: true });
+  });
+
+  socket.on("stopTyping", (userId) => {
+    socket.broadcast.emit("userTyping", { userId, typing: false });
+  });
 });
 
 server.listen(PORT, function () {
