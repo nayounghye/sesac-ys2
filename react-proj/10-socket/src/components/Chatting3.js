@@ -74,10 +74,10 @@ export default function Chatting3() {
   const addChatList = useCallback(
     (res) => {
       const type = res.userId === userId ? "my" : "other";
-      const content = `&{res.dm ? "(속닥속닥)" : ''} ${res.userId}:${res.msg}`;
+      const content = `${res.dm ? "(속닥속닥)" : ""} ${res.msg}`;
       const newChatList = [
         ...chatList,
-        { type: type, userId: res.userId, content: `${res.msg}` },
+        { type: type, userId: res.userId, content: content },
       ];
       setChatList(newChatList);
     },
@@ -129,6 +129,7 @@ export default function Chatting3() {
 
     return acc;
   }, []);
+
   return (
     <>
       {/* <h3>실습 4, 5번</h3>
@@ -139,7 +140,7 @@ export default function Chatting3() {
 
       {userId ? (
         <>
-          <div>{userId}님 환영합니다.</div>
+          {/* <div>{userId}님 환영합니다.</div> */}
           <div className="chat-container">
             {enhancedChatList.map((chat, i) => {
               // 여기에서 isFirstOfType을 chat 객체에서 추출
@@ -169,6 +170,7 @@ export default function Chatting3() {
                 onChange={(e) => setMsgInput(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && sendMsg()}
                 ref={msgInputRef}
+                placeholder="    채팅을 입력하세요."
               />
 
               <button type="button" onClick={sendMsg}>
@@ -197,7 +199,18 @@ export default function Chatting3() {
               ref={userIdInputRef}
               placeholder="닉네임을 입력하세요."
             />
-            <button onClick={entryChat}>입장</button>
+            <button onClick={entryChat}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                fill="currentColor"
+                class="bi bi-arrow-up-circle-fill"
+                viewBox="0 0 16 16"
+              >
+                <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z" />
+              </svg>
+            </button>
           </div>
         </>
       )}
