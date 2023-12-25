@@ -7,6 +7,12 @@ export default function Chat({ chat, isFirst, isLast, userId }) {
     chatClass += " last-chat";
   }
 
+  const chatTime = new Date(chat.time).toLocaleTimeString("ko-KR", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  });
+
   return (
     <>
       {/* 컴포넌트화한 이유 : 공지와 채팅리스트가 ui가 다르므로 분리함! */}
@@ -17,6 +23,12 @@ export default function Chat({ chat, isFirst, isLast, userId }) {
       {/* isFirst가 true일 때만 userId 표시 */}
       <div className={chatClass}>
         <div className="content">{chat.content}</div>
+        {isLast && (
+          <div className={`${chatClass} chat-time`}>
+            {console.log("Chat object:", chat)}
+            {chatTime}
+          </div>
+        )}
       </div>
     </>
   );

@@ -88,20 +88,26 @@ io.on("connection", (socket) => {
       updateUserList();
     });
   });
+
+  const messageTime = new Date().toISOString(); // 채팅입력 시 시간 생성
+
   // 실습 4 : 채팅창 메시지 전송
   socket.on("sendMsg", (res) => {
-    if (res.dm === "all") io.emit("chat", { userId: res.userId, msg: res.msg });
+    if (res.dm === "all")
+      io.emit("chat", { userId: res.userId, msg: res.msg, time: messageTime });
     else {
       // io.to(소켓아이디).emit() 로 사용이 가능 : 선택한 소켓아이디에게만 전달
       io.to(res.dm).emit("chat", {
         userId: res.userId,
         msg: res.msg,
         dm: true,
+        time: messageTime,
       });
       socket.emit("chat", {
         userId: res.userId,
         msg: res.msg,
         dm: true,
+        time: messageTime,
       });
     }
   });

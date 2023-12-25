@@ -77,7 +77,7 @@ export default function Chatting3() {
       const content = `${res.dm ? "(속닥속닥)" : ""} ${res.msg}`;
       const newChatList = [
         ...chatList,
-        { type: type, userId: res.userId, content: content },
+        { type: type, userId: res.userId, content: content, time: res.time },
       ];
       setChatList(newChatList);
     },
@@ -130,6 +130,17 @@ export default function Chatting3() {
     return acc;
   }, []);
 
+  // 채팅에 따른 스크롤바 참조 생성
+  const chatContainerRef = useRef(null);
+
+  useEffect(() => {
+    // 채팅 목록이 변경될 때마다 호출
+    if (chatContainerRef.current) {
+      const scrollHeight = chatContainerRef.current.scrollHeight;
+      chatContainerRef.current.scrollTo(0, scrollHeight);
+    }
+  }, [chatList]); // chatList가 변경될 때마다 useEffect 실행!
+
   return (
     <>
       {/* <h3>실습 4, 5번</h3>
@@ -141,7 +152,7 @@ export default function Chatting3() {
       {userId ? (
         <>
           {/* <div>{userId}님 환영합니다.</div> */}
-          <div className="chat-container">
+          <div className="chat-container" ref={chatContainerRef}>
             {enhancedChatList.map((chat, i) => {
               // 여기에서 isFirstOfType을 chat 객체에서 추출
               return chat.type === "notice" ? (
@@ -170,7 +181,7 @@ export default function Chatting3() {
                 onChange={(e) => setMsgInput(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && sendMsg()}
                 ref={msgInputRef}
-                placeholder="    채팅을 입력하세요."
+                placeholder="채팅을 입력하세요."
               />
 
               <button type="button" onClick={sendMsg}>
