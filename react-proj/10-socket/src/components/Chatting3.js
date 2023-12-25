@@ -12,6 +12,7 @@ export default function Chatting3() {
   const [userId, setUserId] = useState(null);
   const [userList, setUserList] = useState({});
   const [dmTo, setDmTo] = useState("all");
+  const [typingUserID, setTypingUserID] = useState(null);
 
   const initSocketConnect = () => {
     console.log("connected", socket.connected);
